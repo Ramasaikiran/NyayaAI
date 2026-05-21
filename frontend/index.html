@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nyaya AI — Legal Rights for Every Indian</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08080a;--s1:#0f0f12;--s2:#16161a;--s3:#1d1d22;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --gold:#d4a843;--gold2:rgba(212,168,67,0.12);--gold3:rgba(212,168,67,0.06);
+  --red:#e05252;--red2:rgba(224,82,82,0.1);
+  --green:#4caf82;--green2:rgba(76,175,130,0.1);
+  --amber:#e8943a;--amber2:rgba(232,148,58,0.1);
+  --blue:#5b9cf6;--blue2:rgba(91,156,246,0.1);
+  --text:#e6e3dc;--muted:#6b6865;--muted2:#9b9794;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:'Manrope',sans-serif;cursor:pointer}
+input,textarea,select{font-family:'Manrope',sans-serif}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:.875rem 2rem;background:rgba(8,8,10,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding .3s}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;display:flex;align-items:center;gap:.4rem;cursor:pointer}
+.nav-logo em{color:var(--gold);font-style:italic}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.82rem;color:var(--muted2);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-actions{display:flex;align-items:center;gap:.75rem}
+.nav-btn{padding:.5rem 1.25rem;border-radius:7px;font-size:.82rem;font-weight:500;border:1px solid var(--border2);background:transparent;color:var(--text);transition:background .2s}
+.nav-btn:hover{background:var(--s2)}
+.nav-btn-gold{background:var(--gold);color:#07060a;border-color:var(--gold)}
+.nav-btn-gold:hover{opacity:.88;background:var(--gold)}
+.nav-user{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--muted2)}
+.nav-avatar{width:30px;height:30px;border-radius:50%;background:var(--gold2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;color:var(--gold)}
+#nav-hamburger{display:none;flex-direction:column;gap:4px;padding:.25rem;cursor:pointer}
+#nav-hamburger span{display:block;width:20px;height:1.5px;background:var(--muted2);border-radius:2px}
+@media(max-width:768px){
+  .nav-links{display:none}
+  #nav-hamburger{display:flex}
+  #nav{padding:.875rem 1.25rem}
+}
+
+/* ── PAGE SYSTEM ── */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+
+/* ═══════════════════════════════
+   LANDING PAGE
+═══════════════════════════════ */
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:7rem 1.5rem 5rem;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(212,168,67,0.08) 0%,transparent 65%);position:relative;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.15em;color:var(--gold);border:1px solid rgba(212,168,67,0.25);padding:.35rem 1rem;border-radius:99px;background:rgba(212,168,67,0.05);margin-bottom:2rem;animation:fadeUp .8s ease forwards}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,6rem);font-weight:700;line-height:1.03;letter-spacing:-.025em;margin-bottom:1.25rem;animation:fadeUp .8s .1s ease forwards;opacity:0}
+.hero-title em{color:var(--gold);font-style:italic}
+.hero-sub{font-size:1.05rem;color:var(--muted2);max-width:560px;margin:0 auto 2.5rem;font-weight:300;animation:fadeUp .8s .2s ease forwards;opacity:0}
+.hero-stats{display:flex;gap:2.5rem;justify-content:center;margin-bottom:2.5rem;animation:fadeUp .8s .3s ease forwards;opacity:0}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold)}
+.hero-stat-label{font-size:.72rem;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:.06em}
+.hero-actions{display:flex;gap:.875rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .35s ease forwards;opacity:0}
+.btn-hero-primary{padding:.9rem 2rem;background:var(--gold);color:#07060a;border:none;border-radius:9px;font-size:.9rem;font-weight:700;transition:opacity .2s,transform .15s}
+.btn-hero-primary:hover{opacity:.88;transform:translateY(-1px)}
+.btn-hero-secondary{padding:.9rem 2rem;background:transparent;color:var(--text);border:1px solid var(--border2);border-radius:9px;font-size:.9rem;font-weight:500;transition:background .2s}
+.btn-hero-secondary:hover{background:var(--s2)}
+
+/* SAFEGUARDS BAR */
+.safeguards-bar{background:var(--s1);border-bottom:1px solid var(--border);padding:1rem 2rem;overflow:hidden}
+.safeguards-inner{display:flex;gap:1.5rem;animation:marquee 20s linear infinite;white-space:nowrap}
+.safeguard-item{display:flex;align-items:center;gap:.4rem;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;flex-shrink:0}
+.safeguard-item.green{color:var(--green)}
+.safeguard-item.amber{color:var(--amber)}
+.safeguard-item.blue{color:var(--blue)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* FEATURES */
+.section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.15em;color:var(--gold);margin-bottom:.875rem;display:flex;align-items:center;gap:.75rem}
+.section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.1;margin-bottom:.75rem}
+.section-sub{color:var(--muted2);font-size:.95rem;max-width:560px}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
+.feature-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.feature-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);opacity:0;transition:opacity .25s}
+.feature-card:hover::before{opacity:1}
+.feature-icon{font-size:1.5rem;margin-bottom:.875rem}
+.feature-title{font-size:.9rem;font-weight:600;margin-bottom:.4rem}
+.feature-desc{font-size:.82rem;color:var(--muted2);line-height:1.6}
+.feature-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:.6rem;padding:.2rem .5rem;border-radius:4px;margin-top:.75rem}
+.tag-green{background:var(--green2);color:var(--green);border:1px solid rgba(76,175,130,0.25)}
+.tag-amber{background:var(--amber2);color:var(--amber);border:1px solid rgba(232,148,58,0.25)}
+.tag-red{background:var(--red2);color:var(--red);border:1px solid rgba(224,82,82,0.25)}
+.tag-blue{background:var(--blue2);color:var(--blue);border:1px solid rgba(91,156,246,0.25)}
+
+/* HOW IT WORKS */
+.hiw-section{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 2rem}
+.hiw-inner{max-width:1000px;margin:0 auto}
+.hiw-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;position:relative}
+.hiw-steps::before{content:'';position:absolute;top:28px;left:15%;right:15%;height:1px;background:linear-gradient(to right,transparent,var(--border),var(--border),transparent)}
+.hiw-step{text-align:center;padding:0 .5rem}
+.hiw-num{width:56px;height:56px;border-radius:50%;background:var(--s2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--gold)}
+.hiw-title{font-size:.875rem;font-weight:600;margin-bottom:.4rem}
+.hiw-desc{font-size:.78rem;color:var(--muted2);line-height:1.55}
+
+/* CASE TYPES SHOWCASE */
+.cases-section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.cases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:2.5rem}
+.case-pill{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:.875rem 1rem;font-size:.82rem;font-weight:500;transition:border-color .2s,background .2s;cursor:pointer}
+.case-pill:hover{border-color:var(--border2);background:var(--s2)}
+.case-pill span{display:block;font-size:.7rem;color:var(--muted);font-weight:400;margin-top:.2rem}
+
+/* DIFFERENTIATION */
+.diff-section{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 2rem}
+.diff-inner{max-width:900px;margin:0 auto}
+.diff-table{width:100%;border-collapse:collapse;margin-top:2.5rem}
+.diff-table th{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--muted);padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+.diff-table td{padding:.875rem 1rem;font-size:.85rem;border-bottom:1px solid var(--border);vertical-align:top}
+.diff-table tr:last-child td{border-bottom:none}
+.diff-table td:nth-child(2){color:var(--muted2)}
+.diff-table td:nth-child(3){color:var(--green);font-weight:500}
+.diff-ours{background:var(--gold3)}
+.check{color:var(--green)}
+.cross{color:var(--red)}
+
+/* PRICING */
+.pricing-section{padding:5rem 2rem;max-width:1000px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:3rem}
+.pricing-card{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative}
+.pricing-card.featured{border-color:var(--gold);background:linear-gradient(135deg,rgba(212,168,67,0.06),var(--s1))}
+.pricing-featured-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#07060a;font-size:.65rem;font-weight:700;padding:.3rem .875rem;border-radius:99px;font-family:'DM Mono',monospace;letter-spacing:.06em;white-space:nowrap}
+.pricing-label{font-size:.75rem;color:var(--muted2);font-family:'DM Mono',monospace;letter-spacing:.06em;margin-bottom:.5rem}
+.pricing-price{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--gold);margin-bottom:.25rem}
+.pricing-period{font-size:.78rem;color:var(--muted);margin-bottom:1.25rem}
+.pricing-features{list-style:none;display:grid;gap:.6rem;margin-bottom:1.5rem}
+.pricing-features li{font-size:.82rem;color:var(--muted2);display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
+.pricing-features li::before{content:'✓';color:var(--green);flex-shrink:0;margin-top:1px}
+.pricing-btn{width:100%;padding:.8rem;border-radius:8px;font-size:.85rem;font-weight:600;border:1px solid var(--border2);background:transparent;color:var(--text);transition:background .2s}
+.pricing-btn:hover{background:var(--s2)}
+.pricing-card.featured .pricing-btn{background:var(--gold);color:#07060a;border-color:var(--gold)}
+.pricing-card.featured .pricing-btn:hover{opacity:.88}
+
+/* FOOTER */
+footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.footer-brand p{font-size:.82rem;color:var(--muted);margin-top:.75rem;max-width:280px;line-height:1.7}
+.footer-col h4{font-size:.75rem;font-weight:600;letter-spacing:.08em;font-family:'DM Mono',monospace;color:var(--muted2);margin-bottom:.875rem}
+.footer-col a{display:block;font-size:.82rem;color:var(--muted);margin-bottom:.5rem;transition:color .2s}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+.footer-legal{font-size:.72rem;color:var(--muted);max-width:600px;line-height:1.6}
+.footer-copy{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted)}
+
+/* ═══════════════════════════════
+   AUTH MODAL
+═══════════════════════════════ */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:900;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--s1);border:1px solid var(--border2);border-radius:18px;padding:2.5rem;width:100%;max-width:420px;position:relative;animation:modalIn .25s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.25rem;cursor:pointer;padding:.25rem;transition:color .2s}
+.modal-close:hover{color:var(--text)}
+.modal-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:.35rem}
+.modal-logo em{color:var(--gold);font-style:italic}
+.modal-tabs{display:flex;gap:.25rem;margin-bottom:1.75rem;background:var(--s2);border-radius:8px;padding:.25rem}
+.modal-tab{flex:1;padding:.5rem;border-radius:6px;font-size:.82rem;font-weight:500;border:none;background:transparent;color:var(--muted2);transition:background .2s,color .2s}
+.modal-tab.active{background:var(--s3);color:var(--text)}
+.modal-form{display:grid;gap:.875rem}
+.modal-label{font-size:.72rem;color:var(--muted2);display:block;margin-bottom:.3rem}
+.modal-input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:.65rem .875rem;font-size:.875rem;color:var(--text);transition:border-color .2s}
+.modal-input:focus{outline:none;border-color:rgba(212,168,67,0.4)}
+.modal-input::placeholder{color:var(--muted)}
+.modal-submit{width:100%;padding:.8rem;background:var(--gold);color:#07060a;border:none;border-radius:8px;font-size:.9rem;font-weight:700;margin-top:.25rem;transition:opacity .2s}
+.modal-submit:hover{opacity:.88}
+.modal-divider{text-align:center;font-size:.75rem;color:var(--muted);position:relative;margin:.5rem 0}
+.modal-divider::before,.modal-divider::after{content:'';position:absolute;top:50%;width:42%;height:1px;background:var(--border)}
+.modal-divider::before{left:0}
+.modal-divider::after{right:0}
+
+/* ═══════════════════════════════
+   DASHBOARD
+═══════════════════════════════ */
+#page-dashboard{padding-top:64px}
+.dash-wrap{max-width:1000px;margin:0 auto;padding:2rem 1.5rem}
+.dash-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;gap:1rem;flex-wrap:wrap}
+.dash-welcome{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600}
+.dash-welcome span{color:var(--gold)}
+.dash-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.dash-stat-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+.dash-stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold)}
+.dash-stat-label{font-size:.75rem;color:var(--muted2);margin-top:.2rem}
+.dash-section-title{font-size:.75rem;font-weight:600;font-family:'DM Mono',monospace;letter-spacing:.1em;color:var(--muted2);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+.dash-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.petition-list{display:grid;gap:.75rem;margin-bottom:2rem}
+.petition-item{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;transition:border-color .2s}
+.petition-item:hover{border-color:var(--border2)}
+.petition-item-left{flex:1}
+.petition-case-type{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;color:var(--gold);margin-bottom:.35rem}
+.petition-title{font-size:.9rem;font-weight:500;margin-bottom:.25rem}
+.petition-meta{font-size:.75rem;color:var(--muted)}
+.petition-status{display:inline-flex;align-items:center;gap:.35rem;font-size:.68rem;font-family:'DM Mono',monospace;padding:.25rem .6rem;border-radius:99px;border:1px solid;flex-shrink:0}
+.status-draft{color:var(--amber);border-color:rgba(232,148,58,0.3);background:var(--amber2)}
+.status-review{color:var(--blue);border-color:rgba(91,156,246,0.3);background:var(--blue2)}
+.status-complete{color:var(--green);border-color:rgba(76,175,130,0.3);background:var(--green2)}
+.petition-actions{display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap}
+.petition-btn{padding:.35rem .75rem;border-radius:6px;font-size:.75rem;border:1px solid var(--border2);background:transparent;color:var(--muted2);transition:background .2s,color .2s}
+.petition-btn:hover{background:var(--s2);color:var(--text)}
+.petition-btn-gold{border-color:rgba(212,168,67,0.3);color:var(--gold)}
+.petition-btn-gold:hover{background:var(--gold2)}
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.empty-state p{margin-bottom:1.25rem;font-size:.9rem}
+
+/* ═══════════════════════════════
+   PETITION BUILDER
+═══════════════════════════════ */
+#page-builder{padding-top:64px}
+.builder-wrap{max-width:840px;margin:0 auto;padding:2rem 1.5rem}
+.prog-wrap{margin-bottom:2rem}
+.prog-meta{display:flex;justify-content:space-between;margin-bottom:.4rem}
+.prog-label{font-size:.78rem;color:var(--muted2)}
+.prog-count{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted)}
+.prog-bar{height:2px;background:var(--border);border-radius:2px}
+.prog-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .4s ease}
+.builder-step{display:none}
+.builder-step.active{display:block;animation:fadeUp .3s ease}
+.step-head{margin-bottom:1.5rem}
+.step-tag{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;color:var(--gold);margin-bottom:.4rem;display:flex;align-items:center;gap:.6rem}
+.step-tag::after{content:'';flex:1;height:1px;background:var(--border)}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;line-height:1.1}
+.step-desc{color:var(--muted2);font-size:.85rem;margin-top:.3rem}
+
+/* GATE */
+.gate-box{background:var(--s1);border:1px solid rgba(224,82,82,0.25);border-radius:16px;padding:2rem}
+.gate-icon{font-size:2rem;text-align:center;margin-bottom:1rem}
+.gate-heading{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;text-align:center;margin-bottom:.4rem}
+.gate-subtext{color:var(--muted2);font-size:.85rem;text-align:center;max-width:460px;margin:0 auto 1.5rem}
+.gate-checks{display:grid;gap:.6rem;margin-bottom:1.5rem}
+.gate-check{display:flex;align-items:flex-start;gap:.75rem;padding:.875rem 1rem;background:var(--s2);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:border-color .2s}
+.gate-check:hover{border-color:var(--border2)}
+.gate-check.ticked{border-color:rgba(76,175,130,0.35);background:rgba(76,175,130,0.04)}
+.gate-check input{width:15px;height:15px;flex-shrink:0;margin-top:3px;accent-color:var(--green)}
+.gate-check-text{font-size:.83rem;color:var(--muted2);line-height:1.5}
+.gate-check.ticked .gate-check-text{color:var(--text)}
+
+/* CASE CARDS */
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.75rem;margin-bottom:1.5rem}
+.case-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem;cursor:pointer;transition:border-color .22s,background .22s;position:relative}
+.case-card:hover{border-color:var(--border2)}
+.case-card.sel{border-color:var(--gold);background:var(--gold3)}
+.case-card.sel::after{content:'✓';position:absolute;top:.5rem;right:.75rem;font-size:.65rem;color:var(--gold)}
+.case-card-t{font-size:.85rem;font-weight:500;margin-bottom:.2rem}
+.case-card-s{font-size:.72rem;color:var(--muted)}
+.case-card.crim .case-card-t::after{content:' ⚠';color:var(--amber);font-size:.65rem}
+
+/* CRIMINAL + LIMITATION */
+.warn-box{border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.25rem;display:none;font-size:.83rem;line-height:1.6}
+.warn-box.show{display:block}
+.warn-box.amber{background:var(--amber2);border:1px solid rgba(232,148,58,0.25)}
+.warn-box.red{background:var(--red2);border:1px solid rgba(224,82,82,0.25)}
+.warn-box.green{background:var(--green2);border:1px solid rgba(76,175,130,0.2)}
+.warn-title{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;font-weight:500;margin-bottom:.4rem}
+.warn-title.amber{color:var(--amber)}
+.warn-title.red{color:var(--red)}
+.warn-title.green{color:var(--green)}
+
+/* FORM */
+.fgrid{display:grid;gap:.875rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.fg label{font-size:.72rem;color:var(--muted2);display:block;margin-bottom:.3rem}
+.fg input,.fg textarea,.fg select{width:100%;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:.65rem .875rem;font-size:.85rem;color:var(--text);transition:border-color .2s}
+.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:rgba(212,168,67,0.4)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--muted)}
+.fg select option{background:var(--s2);color:var(--text)}
+.fg textarea{resize:vertical}
+
+/* DOC CHECKS */
+.doc-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.35rem}
+.doc-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;padding:.3rem .7rem;background:var(--s2);border:1px solid var(--border);border-radius:99px;cursor:pointer;color:var(--muted2);transition:border-color .2s,color .2s}
+.doc-tag:hover{border-color:var(--border2)}
+.doc-tag.on{border-color:rgba(76,175,130,0.35);color:var(--green);background:var(--green2)}
+.doc-tag input{display:none}
+
+/* JURISDICTION NOTE */
+.j-note{display:none;background:var(--gold3);border:1px solid rgba(212,168,67,0.18);border-radius:8px;padding:.65rem .875rem;font-family:'DM Mono',monospace;font-size:.68rem;color:var(--gold);margin-top:.5rem;line-height:1.6}
+.j-note.show{display:block}
+
+/* BTNS */
+.btn-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}
+.btn{padding:.65rem 1.4rem;border-radius:8px;font-size:.85rem;font-weight:500;border:1px solid var(--border2);background:transparent;color:var(--text);transition:background .2s}
+.btn:hover{background:var(--s2)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn-gold{border-color:var(--gold);color:var(--gold)}
+.btn-gold:hover{background:var(--gold2)}
+.btn-green{border-color:var(--green);color:var(--green)}
+.btn-green:hover{background:var(--green2)}
+.btn-amber{border-color:var(--amber);color:var(--amber)}
+.btn-amber:hover{background:var(--amber2)}
+.btn-solid-gold{background:var(--gold);color:#07060a;border-color:var(--gold);font-weight:700}
+.btn-solid-gold:hover{opacity:.88}
+
+/* GENERATING */
+.generating{text-align:center;padding:4rem 2rem}
+.spinner{width:34px;height:34px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .75s linear infinite;margin:0 auto 1.5rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.gen-msg{font-size:.95rem;color:var(--muted2);margin-bottom:.35rem}
+.gen-sub{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted)}
+
+/* RESULT */
+.result-grid{display:grid;gap:1rem}
+.score-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+.score-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.score-title{font-size:.85rem;font-weight:500}
+.score-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700}
+.score-bar-wrap{height:5px;background:var(--s2);border-radius:99px;margin-bottom:1rem;overflow:hidden}
+.score-bar{height:100%;border-radius:99px;transition:width .8s ease}
+.score-items{display:grid;gap:.4rem}
+.score-item{display:flex;gap:.6rem;font-size:.8rem;align-items:flex-start;line-height:1.5}
+.score-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.sugg-card{background:var(--s1);border:1px solid rgba(232,148,58,0.2);border-radius:14px;padding:1.5rem}
+.sugg-title{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--amber);margin-bottom:1rem}
+.sugg-item{display:flex;gap:.75rem;padding:.65rem 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.sugg-item:last-child{border-bottom:none;padding-bottom:0}
+.sugg-tag{font-family:'DM Mono',monospace;font-size:.58rem;padding:.2rem .55rem;border-radius:4px;border:1px solid;flex-shrink:0;margin-top:1px;letter-spacing:.04em}
+.sugg-text{font-size:.82rem;color:var(--muted2);line-height:1.55}
+.oath-box{background:var(--red2);border:1px solid rgba(224,82,82,0.3);border-radius:12px;padding:1.1rem 1.25rem}
+.oath-title{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.09em;color:var(--red);margin-bottom:.4rem}
+.oath-text{font-size:.82rem;color:var(--muted2);line-height:1.6}
+.draft-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.draft-hdr{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.75rem}
+.draft-hdr-left{font-size:.85rem;font-weight:500}
+.draft-hdr-right{display:flex;gap:.5rem}
+.draft-fill-bar{padding:.5rem 1.25rem;background:var(--red2);border-bottom:1px solid rgba(224,82,82,0.2);font-family:'DM Mono',monospace;font-size:.68rem;color:var(--red);display:none}
+.draft-fill-bar.show{display:block}
+.draft-body{padding:1.25rem;max-height:460px;overflow-y:auto}
+.draft-pre{font-family:'DM Mono',monospace;font-size:.75rem;line-height:1.85;color:var(--text);white-space:pre-wrap}
+.fill-mark{background:rgba(224,82,82,0.14);color:var(--red);border:1px solid rgba(224,82,82,0.28);border-radius:3px;padding:0 3px;font-weight:500}
+.conf-badge{display:inline-flex;align-items:center;gap:2px;font-family:'DM Mono',monospace;font-size:.58rem;padding:.15rem .45rem;border-radius:4px;border:1px solid;margin-left:.35rem;vertical-align:middle}
+.conf-h{color:var(--green);border-color:rgba(76,175,130,0.3);background:var(--green2)}
+.conf-v{color:var(--amber);border-color:rgba(232,148,58,0.3);background:var(--amber2)}
+.conf-c{color:var(--red);border-color:rgba(224,82,82,0.3);background:var(--red2)}
+.lawyer-card{background:var(--s1);border:1px solid rgba(212,168,67,0.2);border-radius:14px;padding:1.5rem}
+.lawyer-title{font-size:.9rem;font-weight:600;margin-bottom:.3rem}
+.lawyer-sub{font-size:.8rem;color:var(--muted2);margin-bottom:1.25rem;line-height:1.55}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-bottom:1.25rem}
+.plan-box{border:1px solid var(--border);border-radius:10px;padding:.875rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s}
+.plan-box:hover{border-color:var(--border2)}
+.plan-box.sel{border-color:var(--gold);background:var(--gold3)}
+.plan-name{font-size:.68rem;color:var(--muted);margin-bottom:.25rem;font-family:'DM Mono',monospace}
+.plan-price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold);margin-bottom:.2rem}
+.plan-desc{font-size:.7rem;color:var(--muted2)}
+.lawyer-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.l-badge{font-size:.65rem;font-family:'DM Mono',monospace;padding:.2rem .55rem;border-radius:4px;border:1px solid}
+/* LAWYER REQUEST FORM */
+.lawyer-form{display:grid;gap:.75rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+.lawyer-form-title{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.09em;color:var(--muted2);margin-bottom:.25rem}
+.privacy-card{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:1rem;font-size:.78rem;color:var(--muted2);line-height:1.6}
+.privacy-check{display:flex;align-items:flex-start;gap:.65rem;margin-top:.75rem;cursor:pointer}
+.privacy-check input{width:14px;height:14px;flex-shrink:0;margin-top:2px;accent-color:var(--gold)}
+.disclaimer{padding:.875rem 1rem;background:var(--s2);border:1px solid var(--border);border-radius:10px;font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);line-height:1.7}
+
+/* ═══════════════════════════════
+   ADMIN DASHBOARD
+═══════════════════════════════ */
+#page-admin{padding-top:64px}
+.admin-wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+.admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.admin-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600}
+.admin-tabs{display:flex;gap:.25rem;background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:.25rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.admin-tab{padding:.5rem 1.25rem;border-radius:8px;font-size:.82rem;font-weight:500;border:none;background:transparent;color:var(--muted2);transition:background .2s,color .2s;cursor:pointer}
+.admin-tab.active{background:var(--s2);color:var(--text)}
+.admin-panel{display:none}
+.admin-panel.active{display:block}
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+.admin-stat{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+.admin-stat-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold)}
+.admin-stat-label{font-size:.72rem;color:var(--muted2);margin-top:.15rem}
+.admin-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.admin-table th{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;color:var(--muted);padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+.admin-table td{padding:.875rem 1rem;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--muted2)}
+.admin-table tr:last-child td{border-bottom:none}
+.admin-table tr:hover td{background:var(--s2)}
+.admin-table td:first-child{color:var(--text);font-weight:500}
+.tbl-wrap{background:var(--s1);border:1px solid var(--border);border-radius:14px;overflow:hidden;overflow-x:auto}
+.lawyer-profile{display:flex;align-items:center;gap:.65rem}
+.lawyer-avatar{width:32px;height:32px;border-radius:50%;background:var(--blue2);border:1px solid rgba(91,156,246,0.25);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;color:var(--blue);flex-shrink:0}
+.lawyer-name{font-size:.85rem;font-weight:500;color:var(--text)}
+.lawyer-spec{font-size:.72rem;color:var(--muted)}
+.add-lawyer-form{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+.add-lawyer-title{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--muted2);margin-bottom:1rem}
+
+/* NOTIFICATIONS */
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--s2);border:1px solid var(--border2);border-radius:10px;padding:.875rem 1.25rem;font-size:.85rem;z-index:1000;opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s;max-width:320px}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{border-color:rgba(76,175,130,0.35);color:var(--green)}
+.toast.error{border-color:rgba(224,82,82,0.35);color:var(--red)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* MOBILE */
+@media(max-width:768px){
+  .features-grid{grid-template-columns:1fr 1fr}
+  .hiw-steps{grid-template-columns:1fr 1fr}
+  .hiw-steps::before{display:none}
+  .cases-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid,.plan-grid,.admin-stats,.footer-top{grid-template-columns:1fr}
+  .frow,.diff-table{grid-template-columns:1fr}
+  .diff-table{font-size:.78rem}
+  .hero-stats{gap:1.5rem}
+  .hero-stat-num{font-size:1.5rem}
+}
+@media(max-width:480px){
+  .features-grid,.cases-grid{grid-template-columns:1fr}
+  .case-grid{grid-template-columns:1fr 1fr}
+  .hero-title{font-size:2.2rem}
+}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,168,67,0.25)}50%{box-shadow:0 0 0 12px rgba(212,168,67,0)}}
+@keyframes glowLine{0%,100%{opacity:.3;width:40px}50%{opacity:1;width:80px}}
+@keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes badgePop{0%{opacity:0;transform:scale(.8)}100%{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(100vh)}}
+
+/* Hero animations - staggered */
+.hero-eyebrow{animation:fadeIn .6s ease forwards}
+.hero-title{animation:fadeUp .8s .1s ease both}
+.hero-sub{animation:fadeUp .8s .25s ease both}
+.hero-stats{animation:fadeUp .8s .4s ease both}
+.hero-actions{animation:fadeUp .8s .5s ease both}
+.safeguard-badges{animation:fadeUp .8s .35s ease both}
+
+/* Animated gold underline on hero title */
+.hero-title em{position:relative;display:inline-block}
+.hero-title em::after{content:'';position:absolute;bottom:-4px;left:0;height:2px;background:var(--gold);animation:glowLine 2.5s ease infinite;border-radius:2px}
+
+/* Floating scale icon in hero */
+.hero-scale-icon{font-size:3rem;display:block;margin:0 auto 1.5rem;animation:float 3s ease infinite;animation:fadeUp .6s ease both,float 3s 1s ease infinite}
+
+/* CTA button pulse */
+.btn-hero-primary{animation:pulse 2.5s 1.5s ease infinite}
+
+/* Feature cards stagger on scroll */
+.feature-card{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease,border-color .25s,background .25s}
+.feature-card.visible{opacity:1;transform:translateY(0)}
+.feature-card:nth-child(2){transition-delay:.07s}
+.feature-card:nth-child(3){transition-delay:.14s}
+.feature-card:nth-child(4){transition-delay:.21s}
+.feature-card:nth-child(5){transition-delay:.28s}
+.feature-card:nth-child(6){transition-delay:.35s}
+.feature-card:nth-child(7){transition-delay:.42s}
+.feature-card:nth-child(8){transition-delay:.49s}
+.feature-card:nth-child(9){transition-delay:.56s}
+
+/* HIW step stagger */
+.hiw-step{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.hiw-step.visible{opacity:1;transform:translateY(0)}
+.hiw-step:nth-child(2){transition-delay:.1s}
+.hiw-step:nth-child(3){transition-delay:.2s}
+.hiw-step:nth-child(4){transition-delay:.3s}
+
+/* HIW number hover glow */
+.hiw-num{transition:background .25s,box-shadow .25s,color .25s}
+.hiw-step:hover .hiw-num{background:var(--gold2);box-shadow:0 0 0 6px rgba(212,168,67,0.1);color:var(--gold)}
+
+/* Stat number count-up effect */
+.hero-stat{animation:countUp .6s ease both}
+.hero-stat:nth-child(2){animation-delay:.1s}
+.hero-stat:nth-child(3){animation-delay:.2s}
+
+/* Case pill hover */
+.case-pill{transition:border-color .2s,background .2s,transform .2s}
+.case-pill:hover{transform:translateY(-2px);border-color:var(--gold);background:var(--gold3)}
+
+/* Pricing card hover */
+.pricing-card{transition:transform .25s,border-color .25s}
+.pricing-card:hover{transform:translateY(-3px)}
+.pricing-card.featured{transform:scale(1.03)}
+.pricing-card.featured:hover{transform:scale(1.03) translateY(-3px)}
+
+/* Diff table row hover */
+.diff-table tr{transition:background .15s}
+.diff-table tr:hover td{background:rgba(212,168,67,0.04)!important}
+
+/* Safeguards marquee items */
+.safeguard-item{transition:transform .2s}
+.safeguard-item:hover{transform:scale(1.05)}
+
+/* Gold shimmer on section eyebrow */
+.section-eyebrow{background:linear-gradient(90deg,var(--gold) 0%,#ffd97a 50%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite}
+.step-tag{background:linear-gradient(90deg,var(--gold) 0%,#ffd97a 50%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite}
+
+/* Scroll-reveal base class */
+.sr{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.sr.visible{opacity:1;transform:translateY(0)}
+.sr-delay-1{transition-delay:.1s}
+.sr-delay-2{transition-delay:.2s}
+.sr-delay-3{transition-delay:.3s}
+
+/* ═══════════════════════════════════════
+   MOBILE NAV OVERLAY
+═══════════════════════════════════════ */
+#nav-links{transition:all .25s ease}
+
+@media(max-width:768px){
+  #nav-links{
+    display:none;
+    position:fixed;
+    top:56px;left:0;right:0;
+    background:rgba(8,8,10,0.97);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border2);
+    flex-direction:column;
+    padding:1.25rem 1.5rem;
+    gap:.25rem;
+    z-index:499;
+  }
+  #nav-links.open{display:flex}
+  #nav-links a{
+    display:block;
+    padding:.75rem .5rem;
+    font-size:.95rem;
+    color:var(--text);
+    border-bottom:1px solid var(--border);
+    transition:color .2s,padding-left .2s;
+  }
+  #nav-links a:last-child{border-bottom:none}
+  #nav-links a:hover{color:var(--gold);padding-left:.875rem}
+  #nav-hamburger span{transition:all .25s ease}
+  #nav-hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+  #nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+  #nav-hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — MOBILE FIRST
+═══════════════════════════════════════ */
+
+/* ── HERO ── */
+@media(max-width:480px){
+  .hero{padding:5.5rem 1.25rem 3.5rem;min-height:auto}
+  .hero-title{font-size:2.2rem;letter-spacing:-.015em}
+  .hero-sub{font-size:.9rem;margin-bottom:2rem}
+  .hero-stats{gap:1.25rem;flex-wrap:wrap;justify-content:center}
+  .hero-stat-num{font-size:1.5rem}
+  .hero-stat-label{font-size:.62rem}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn-hero-primary,.btn-hero-secondary{width:100%;text-align:center;padding:.875rem 1.5rem}
+  .safeguard-badges{gap:.35rem}
+  .badge{font-size:.6rem;padding:.25rem .6rem}
+}
+
+/* ── FEATURES ── */
+@media(max-width:1024px){
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .features-grid{grid-template-columns:1fr}
+  .section{padding:3.5rem 1.25rem}
+  .section-title{font-size:1.7rem}
+}
+
+/* ── HOW IT WORKS ── */
+@media(max-width:768px){
+  .hiw-steps{grid-template-columns:1fr 1fr;gap:1.25rem}
+  .hiw-steps::before{display:none}
+  .hiw-section{padding:3.5rem 1.25rem}
+}
+@media(max-width:480px){
+  .hiw-steps{grid-template-columns:1fr;gap:1rem}
+  .hiw-num{width:44px;height:44px;font-size:1.1rem}
+}
+
+/* ── CASES GRID ── */
+@media(max-width:900px){
+  .cases-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+  .cases-grid{grid-template-columns:repeat(2,1fr);gap:.5rem}
+  .case-pill{font-size:.78rem;padding:.7rem .875rem}
+  .case-pill span{font-size:.65rem}
+}
+@media(max-width:380px){
+  .cases-grid{grid-template-columns:1fr}
+}
+
+/* ── DIFF TABLE ── */
+@media(max-width:768px){
+  .diff-section{padding:3.5rem 1.25rem}
+  .diff-table{font-size:.75rem}
+  .diff-table th,.diff-table td{padding:.6rem .75rem}
+  .diff-table th:nth-child(2),.diff-table td:nth-child(2){display:none}
+}
+@media(max-width:480px){
+  .diff-table{font-size:.72rem}
+  .diff-table th,.diff-table td{padding:.5rem .6rem}
+}
+
+/* ── PRICING ── */
+@media(max-width:900px){
+  .pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
+  .pricing-card.featured{transform:none}
+  .pricing-card.featured:hover{transform:translateY(-3px)}
+}
+@media(max-width:480px){
+  .pricing-section{padding:3.5rem 1.25rem}
+  .pricing-grid{max-width:100%}
+}
+
+/* ── FOOTER ── */
+@media(max-width:900px){
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:600px){
+  .footer-top{grid-template-columns:1fr;gap:1.5rem}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
+  .footer-legal{max-width:100%;font-size:.68rem}
+}
+
+/* ── BUILDER ── */
+@media(max-width:768px){
+  .builder-wrap{padding:1.5rem 1rem}
+  .case-grid{grid-template-columns:1fr 1fr}
+  .frow{grid-template-columns:1fr}
+  .gate-box{padding:1.5rem 1.25rem}
+  .gate-heading{font-size:1.25rem}
+}
+@media(max-width:480px){
+  .case-grid{grid-template-columns:1fr 1fr}
+  .plan-grid{grid-template-columns:1fr}
+  .plan-box{display:flex;align-items:center;gap:1rem;text-align:left}
+  .plan-name{min-width:80px}
+  .plan-price{font-size:1.25rem}
+  .result-grid .score-card,.result-grid .sugg-card,.result-grid .draft-card,.result-grid .lawyer-card{border-radius:12px}
+}
+
+/* ── DASHBOARD ── */
+@media(max-width:768px){
+  .dash-wrap{padding:1.5rem 1rem}
+  .dash-stats{grid-template-columns:1fr 1fr 1fr}
+}
+@media(max-width:480px){
+  .dash-stats{grid-template-columns:1fr}
+  .dash-stat-card{display:flex;align-items:center;gap:1rem}
+  .dash-stat-num{font-size:1.5rem}
+  .petition-item{flex-direction:column}
+  .petition-actions{flex-wrap:wrap}
+}
+
+/* ── ADMIN ── */
+@media(max-width:900px){
+  .admin-stats{grid-template-columns:repeat(2,1fr)}
+  .admin-wrap{padding:1.5rem 1rem}
+  .tbl-wrap{overflow-x:auto}
+}
+@media(max-width:480px){
+  .admin-stats{grid-template-columns:1fr 1fr}
+  .admin-tabs{gap:.15rem}
+  .admin-tab{padding:.4rem .75rem;font-size:.75rem}
+  .add-lawyer-form .frow{grid-template-columns:1fr}
+}
+
+/* ── MODAL ── */
+@media(max-width:480px){
+  .modal{padding:1.75rem 1.25rem;border-radius:14px}
+  .modal-input{padding:.6rem .75rem;font-size:.82rem}
+}
+
+/* ── LAWYER DASH ── */
+@media(max-width:768px){
+  .admin-wrap{padding:1.5rem 1rem}
+}
+@media(max-width:480px){
+  .petition-item[style*="flex-direction:column"]{padding:1rem}
+}
+
+/* ── GENERAL SPACING ── */
+@media(max-width:480px){
+  nav{padding:.75rem 1rem}
+  .nav-logo{font-size:1.1rem}
+  .step-title{font-size:1.25rem}
+  .step-desc{font-size:.82rem}
+  .btn-row{gap:.5rem}
+  .btn{padding:.6rem 1rem;font-size:.8rem}
+}
+
+/* ── PREMIUM ANIMATIONS & EFFECTS OVERRIDES ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Spotlight Hover Effect inside Cards */
+.feature-card, .case-card, .pricing-card, .gate-check, .plan-box {
+  position: relative;
+  overflow: hidden;
+}
+.feature-card::after, .case-card::after, .pricing-card::after, .gate-check::after, .plan-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(220px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212, 168, 67, 0.09), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.feature-card:hover::after, .case-card:hover::after, .pricing-card:hover::after, .gate-check:hover::after, .plan-box:hover::after {
+  opacity: 1;
+}
+.feature-card > *, .case-card > *, .pricing-card > *, .gate-check > *, .plan-box > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Circular Springy Checklist UI */
+.gate-check input[type="checkbox"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  border: 1.5px solid var(--border2) !important;
+  border-radius: 50% !important;
+  outline: none !important;
+  background: transparent !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  margin-top: 2px !important;
+  accent-color: unset !important;
+}
+.gate-check input[type="checkbox"]::after {
+  content: '✓' !important;
+  font-size: 10px !important;
+  color: var(--bg) !important;
+  font-weight: 900 !important;
+  transform: scale(0) !important;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+.gate-check input[type="checkbox"]:checked {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 10px rgba(212, 168, 67, 0.3) !important;
+}
+.gate-check input[type="checkbox"]:checked::after {
+  transform: scale(1) !important;
+}
+
+/* Glowing Pulsing Bullet Leading Edge on Progress Bar */
+.prog-fill {
+  background: linear-gradient(90deg, var(--gold2), var(--gold)) !important;
+  transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative !important;
+  box-shadow: 0 0 8px rgba(212, 168, 67, 0.5) !important;
+}
+.prog-fill::after {
+  content: '' !important;
+  position: absolute !important;
+  right: -4px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  box-shadow: 0 0 10px #fff, 0 0 20px var(--gold) !important;
+  animation: pulseBullet 1.5s infinite !important;
+}
+@keyframes pulseBullet {
+  0% { transform: translateY(-50%) scale(1); box-shadow: 0 0 8px #fff, 0 0 15px var(--gold); }
+  50% { transform: translateY(-50%) scale(1.25); box-shadow: 0 0 15px #fff, 0 0 28px var(--gold); }
+  100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 8px #fff, 0 0 15px var(--gold); }
+}
+
+/* Elegant Modal Entrance with Backdrop Blur and Spring Overshoot */
+.modal-overlay {
+  display: flex !important;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(8, 8, 10, 0.4);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), backdrop-filter 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.modal {
+  border: 1px solid rgba(212, 168, 67, 0.2) !important;
+  transform: scale(0.9) translateY(10px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: none !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.modal-overlay.open .modal {
+  transform: scale(1) translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo" onclick="showPage('landing')">⚖ <em>Nyaya</em> AI</div>
+  <div class="nav-links" id="nav-links">
+    <a href="#features" onclick="navTo(event,'#features')">Features</a>
+    <a href="#pricing" onclick="navTo(event,'#pricing')">Pricing</a>
+    <a href="#cases" onclick="navTo(event,'#cases')">Case types</a>
+    <a href="#howitworks" onclick="navTo(event,'#howitworks')">How it works</a>
+  </div>
+  <div class="nav-actions" id="nav-actions">
+    <button class="nav-btn" onclick="openAuth('login')">Log in</button>
+    <button class="nav-btn nav-btn-gold" onclick="openAuth('signup')">Start free →</button>
+  </div>
+  <div id="nav-user-area" style="display:none" class="nav-user">
+    <div class="nav-avatar" id="nav-avatar">?</div>
+    <span id="nav-username"></span>
+    <button class="nav-btn" onclick="showPage('dashboard')" style="padding:.4rem .875rem;font-size:.78rem">Dashboard</button>
+    <button class="nav-btn" style="padding:.4rem .875rem;font-size:.78rem" onclick="logout()">Log out</button>
+  </div>
+  <div id="nav-hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ══════════ LANDING PAGE ══════════ -->
+<div id="page-landing" class="page active">
+
+  <div class="hero">
+    <canvas id="hero-canvas" class="hero-canvas"></canvas>
+    <div class="hero-eyebrow">⚖ Built for 1.4 billion citizens</div>
+    <div class="hero-scale-icon">⚖️</div>
+    <h1 class="hero-title">Legal rights for<br><em>every Indian.</em></h1>
+    <p class="hero-sub">AI-powered petition drafting with built-in safeguards, limitation calculators, jurisdiction guidance — and real lawyer review when you need it.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">12</div><div class="hero-stat-label">Case types</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">11</div><div class="hero-stat-label">Safety checks</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">BNS</div><div class="hero-stat-label">2023 updated</div></div>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-hero-primary" onclick="openAuth('signup')">Draft your petition free →</button>
+      <button class="btn-hero-secondary" onclick="showPage('builder')">Try without signing up</button>
+    </div>
+  </div>
+
+  <div class="safeguards-bar">
+    <div class="safeguards-inner">
+      <span class="safeguard-item green">✓ Limitation period calculator</span>
+      <span class="safeguard-item green">✓ Jurisdiction auto-selector</span>
+      <span class="safeguard-item amber">⚠ Perjury risk warnings</span>
+      <span class="safeguard-item amber">⚠ Case strength scoring</span>
+      <span class="safeguard-item green">✓ BNS / BNSS 2023 updated</span>
+      <span class="safeguard-item amber">⚠ Criminal case screening</span>
+      <span class="safeguard-item green">✓ DPDP Act 2023 compliant</span>
+      <span class="safeguard-item blue">⚡ Real lawyer review ₹299+</span>
+      <span class="safeguard-item green">✓ Limitation period calculator</span>
+      <span class="safeguard-item green">✓ Jurisdiction auto-selector</span>
+      <span class="safeguard-item amber">⚠ Perjury risk warnings</span>
+      <span class="safeguard-item amber">⚠ Case strength scoring</span>
+      <span class="safeguard-item green">✓ BNS / BNSS 2023 updated</span>
+      <span class="safeguard-item amber">⚠ Criminal case screening</span>
+      <span class="safeguard-item green">✓ DPDP Act 2023 compliant</span>
+      <span class="safeguard-item blue">⚡ Real lawyer review ₹299+</span>
+    </div>
+  </div>
+
+  <div class="section" id="features">
+    <div class="section-eyebrow">WHAT MAKES US DIFFERENT</div>
+    <h2 class="section-title">Built with safeguards<br>most apps skip.</h2>
+    <p class="section-sub">Every feature here exists because we found a way a user could get hurt without it.</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">⏱</div><div class="feature-title">Limitation period calculator</div><div class="feature-desc">Enter your incident date. Get exact days remaining. Red alert if you're near or past the deadline — before you waste time drafting.</div><span class="feature-tag tag-green">Prevents missed deadlines</span></div>
+      <div class="feature-card"><div class="feature-icon">📍</div><div class="feature-title">Jurisdiction auto-selector</div><div class="feature-desc">State + district + claim amount → we tell you exactly which court. Consumer complaint at ₹45k goes to District Forum, not State Commission.</div><span class="feature-tag tag-green">Prevents wrong court filing</span></div>
+      <div class="feature-card"><div class="feature-icon">⚖</div><div class="feature-title">Case strength scoring</div><div class="feature-desc">1–10 score with specific items: what evidence you have, what's missing, what could get your case thrown out before the first hearing.</div><span class="feature-tag tag-amber">Sets realistic expectations</span></div>
+      <div class="feature-card"><div class="feature-icon">🔴</div><div class="feature-title">Perjury warning</div><div class="feature-desc">The verification clause is a legal oath. We flag this explicitly — Section 193 BNS, up to 7 years. Not in a footer. In your face before you sign.</div><span class="feature-tag tag-red">Prevents criminal liability</span></div>
+      <div class="feature-card"><div class="feature-icon">⚠</div><div class="feature-title">Criminal case screening</div><div class="feature-desc">Police, cheque bounce, DV, cyber crime — extra gate with Sections 182 & 211 BNS warnings. False criminal complaints carry up to 7 years.</div><span class="feature-tag tag-red">Prevents counter-charges</span></div>
+      <div class="feature-card"><div class="feature-icon">📋</div><div class="feature-title">Section confidence tags</div><div class="feature-desc">Every cited law section tagged: ✓ High confidence / ⚠ Verify / ⚡ Consult lawyer. You know which parts to double-check before filing.</div><span class="feature-tag tag-amber">Prevents wrong sections</span></div>
+      <div class="feature-card"><div class="feature-icon">🛡</div><div class="feature-title">DPDP Act 2023 compliance</div><div class="feature-desc">Your case details — domestic violence, fraud, medical — are not stored on servers. Cleared after your session. No selling, no sharing.</div><span class="feature-tag tag-blue">Privacy protected</span></div>
+      <div class="feature-card"><div class="feature-icon">👨‍⚖️</div><div class="feature-title">Real lawyer review</div><div class="feature-desc">Bar Council-registered advocates review your draft, correct errors, and return certified versions in 24–48 hours. Starting ₹299.</div><span class="feature-tag tag-blue">Human verification layer</span></div>
+      <div class="feature-card"><div class="feature-icon">💾</div><div class="feature-title">Save & resume</div><div class="feature-desc">Sign in to save your petitions. Come back, download again, track lawyer review status. Nothing gets lost mid-draft.</div><span class="feature-tag tag-green">Persistent access</span></div>
+    </div>
+  </div>
+
+  <div class="hiw-section" id="howitworks">
+    <div class="hiw-inner">
+      <div class="section-eyebrow" style="max-width:1000px;margin:0 auto">HOW IT WORKS</div>
+      <h2 class="section-title" style="max-width:1000px;margin:.5rem auto 0">From incident to court-ready<br>draft in under 10 minutes.</h2>
+      <div class="hiw-steps">
+        <div class="hiw-step"><div class="hiw-num">1</div><div class="hiw-title">Pass the safety gate</div><div class="hiw-desc">5 acknowledgements before you proceed. No blind trust, no surprises later.</div></div>
+        <div class="hiw-step"><div class="hiw-num">2</div><div class="hiw-title">Select case & check deadline</div><div class="hiw-desc">12 case types. Instant limitation period check. Jurisdiction determined automatically.</div></div>
+        <div class="hiw-step"><div class="hiw-num">3</div><div class="hiw-title">Enter parties & facts</div><div class="hiw-desc">Complainant, opposite party, what happened, what you want. AI never invents missing facts.</div></div>
+        <div class="hiw-step"><div class="hiw-num">4</div><div class="hiw-title">Download or get lawyer review</div><div class="hiw-desc">Download free draft or pay ₹299–999 for advocate review and certification.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cases-section" id="cases">
+    <div class="section-eyebrow">12 CASE TYPES COVERED</div>
+    <h2 class="section-title">Whatever happened to you,<br>there's a petition for it.</h2>
+    <div class="cases-grid">
+      <div class="case-pill" onclick="showPage('builder')">Consumer complaint<span>Product / service deficiency</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Cheque bounce ⚠<span>Section 143 BNS / NI Act</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Police complaint / FIR ⚠<span>Fraud, theft, assault</span></div>
+      <div class="case-pill" onclick="showPage('builder')">RTI application<span>Right to Information Act</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Labour / employment<span>Wrongful termination</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Civil suit<span>Breach of contract, debt</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Domestic violence ⚠<span>DV Act 2005</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Cyber crime ⚠<span>Online fraud, hacking</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Property dispute<span>Encroachment, title</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Medical negligence ⚠<span>Hospital / doctor</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Maintenance / alimony<span>Section 125 BNSS</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Noise / nuisance<span>Section 163 BNSS</span></div>
+    </div>
+  </div>
+
+  <div class="diff-section">
+    <div class="diff-inner">
+      <div class="section-eyebrow">NYAYA AI vs OTHER TOOLS</div>
+      <h2 class="section-title">What most legal AI apps<br>don't bother building.</h2>
+      <table class="diff-table">
+        <tr><th>Safeguard</th><th>Other legal AI tools</th><th>Nyaya AI</th></tr>
+        <tr><td>Limitation period calculator</td><td class="cross">✗ User must know deadline</td><td class="check">✓ Auto-calculated with alert</td></tr>
+        <tr><td>Jurisdiction guidance</td><td class="cross">✗ User picks court manually</td><td class="check">✓ Auto-determined by state/amount</td></tr>
+        <tr><td>Criminal case screening</td><td class="cross">✗ No warning for false complaints</td><td class="check">✓ Sec 182/211 BNS gate</td></tr>
+        <tr><td>Perjury warning</td><td class="cross">✗ Fine print at best</td><td class="check">✓ Full-screen red alert</td></tr>
+        <tr><td>AI hallucination control</td><td class="cross">✗ AI invents missing facts</td><td class="check">✓ [TO BE FILLED] tags, never invents</td></tr>
+        <tr><td>Section confidence scoring</td><td class="cross">✗ No reliability signal</td><td class="check">✓ High / Verify / Consult tags</td></tr>
+        <tr><td>Data privacy (DPDP 2023)</td><td class="cross">✗ Data often stored/sold</td><td class="check">✓ Session-only, no storage</td></tr>
+        <tr><td>Lawyer review</td><td class="cross">✗ Referral only, no draft review</td><td class="check">✓ Draft reviewed & certified ₹299+</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="pricing-section" id="pricing">
+    <div class="section-eyebrow">PRICING</div>
+    <h2 class="section-title">Start free. Upgrade<br>when you need certainty.</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-label">FREE</div>
+        <div class="pricing-price">₹0</div>
+        <div class="pricing-period">Always free</div>
+        <ul class="pricing-features">
+          <li>Unlimited draft petitions</li>
+          <li>All 12 case types</li>
+          <li>Limitation period calculator</li>
+          <li>Jurisdiction auto-selector</li>
+          <li>Case strength scoring</li>
+          <li>Download as .txt</li>
+        </ul>
+        <button class="pricing-btn" onclick="openAuth('signup')">Get started free</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-featured-badge">MOST POPULAR</div>
+        <div class="pricing-label">STANDARD REVIEW</div>
+        <div class="pricing-price">₹599</div>
+        <div class="pricing-period">per petition review</div>
+        <ul class="pricing-features">
+          <li>Everything in Free</li>
+          <li>Bar Council advocate review</li>
+          <li>Draft corrections with notes</li>
+          <li>15-minute strategy call</li>
+          <li>24–48 hour turnaround</li>
+          <li>Certified corrected draft</li>
+        </ul>
+        <button class="pricing-btn" onclick="showPage('builder')">Draft & request review</button>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-label">PREMIUM</div>
+        <div class="pricing-price">₹999</div>
+        <div class="pricing-period">per petition review</div>
+        <ul class="pricing-features">
+          <li>Everything in Standard</li>
+          <li>Full representation consultation</li>
+          <li>Court hearing preparation</li>
+          <li>30-minute video call</li>
+          <li>Priority 12-hour turnaround</li>
+          <li>Follow-up Q&A included</li>
+        </ul>
+        <button class="pricing-btn" onclick="showPage('builder')">Get premium review</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-logo">⚖ <em>Nyaya</em> AI</div>
+          <p>Legal rights for every Indian citizen. AI-powered petition drafting with real safeguards and real lawyers. Built on BNS/BNSS 2023.</p>
+        </div>
+        <div class="footer-col"><h4>Product</h4><a href="#" onclick="showPage('builder')">Draft petition</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#cases">Case types</a></div>
+        <div class="footer-col"><h4>Legal</h4><a href="#">Privacy policy</a><a href="#">Terms of use</a><a href="#">Disclaimer</a><a href="#">DPDP compliance</a></div>
+        <div class="footer-col"><h4>Contact</h4><a href="#"><span class="__cf_email__" data-cfemail="2149444d4d4e614f5840584040480f484f">[email&#160;protected]</span></a><a href="#">For lawyers</a><a href="#">For NGOs</a><a href="#">Partner with us</a></div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-legal">⚠ Nyaya AI generates legal drafts for awareness purposes only. This does not constitute legal advice. All sections should be verified before filing. Laws cited: BNS 2023, BNSS 2023, applicable Indian statutes. Legal DB last verified: March 2026.</div>
+        <div class="footer-copy">© 2026 Nyaya AI · Made in India</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════ AUTH MODAL ══════════ -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAuth()">✕</button>
+    <div class="modal-logo">⚖ <em>Nyaya</em> AI</div>
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="tab-login" onclick="switchTab('login')">Log in</button>
+      <button class="modal-tab" id="tab-signup" onclick="switchTab('signup')">Sign up</button>
+    </div>
+    <div id="auth-login" class="modal-form">
+      <div><label class="modal-label">Email</label><input class="modal-input" id="login-email" type="email" placeholder="you@example.com"></div>
+      <div><label class="modal-label">Password</label><input class="modal-input" id="login-password" type="password" placeholder="••••••••"></div>
+      <button class="modal-submit" onclick="doLogin()">Log in →</button>
+      <div class="modal-divider">or</div>
+      <p style="font-size:.78rem;color:var(--muted);text-align:center">Don't have an account? <a href="#" onclick="switchTab('signup')" style="color:var(--gold)">Sign up free</a></p>
+    </div>
+    <div id="auth-signup" class="modal-form" style="display:none">
+      <!-- ROLE SELECTOR -->
+      <div style="margin-bottom:.25rem">
+        <label class="modal-label">I am registering as *</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.35rem">
+          <div id="role-citizen" class="role-card sel" onclick="selectRole('citizen')" style="border:1.5px solid var(--gold);background:var(--gold3);border-radius:9px;padding:.75rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s">
+            <div style="font-size:1.1rem;margin-bottom:.25rem">👤</div>
+            <div style="font-size:.82rem;font-weight:600">Citizen</div>
+            <div style="font-size:.7rem;color:var(--muted2);margin-top:.15rem">File petitions</div>
+          </div>
+          <div id="role-lawyer" class="role-card" onclick="selectRole('lawyer')" style="border:1px solid var(--border2);border-radius:9px;padding:.75rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s">
+            <div style="font-size:1.1rem;margin-bottom:.25rem">⚖️</div>
+            <div style="font-size:.82rem;font-weight:600">Advocate</div>
+            <div style="font-size:.7rem;color:var(--muted2);margin-top:.15rem">Review petitions</div>
+          </div>
+        </div>
+      </div>
+      <div class="frow" style="gap:.75rem">
+        <div><label class="modal-label">First name *</label><input class="modal-input" id="signup-fname" placeholder="Ramesh"></div>
+        <div><label class="modal-label">Last name</label><input class="modal-input" id="signup-lname" placeholder="Kumar"></div>
+      </div>
+      <div><label class="modal-label">Email *</label><input class="modal-input" id="signup-email" type="email" placeholder="you@example.com"></div>
+      <div><label class="modal-label">Phone *</label><input class="modal-input" id="signup-phone" placeholder="10-digit mobile"></div>
+      <!-- LAWYER-ONLY FIELDS -->
+      <div id="lawyer-fields" style="display:none;grid-gap:.75rem;display:none">
+        <div><label class="modal-label">Bar Council registration no. *</label><input class="modal-input" id="signup-barreg" placeholder="e.g. AP/2019/12345"></div>
+        <div><label class="modal-label">Specialisation *</label>
+          <select class="modal-input" id="signup-spec">
+            <option value="">Select specialisation</option>
+            <option>Consumer law</option><option>Criminal law</option><option>Civil law</option>
+            <option>Labour law</option><option>Property law</option><option>Family law</option>
+            <option>Cyber law</option><option>RTI / Administrative</option><option>General practice</option>
+          </select>
+        </div>
+        <div><label class="modal-label">State bar *</label><input class="modal-input" id="signup-statebar" placeholder="e.g. Telangana Bar Council"></div>
+        <div><label class="modal-label">Years of practice</label><input class="modal-input" id="signup-experience" type="number" placeholder="e.g. 5"></div>
+      </div>
+      <div id="lawyer-docs" style="display:none">
+        <div style="margin-bottom:.5rem;padding:.75rem;background:rgba(212,168,67,0.06);border:1px solid rgba(212,168,67,0.2);border-radius:8px;font-size:.75rem;color:var(--gold);line-height:1.6">
+          Upload all 3 documents. Admin verifies within 24-48 hours before you receive cases.
+        </div>
+        <div><label class="modal-label">Bar Council ID card (front + back) *</label><input class="modal-input" id="doc-id-card" type="file" accept="image/*,.pdf" style="padding:.5rem"></div>
+        <div style="margin-top:.5rem"><label class="modal-label">Enrolment certificate *</label><input class="modal-input" id="doc-enrolment" type="file" accept="image/*,.pdf" style="padding:.5rem"></div>
+        <div style="margin-top:.5rem"><label class="modal-label">Government ID (Aadhaar/PAN/Passport) *</label><input class="modal-input" id="doc-govt-id" type="file" accept="image/*,.pdf" style="padding:.5rem"></div>
+      </div>
+      <div><label class="modal-label">Password *</label><input class="modal-input" id="signup-password" type="password" placeholder="Min 8 characters"></div>
+      <button class="modal-submit" onclick="doSignup()">Create account →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ DASHBOARD ══════════ -->
+<div id="page-dashboard" class="page">
+  <div class="dash-wrap">
+    <div class="dash-header">
+      <div><div class="dash-welcome">Welcome back, <span id="dash-name">User</span></div><div style="font-size:.82rem;color:var(--muted2);margin-top:.25rem">Your legal workspace</div></div>
+      <button class="btn btn-solid-gold" onclick="showPage('builder')">+ New petition</button>
+    </div>
+    <div class="dash-stats">
+      <div class="dash-stat-card"><div class="dash-stat-num" id="stat-total">0</div><div class="dash-stat-label">Total petitions</div></div>
+      <div class="dash-stat-card"><div class="dash-stat-num" id="stat-review">0</div><div class="dash-stat-label">Under lawyer review</div></div>
+      <div class="dash-stat-card"><div class="dash-stat-num" id="stat-complete">0</div><div class="dash-stat-label">Completed</div></div>
+    </div>
+    <div class="dash-section-title">YOUR PETITIONS</div>
+    <div class="petition-list" id="petition-list">
+      <div class="empty-state" id="empty-state">
+        <div style="font-size:2rem;margin-bottom:.75rem">📋</div>
+        <p style="color:var(--muted2)">No petitions yet. Draft your first one and it will appear here.</p>
+        <button class="btn btn-gold" onclick="showPage('builder')">Draft first petition →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ BUILDER ══════════ -->
+<div id="page-builder" class="page">
+  <div class="builder-wrap">
+    <div class="prog-wrap">
+      <div class="prog-meta"><span class="prog-label" id="prog-label">Step 0 of 6</span><span class="prog-count" id="prog-count">0/6</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+
+    <!-- STEP 0: GATE -->
+    <div class="builder-step active" id="bstep-0">
+      <div class="gate-box">
+        <div class="gate-icon">🔒</div>
+        <div class="gate-heading">Before you proceed</div>
+        <div class="gate-subtext">This tool generates legal drafts. Read and confirm each point. All 5 required.</div>
+        <div class="gate-checks" id="gate-checks">
+          <label class="gate-check"><input type="checkbox" onchange="checkGate()"><span class="gate-check-text">This is an <strong>AI-generated draft</strong> — not verified legal advice. It is a starting point, not a final document.</span></label>
+          <label class="gate-check"><input type="checkbox" onchange="checkGate()"><span class="gate-check-text">The verification clause is a <strong>legal oath</strong>. False statements = perjury under Section 193 BNS (up to 7 years).</span></label>
+          <label class="gate-check"><input type="checkbox" onchange="checkGate()"><span class="gate-check-text">Filing in the wrong court or after the limitation period results in <strong>dismissal</strong>, not correction.</span></label>
+          <label class="gate-check"><input type="checkbox" onchange="checkGate()"><span class="gate-check-text">My details are processed only to generate this petition and <strong>not stored on any server</strong> after this session.</span></label>
+          <label class="gate-check"><input type="checkbox" onchange="checkGate()"><span class="gate-check-text">For amounts above ₹1 lakh or criminal matters, <strong>paid lawyer review is strongly recommended</strong>.</span></label>
+        </div>
+        <button class="btn btn-gold" id="gate-btn" onclick="goStep(1)" disabled>I understand — proceed →</button>
+      </div>
+    </div>
+
+    <!-- STEP 1: CASE TYPE -->
+    <div class="builder-step" id="bstep-1">
+      <div class="step-head"><div class="step-tag">Step 1 of 6 — Case type</div><h2 class="step-title">What type of case?</h2><p class="step-desc">Criminal cases marked ⚠ require additional screening.</p></div>
+      <div class="case-grid" id="case-grid">
+        <div class="case-card" data-v="consumer" data-l="Consumer Complaint" data-lim="730" data-limlabel="2 years from date of deficiency" onclick="pickCase(this)"><div class="case-card-t">Consumer complaint</div><div class="case-card-s">Product / service deficiency</div></div>
+        <div class="case-card crim" data-v="cheque" data-l="Cheque Bounce Complaint" data-lim="30" data-limlabel="Legal notice within 30 days of dishonour" onclick="pickCase(this)"><div class="case-card-t">Cheque bounce</div><div class="case-card-s">Section 143 BNS / NI Act</div></div>
+        <div class="case-card crim" data-v="police" data-l="Police Complaint / FIR" data-lim="0" data-limlabel="No fixed limitation — file immediately" onclick="pickCase(this)"><div class="case-card-t">Police complaint / FIR</div><div class="case-card-s">Fraud, theft, assault, harassment</div></div>
+        <div class="case-card" data-v="rti" data-l="RTI Application" data-lim="0" data-limlabel="No limitation — earlier is better" onclick="pickCase(this)"><div class="case-card-t">RTI application</div><div class="case-card-s">Right to Information Act 2005</div></div>
+        <div class="case-card" data-v="labour" data-l="Labour / Employment Dispute" data-lim="1095" data-limlabel="3 years from termination / grievance" onclick="pickCase(this)"><div class="case-card-t">Labour / employment</div><div class="case-card-s">Wrongful termination, unpaid wages</div></div>
+        <div class="case-card" data-v="civil" data-l="Civil Suit / Money Recovery" data-lim="1095" data-limlabel="3 years from breach or acknowledgement" onclick="pickCase(this)"><div class="case-card-t">Civil suit / money recovery</div><div class="case-card-s">Breach of contract, debt</div></div>
+        <div class="case-card crim" data-v="dv" data-l="Domestic Violence Complaint" data-lim="0" data-limlabel="No strict limitation — DV Act 2005" onclick="pickCase(this)"><div class="case-card-t">Domestic violence</div><div class="case-card-s">DV Protection Act 2005</div></div>
+        <div class="case-card crim" data-v="cyber" data-l="Cyber Crime Complaint" data-lim="0" data-limlabel="File immediately — evidence degrades fast" onclick="pickCase(this)"><div class="case-card-t">Cyber crime</div><div class="case-card-s">Online fraud, hacking, stalking</div></div>
+        <div class="case-card" data-v="property" data-l="Property / Land Dispute" data-lim="4380" data-limlabel="12 years possession, 3 years damage claims" onclick="pickCase(this)"><div class="case-card-t">Property / land dispute</div><div class="case-card-s">Encroachment, title, possession</div></div>
+        <div class="case-card crim" data-v="medical" data-l="Medical Negligence Complaint" data-lim="730" data-limlabel="2 years from date of negligence" onclick="pickCase(this)"><div class="case-card-t">Medical negligence</div><div class="case-card-s">Against hospital / doctor</div></div>
+        <div class="case-card" data-v="maintenance" data-l="Maintenance / Alimony Petition" data-lim="0" data-limlabel="Can be filed anytime during / after marriage" onclick="pickCase(this)"><div class="case-card-t">Maintenance / alimony</div><div class="case-card-s">Section 125 BNSS</div></div>
+        <div class="case-card" data-v="noise" data-l="Noise / Nuisance Complaint" data-lim="365" data-limlabel="1 year from continued nuisance (varies by state)" onclick="pickCase(this)"><div class="case-card-t">Noise / nuisance</div><div class="case-card-s">Section 163 BNSS</div></div>
+      </div>
+      <div class="warn-box amber" id="crim-warn"><div class="warn-title amber">⚠ CRIMINAL CASE — ADDITIONAL SCREENING</div>Filing a false criminal complaint is an offence under <strong>Section 182 BNS</strong> (up to 6 months) and <strong>Section 211 BNS</strong> (up to 7 years). Every fact you state must be completely and verifiably true. If in doubt, consult a lawyer before filing.</div>
+      <div class="warn-box" id="lim-banner">
+        <div class="warn-title" id="lim-title">LIMITATION PERIOD</div>
+        <div id="lim-days" style="font-size:.95rem;font-weight:600;margin-bottom:.25rem"></div>
+        <div id="lim-text" style="font-size:.8rem;color:var(--muted2);margin-bottom:.5rem"></div>
+        <label style="font-size:.78rem;color:var(--muted2)">Enter incident date to check: <input type="date" id="lim-date-input" style="background:transparent;border:none;border-bottom:1px solid var(--border2);color:var(--text);padding:2px 4px;font-size:.78rem;margin-left:.35rem" onchange="calcLim()"></label>
+      </div>
+      <div class="btn-row"><button class="btn" onclick="goStep(0)">← Back</button><button class="btn btn-gold" id="case-next" onclick="goStep(2)" disabled>Continue →</button></div>
+    </div>
+
+    <!-- STEP 2: PARTIES -->
+    <div class="builder-step" id="bstep-2">
+      <div class="step-head"><div class="step-tag">Step 2 of 6 — Party details</div><h2 class="step-title">Who are the parties?</h2><p class="step-desc">Errors here appear in the sworn petition. Be precise.</p></div>
+      <p style="font-size:.72rem;font-family:'DM Mono',monospace;letter-spacing:.08em;color:var(--muted2);margin-bottom:.75rem">YOUR DETAILS</p>
+      <div class="fgrid">
+        <div class="frow"><div class="fg"><label>Full name *</label><input id="c-name" placeholder="e.g. Ramesh Kumar"></div><div class="fg"><label>Father's / Husband's name</label><input id="c-father" placeholder="e.g. Suresh Kumar"></div></div>
+        <div class="fg"><label>Full address *</label><input id="c-addr" placeholder="House no, street, city, state, PIN"></div>
+        <div class="frow"><div class="fg"><label>Phone *</label><input id="c-phone" placeholder="10-digit mobile"></div><div class="fg"><label>Email</label><input id="c-email" type="email" placeholder="email@example.com"></div></div>
+        <div class="frow"><div class="fg"><label>Age</label><input id="c-age" type="number" placeholder="e.g. 34"></div><div class="fg"><label>Occupation</label><input id="c-occ" placeholder="e.g. Software engineer"></div></div>
+      </div>
+      <p style="font-size:.72rem;font-family:'DM Mono',monospace;letter-spacing:.08em;color:var(--muted2);margin:1.5rem 0 .75rem">OPPOSITE PARTY</p>
+      <div class="fgrid">
+        <div class="fg"><label>Full name / Company name *</label><input id="o-name" placeholder="e.g. ABC Pvt Ltd or Rajesh Sharma"></div>
+        <div class="frow"><div class="fg"><label>Address</label><input id="o-addr" placeholder="Known address or 'address not known'"></div><div class="fg"><label>Role / designation</label><input id="o-role" placeholder="e.g. Proprietor, Director"></div></div>
+      </div>
+      <div class="btn-row"><button class="btn" onclick="goStep(1)">← Back</button><button class="btn btn-gold" onclick="goStep(3)">Continue →</button></div>
+    </div>
+
+    <!-- STEP 3: JURISDICTION -->
+    <div class="builder-step" id="bstep-3">
+      <div class="step-head"><div class="step-tag">Step 3 of 6 — Jurisdiction</div><h2 class="step-title">Which court to file in?</h2><p class="step-desc">Answer these — we auto-determine the correct court. Do not guess.</p></div>
+      <div class="fgrid">
+        <div class="frow"><div class="fg"><label>Your state *</label><select id="j-state" onchange="updateJ()"><option value="">Select state</option><option>Andhra Pradesh</option><option>Telangana</option><option>Karnataka</option><option>Tamil Nadu</option><option>Kerala</option><option>Maharashtra</option><option>Delhi</option><option>Gujarat</option><option>Rajasthan</option><option>Uttar Pradesh</option><option>Bihar</option><option>West Bengal</option><option>Madhya Pradesh</option><option>Punjab</option><option>Haryana</option><option>Odisha</option><option>Jharkhand</option><option>Uttarakhand</option><option>Assam</option><option>Other</option></select></div><div class="fg"><label>Your district *</label><input id="j-dist" placeholder="e.g. Jagtial" oninput="updateJ()"></div></div>
+        <div class="fg"><label>Claim amount (if applicable)</label><input id="j-amount" type="number" placeholder="e.g. 45000" oninput="updateJ()"></div>
+        <div class="j-note" id="j-note"></div>
+      </div>
+      <div class="btn-row"><button class="btn" onclick="goStep(2)">← Back</button><button class="btn btn-gold" onclick="goStep(4)">Continue →</button></div>
+    </div>
+
+    <!-- STEP 4: FACTS -->
+    <div class="builder-step" id="bstep-4">
+      <div class="step-head"><div class="step-tag">Step 4 of 6 — Case facts</div><h2 class="step-title">What happened?</h2><p class="step-desc">Specific dates, amounts, events. Vague facts = weak petition.</p></div>
+      <div class="fgrid">
+        <div class="fg"><label>Describe the incident in detail (dates, amounts, names, sequence) *</label><textarea id="facts" rows="7" placeholder="e.g. On 12 March 2025, I paid ₹45,000 to ABC Pvt Ltd (invoice no. INV-4521) for a LG refrigerator. Delivered 14 March with damaged compressor. Filed written complaints on 15 March, 2 April, 10 April 2025 by email (copies available). No action taken despite 3 follow-ups..."></textarea></div>
+        <div class="frow"><div class="fg"><label>Amount involved</label><input id="amount" placeholder="e.g. ₹45,000"></div><div class="fg"><label>Date of incident</label><input id="incident-date" type="date" onchange="syncLimDate()"></div></div>
+        <div class="fg"><label>Relief / outcome you want *</label><input id="relief" placeholder="e.g. Full refund ₹45,000 + compensation ₹20,000 + litigation cost"></div>
+        <div class="fg"><label>Documents you have</label><div class="doc-tags" id="doc-tags"></div></div>
+      </div>
+      <div class="btn-row"><button class="btn" onclick="goStep(3)">← Back</button><button class="btn btn-solid-gold" onclick="doGenerate()">Generate petition + analysis ↗</button></div>
+    </div>
+
+    <!-- STEP 5: GENERATING -->
+    <div class="builder-step" id="bstep-5">
+      <div class="generating"><div class="spinner"></div><div class="gen-msg" id="gen-msg">Analysing case type and applicable law...</div><div class="gen-sub">20–35 seconds</div></div>
+    </div>
+
+    <!-- STEP 6: RESULT -->
+    <div class="builder-step" id="bstep-6">
+      <div class="step-head"><div class="step-tag">Step 6 of 6 — Review & download</div><h2 class="step-title">Your petition is ready.</h2><p class="step-desc">Review everything before downloading. The draft is a starting point — not a final document.</p></div>
+      <div class="result-grid">
+        <div class="score-card">
+          <div class="score-header"><span class="score-title">Case strength score</span><span class="score-num" id="score-num" style="color:var(--gold)">—</span></div>
+          <div class="score-bar-wrap"><div class="score-bar" id="score-bar" style="width:0%"></div></div>
+          <div class="score-items" id="score-items"></div>
+        </div>
+        <div class="sugg-card">
+          <div class="sugg-title">AI ANALYSIS & SUGGESTIONS</div>
+          <div id="sugg-body"></div>
+        </div>
+        <div class="oath-box">
+          <div class="oath-title">🔴 LEGAL OATH WARNING — READ BEFORE SIGNING</div>
+          <div class="oath-text">The verification clause in this petition is a <strong>legal oath</strong> made before a court. Signing it means you swear every fact is true. If the AI drafted anything inaccurate and you sign without correcting it, you may face <strong>Section 193 BNS</strong> — perjury, up to 7 years imprisonment. Read every paragraph. Correct anything wrong before signing.</div>
+        </div>
+        <div class="draft-card">
+          <div class="draft-hdr">
+            <div><div class="draft-hdr-left">Draft petition</div><div id="draft-meta" style="font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);margin-top:.2rem"></div></div>
+            <div class="draft-hdr-right"><button class="btn btn-green" style="padding:.4rem .875rem;font-size:.75rem" onclick="copyDraft()">Copy</button><button class="btn btn-green" style="padding:.4rem .875rem;font-size:.75rem" onclick="dlDraft()">Download</button></div>
+          </div>
+          <div class="draft-fill-bar" id="draft-fill-bar"></div>
+          <div class="draft-body"><pre class="draft-pre" id="draft-pre"></pre></div>
+        </div>
+        <div class="lawyer-card">
+          <div class="lawyer-title">Have an advocate review this draft</div>
+          <div class="lawyer-sub">Bar Council-registered advocates review, correct, and certify your draft within 24–48 hours. Strongly recommended for amounts above ₹1 lakh and criminal matters.</div>
+          <div class="lawyer-badges">
+            <span class="l-badge tag-blue">Bar Council registered</span>
+            <span class="l-badge tag-green">24–48 hr turnaround</span>
+            <span class="l-badge tag-green">Certified corrected draft</span>
+            <span class="l-badge tag-amber">Refund if rejected on procedural grounds</span>
+          </div>
+          <div class="plan-grid">
+            <div class="plan-box" data-plan="basic" onclick="pickPlan(this)"><div class="plan-name">Basic</div><div class="plan-price">₹299</div><div class="plan-desc">Draft check + corrections</div></div>
+            <div class="plan-box sel" data-plan="standard" onclick="pickPlan(this)"><div class="plan-name">Standard</div><div class="plan-price">₹599</div><div class="plan-desc">Review + 15-min call</div></div>
+            <div class="plan-box" data-plan="premium" onclick="pickPlan(this)"><div class="plan-name">Premium</div><div class="plan-price">₹999</div><div class="plan-desc">Full consult + 30-min video</div></div>
+          </div>
+          <div class="lawyer-form">
+            <div class="lawyer-form-title">YOUR CONTACT FOR REVIEW</div>
+            <div class="frow"><div class="fg"><label>Name</label><input id="lr-name" placeholder="Your full name"></div><div class="fg"><label>WhatsApp / Phone *</label><input id="lr-phone" placeholder="10-digit number"></div></div>
+            <div class="fg"><label>Email *</label><input id="lr-email" type="email" placeholder="email@example.com"></div>
+            <div class="fg"><label>Additional notes for the lawyer (optional)</label><textarea id="lr-notes" rows="2" placeholder="Any specific concerns, documents you have, urgency..."></textarea></div>
+          </div>
+          <div class="privacy-card" style="margin-top:1rem">
+            <strong style="color:var(--text)">Data handling</strong> — Your draft and contact details will be shared only with the assigned advocate under confidentiality terms. Used only for this review. Not stored beyond assignment.
+            <label class="privacy-check"><input type="checkbox" id="privacy-tick" onchange="this.closest('.privacy-check').classList.toggle(' checked')"> <span style="font-size:.78rem;color:var(--muted2)">I consent to my draft being shared with an assigned advocate for review.</span></label>
+          </div>
+          <button class="btn btn-amber" style="margin-top:1rem" onclick="requestLawyer()">Submit for lawyer review →</button>
+        </div>
+        <div class="disclaimer">⚠ DISCLAIMER: AI-generated draft for awareness only. Not legal advice. Verify all sections before filing. BNS 2023 / BNSS 2023 / applicable statutes. Legal DB: March 2026. For complex matters, consult a qualified advocate.</div>
+        <div class="btn-row"><button class="btn" onclick="resetBuilder()">New petition</button><button class="btn btn-gold" onclick="savePetition()" id="save-btn">Save to dashboard</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ ADMIN ══════════ -->
+<div id="page-admin" class="page">
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <div class="admin-title">Admin dashboard</div>
+      <div style="display:flex;gap:.75rem">
+        <button class="btn btn-gold" onclick="showPage('landing')">← Back to site</button>
+        <button class="btn btn-amber" onclick="if(confirm('Log out?')){logout()}">Log out</button>
+      </div>
+    </div>
+    <div class="admin-stats">
+      <div class="admin-stat"><div class="admin-stat-num" id="a-total">0</div><div class="admin-stat-label">Total petitions</div></div>
+      <div class="admin-stat"><div class="admin-stat-num" id="a-pending">0</div><div class="admin-stat-label">Pending review</div></div>
+      <div class="admin-stat"><div class="admin-stat-num" id="a-lawyers">0</div><div class="admin-stat-label">Active lawyers</div></div>
+      <div class="admin-stat"><div class="admin-stat-num" id="a-revenue">₹0</div><div class="admin-stat-label">Revenue (simulated)</div></div>
+    </div>
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchAdminTab('lawyers',this)">Lawyer management</button>
+      <button class="admin-tab" onclick="switchAdminTab('reviews',this)">Pending reviews</button>
+      <button class="admin-tab" onclick="switchAdminTab('petitions',this)">All petitions</button>
+    </div>
+    <!-- LAWYERS TAB -->
+    <div class="admin-panel active" id="ap-lawyers">
+      <div class="add-lawyer-form">
+        <div class="add-lawyer-title">ADD NEW ADVOCATE</div>
+        <div class="fgrid">
+          <div class="frow"><div class="fg"><label>Full name *</label><input id="al-name" placeholder="Advocate Priya Sharma"></div><div class="fg"><label>Bar Council registration no. *</label><input id="al-reg" placeholder="AP/2019/12345"></div></div>
+          <div class="frow"><div class="fg"><label>Specialisation *</label><select id="al-spec"><option value="">Select</option><option>Consumer law</option><option>Criminal law</option><option>Civil law</option><option>Labour law</option><option>Property law</option><option>Family law</option><option>Cyber law</option><option>RTI / Administrative</option></select></div><div class="fg"><label>State bar</label><input id="al-state" placeholder="e.g. Telangana"></div></div>
+          <div class="frow"><div class="fg"><label>WhatsApp</label><input id="al-phone" placeholder="10-digit"></div><div class="fg"><label>Email *</label><input id="al-email" type="email" placeholder="advocate@email.com"></div></div>
+        </div>
+        <div class="btn-row" style="margin-top:1rem"><button class="btn btn-gold" onclick="addLawyer()">Add advocate</button></div>
+      </div>
+      <div class="tbl-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Advocate</th><th>Registration</th><th>Specialisation</th><th>State</th><th>Status</th><th>Reviews done</th><th>Action</th></tr></thead>
+          <tbody id="lawyers-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- REVIEWS TAB -->
+    <div class="admin-panel" id="ap-reviews">
+      <div class="tbl-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Case ID</th><th>Case type</th><th>User contact</th><th>Plan</th><th>Submitted</th><th>Assigned to</th><th>Action</th></tr></thead>
+          <tbody id="reviews-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- PETITIONS TAB -->
+    <div class="admin-panel" id="ap-petitions">
+      <div class="tbl-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Case ID</th><th>Case type</th><th>User</th><th>Created</th><th>Status</th></tr></thead>
+          <tbody id="petitions-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ══════════ LAWYER DASHBOARD ══════════ -->
+<div id="page-lawyer" class="page">
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <div>
+        <div class="admin-title">Lawyer dashboard</div>
+        <div style="font-size:.82rem;color:var(--muted2);margin-top:.25rem" id="lawyer-bar-info"></div>
+      </div>
+      <div style="display:flex;gap:.75rem">
+        <button class="btn btn-gold" onclick="showPage('landing')">← Site</button>
+        <button class="btn btn-amber" onclick="if(confirm('Log out?')){logout()}">Log out</button>
+      </div>
+    </div>
+    <div class="admin-stats">
+      <div class="admin-stat"><div class="admin-stat-num" id="lw-assigned">0</div><div class="admin-stat-label">Assigned to me</div></div>
+      <div class="admin-stat"><div class="admin-stat-num" id="lw-completed">0</div><div class="admin-stat-label">Completed</div></div>
+      <div class="admin-stat"><div class="admin-stat-num" id="lw-earnings">₹0</div><div class="admin-stat-label">Earnings</div></div>
+    </div>
+    <div class="dash-section-title">ASSIGNED REVIEWS</div>
+    <div id="lawyer-reviews-list"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+window.NYAYA_API_URL = "http://localhost:5000/api";
+
+// ── CONFIG ────────────────────────────────────────────────────
+const API = window.NYAYA_API_URL || 'http://localhost:5000/api';
+
+// ── API HELPER ────────────────────────────────────────────────
+async function api(method, path, body, isFormData) {
+  const headers = {};
+  const token = localStorage.getItem('nyaya_token');
+  if (token) headers['Authorization'] = 'Bearer ' + token;
+  if (!isFormData) headers['Content-Type'] = 'application/json';
+
+  const opts = { method, headers };
+  if (body) opts.body = isFormData ? body : JSON.stringify(body);
+
+  const res = await fetch(API + path, opts);
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Request failed');
+  return data;
+}
+
+// ── STATE ─────────────────────────────────────────────────────
+let currentUser = null, caseD = {}, genDraft = '', selectedPlan = 'standard', genInterval;
+let signupRole = 'citizen';
+
+const DOCS = {
+  consumer: ['Purchase receipt','Warranty card','Photos of defect','Written complaint copies','Email/WhatsApp proof','Payment screenshot'],
+  cheque: ['Original cheque','Bank dishonour memo','Legal notice copy','Proof of debt','Account statement'],
+  police: ['Photos/videos','Medical report','Screenshots/call records','Bank proof (if fraud)','Witness contacts'],
+  rti: ['Fee payment proof','Identity proof','Previous RTI reply (if appeal)'],
+  labour: ['Appointment letter','Salary slips','Termination letter','PF/ESI records','HR emails'],
+  civil: ['Contract/agreement','Invoices','Bank transfer records','Legal notices sent','Witness list'],
+  dv: ['Medical reports','Photographs','FIR copy (if filed)','Witness statements'],
+  cyber: ['Screenshots','Bank statement','Transaction ID','Email headers','Profile URL of accused'],
+  property: ['Sale deed','Property tax receipts','Survey map','Revenue records'],
+  medical: ['Medical case papers','Prescriptions','Bills','Discharge summary','Expert opinion'],
+  maintenance: ['Marriage certificate','Birth certificates','Income proof of respondent','Bank statements'],
+  noise: ['Video/audio recordings','Incident log','Witness statements','Earlier complaints']
+};
+const PLANS = { basic: '₹299 — Basic review + corrections', standard: '₹599 — Standard review + 15-min call', premium: '₹999 — Premium review + 30-min video' };
+const GEN_MSGS = ['Analysing case type...','Checking applicable law...','Drafting petition...','Scoring case strength...','Generating suggestions...','Finalising...'];
+
+// ── ROLE SELECTION ────────────────────────────────────────────
+function selectRole(role) {
+  signupRole = role;
+  var cEl = document.getElementById('role-citizen');
+  var lEl = document.getElementById('role-lawyer');
+  var lf = document.getElementById('lawyer-fields');
+  var sel = 'border:1.5px solid var(--gold);background:var(--gold3);border-radius:9px;padding:.75rem;text-align:center;cursor:pointer;';
+  var def = 'border:1px solid var(--border2);border-radius:9px;padding:.75rem;text-align:center;cursor:pointer;';
+  if (role === 'citizen') { cEl.style.cssText = sel; lEl.style.cssText = def; lf.style.display = 'none'; }
+  else { lEl.style.cssText = sel; cEl.style.cssText = def; lf.style.display = 'grid'; lf.style.gap = '.75rem'; }
+}
+
+// ── AUTH ──────────────────────────────────────────────────────
+function openAuth(tab) { document.getElementById('auth-modal').classList.add('open'); switchTab(tab); }
+function closeAuth() { document.getElementById('auth-modal').classList.remove('open'); }
+function switchTab(t) {
+  document.getElementById('auth-login').style.display = t === 'login' ? 'grid' : 'none';
+  document.getElementById('auth-signup').style.display = t === 'signup' ? 'grid' : 'none';
+  document.getElementById('tab-login').classList.toggle('active', t === 'login');
+  document.getElementById('tab-signup').classList.toggle('active', t === 'signup');
+}
+
+async function doSignup() {
+  var fname = document.getElementById('signup-fname').value.trim();
+  var em = document.getElementById('signup-email').value.trim();
+  var ph = document.getElementById('signup-phone').value.trim();
+  var pw = document.getElementById('signup-password').value;
+  if (!fname || !em || !ph || !pw) { showToast('Please fill in all required fields.', 'error'); return; }
+  if (pw.length < 8) { showToast('Password must be at least 8 characters.', 'error'); return; }
+
+  try {
+    var formData = new FormData();
+    formData.append('fname', fname);
+    formData.append('lname', document.getElementById('signup-lname').value.trim());
+    formData.append('email', em);
+    formData.append('phone', ph);
+    formData.append('password', pw);
+    formData.append('role', signupRole);
+
+    if (signupRole === 'lawyer') {
+      var reg = document.getElementById('signup-barreg').value.trim();
+      var spec = document.getElementById('signup-spec').value;
+      var state = document.getElementById('signup-statebar').value.trim();
+      var exp = document.getElementById('signup-experience').value;
+      if (!reg || !spec || !state) { showToast('Bar Council registration, specialisation and state bar are required.', 'error'); return; }
+      formData.append('bar_reg_no', reg);
+      formData.append('specialisation', spec);
+      formData.append('state_bar', state);
+      formData.append('experience_years', exp || '0');
+      // Documents
+      var idCard = document.getElementById('doc-id-card').files[0];
+      var enrolment = document.getElementById('doc-enrolment').files[0];
+      var govtId = document.getElementById('doc-govt-id').files[0];
+      if (!idCard || !enrolment || !govtId) { showToast('All 3 documents are required for advocate registration.', 'error'); return; }
+      formData.append('id_card', idCard);
+      formData.append('enrolment_cert', enrolment);
+      formData.append('govt_id', govtId);
+    }
+
+    var data = await api('POST', '/auth/register', formData, true);
+    localStorage.setItem('nyaya_token', data.token);
+    loginUser(data.user);
+    closeAuth();
+    showToast(data.message, 'success');
+    if (data.user.role === 'lawyer') showPage('lawyer');
+    else showPage('dashboard');
+  } catch (err) {
+    showToast(err.message, 'error');
+  }
+}
+
+async function doLogin() {
+  var em = document.getElementById('login-email').value.trim();
+  var pw = document.getElementById('login-password').value;
+  if (!em || !pw) { showToast('Please enter email and password.', 'error'); return; }
+  try {
+    var data = await api('POST', '/auth/login', { email: em, password: pw });
+    localStorage.setItem('nyaya_token', data.token);
+    loginUser(data.user);
+    closeAuth();
+    showToast('Welcome back, ' + data.user.fname + '!', 'success');
+    if (data.user.role === 'admin') showPage('admin');
+    else if (data.user.role === 'lawyer') showPage('lawyer');
+    else showPage('dashboard');
+  } catch (err) {
+    showToast(err.message, 'error');
+  }
+}
+
+function loginUser(user) {
+  currentUser = user;
+  localStorage.setItem('nyaya_session', JSON.stringify(user));
+  updateNavUser();
+}
+
+function logout() {
+  currentUser = null;
+  localStorage.removeItem('nyaya_token');
+  localStorage.removeItem('nyaya_session');
+  updateNavUser();
+  showPage('landing');
+  showToast('Logged out.', 'success');
+}
+
+function updateNavUser() {
+  var loggedIn = !!currentUser;
+  document.getElementById('nav-actions').style.display = loggedIn ? 'none' : 'flex';
+  document.getElementById('nav-user-area').style.display = loggedIn ? 'flex' : 'none';
+  if (currentUser) {
+    document.getElementById('nav-avatar').textContent = (currentUser.fname || '?')[0].toUpperCase();
+    var roleLabel = currentUser.role === 'admin' ? ' (Admin)' : currentUser.role === 'lawyer' ? ' (Advocate)' : '';
+    document.getElementById('nav-username').textContent = currentUser.fname + roleLabel;
+  }
+}
+
+// ── PAGE ROUTING ──────────────────────────────────────────────
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'dashboard') loadDashboard();
+  if (id === 'admin') loadAdmin();
+  if (id === 'lawyer') loadLawyerDash();
+  if (id === 'builder') resetBuilder();
+}
+
+function navTo(e, sel) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  if (!document.getElementById('page-landing').classList.contains('active')) {
+    document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+    document.getElementById('page-landing').classList.add('active');
+  }
+  setTimeout(function() {
+    var el = document.querySelector(sel);
+    if (el) { var navH = document.getElementById('nav').offsetHeight || 64; window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - navH - 16, behavior: 'smooth' }); }
+  }, 120);
+  var nl = document.getElementById('nav-links');
+  if (nl && window.innerWidth <= 768) nl.classList.remove('open');
+}
+function scrollToSection(sel) { navTo(null, sel); }
+
+// ── GATE ──────────────────────────────────────────────────────
+function checkGate() {
+  var all = Array.from(document.querySelectorAll('#gate-checks input[type=checkbox]'));
+  document.getElementById('gate-btn').disabled = !all.every(function(c) { return c.checked; });
+}
+function gateCheckClick(e, label) {
+  if (e.target.tagName === 'INPUT') return;
+  var cb = label.querySelector('input[type=checkbox]');
+  cb.checked = !cb.checked;
+  label.classList.toggle('ticked', cb.checked);
+  checkGate();
+}
+
+// ── BUILDER ───────────────────────────────────────────────────
+var currentStep = 0;
+function goStep(n) {
+  document.getElementById('bstep-' + currentStep).classList.remove('active');
+  currentStep = n;
+  document.getElementById('bstep-' + n).classList.add('active');
+  var pct = [0, 17, 34, 50, 67, 83, 100];
+  var labels = ['Safety gate', 'Case type', 'Party details', 'Jurisdiction', 'Case facts', 'Generating...', 'Review & download'];
+  document.getElementById('prog-fill').style.width = pct[n] + '%';
+  document.getElementById('prog-label').textContent = 'Step ' + n + ' of 6 — ' + (labels[n] || '');
+  document.getElementById('prog-count').textContent = n + '/6';
+  window.scrollTo(0, 0);
+  if (n === 4) renderDocs();
+}
+
+var CRIM = ['cheque', 'police', 'dv', 'cyber', 'medical'];
+function pickCase(el) {
+  document.querySelectorAll('.case-card').forEach(function(c) { c.classList.remove('sel'); });
+  el.classList.add('sel');
+  caseD.type = el.dataset.v; caseD.label = el.dataset.l;
+  caseD.limDays = parseInt(el.dataset.lim); caseD.limLabel = el.dataset.limlabel;
+  document.getElementById('case-next').disabled = false;
+  var isCrim = CRIM.indexOf(caseD.type) >= 0;
+  document.getElementById('crim-warn').classList.toggle('show', isCrim);
+  var lb = document.getElementById('lim-banner');
+  lb.classList.add('show');
+  if (caseD.limDays === 0) { lb.className = 'warn-box green show'; document.getElementById('lim-title').className = 'warn-title green'; document.getElementById('lim-title').textContent = 'ℹ LIMITATION'; document.getElementById('lim-days').textContent = 'No fixed limitation period'; document.getElementById('lim-text').textContent = caseD.limLabel; }
+  else { lb.className = 'warn-box amber show'; document.getElementById('lim-title').className = 'warn-title amber'; document.getElementById('lim-title').textContent = '⏱ LIMITATION PERIOD'; document.getElementById('lim-days').textContent = caseD.limLabel; document.getElementById('lim-text').textContent = 'Enter incident date below to calculate your exact deadline:'; }
+  renderDocs();
+}
+
+function calcLim() {
+  var d = document.getElementById('lim-date-input').value || document.getElementById('incident-date').value;
+  if (!d || caseD.limDays === 0) return;
+  var deadline = new Date(new Date(d).getTime() + caseD.limDays * 86400000);
+  var rem = Math.floor((deadline - new Date()) / 86400000);
+  var lb = document.getElementById('lim-banner');
+  if (rem < 0) { lb.className = 'warn-box red show'; document.getElementById('lim-title').className = 'warn-title red'; document.getElementById('lim-days').textContent = 'EXPIRED — consult lawyer immediately'; document.getElementById('lim-text').textContent = 'Deadline was ' + deadline.toLocaleDateString('en-IN') + '.'; }
+  else if (rem < 60) { lb.className = 'warn-box amber show'; document.getElementById('lim-title').className = 'warn-title amber'; document.getElementById('lim-days').textContent = rem + ' days remaining — FILE URGENTLY'; document.getElementById('lim-text').textContent = 'Deadline: ' + deadline.toLocaleDateString('en-IN') + '.'; }
+  else { lb.className = 'warn-box green show'; document.getElementById('lim-title').className = 'warn-title green'; document.getElementById('lim-days').textContent = rem + ' days remaining'; document.getElementById('lim-text').textContent = 'Deadline: ' + deadline.toLocaleDateString('en-IN') + '.'; }
+}
+
+function syncLimDate() { var v = document.getElementById('incident-date').value; document.getElementById('lim-date-input').value = v; calcLim(); }
+
+function updateJ() {
+  var state = document.getElementById('j-state').value;
+  var dist = document.getElementById('j-dist').value.trim();
+  var amt = parseFloat(document.getElementById('j-amount').value) || 0;
+  var note = document.getElementById('j-note');
+  if (!state || !dist) { note.classList.remove('show'); return; }
+  var t = caseD.type; var court = ''; var tip = '';
+  if (t === 'consumer') { if (amt <= 5000000) { court = 'District Consumer Disputes Redressal Commission, ' + dist; tip = 'Claims up to Rs 50 lakhs go to District Commission.'; } else if (amt <= 20000000) { court = 'State Consumer Disputes Redressal Commission, ' + state; tip = 'Rs 50L-Rs 2Cr go to State Commission.'; } else { court = 'National Consumer Disputes Redressal Commission, New Delhi'; tip = 'Above Rs 2Cr go to National Commission.'; } }
+  else if (t === 'cheque') { court = 'Judicial Magistrate First Class (JMFC), ' + dist; tip = 'File in JMFC where cheque was presented for payment.'; }
+  else if (t === 'police' || t === 'dv' || t === 'cyber') { court = 'SHO / Station House Officer, ' + dist + ' Police Station'; tip = 'File at police station with jurisdiction over the incident area.'; }
+  else if (t === 'rti') { court = 'Public Information Officer (PIO), Concerned Department, ' + state; tip = 'File with PIO. 1st appeal to FAA. 2nd appeal to State/Central Information Commission.'; }
+  else if (t === 'labour') { court = 'Labour Commissioner / Industrial Tribunal, ' + dist; tip = 'Central govt employees go to Central Labour Commissioner. State employees go to State Labour Dept.'; }
+  else if (t === 'civil') { court = 'Civil Judge (Junior Division) / District Court, ' + dist; tip = 'Up to Rs 3L: Munsiff. Rs 3L-Rs 20L: Civil JD. Above: District Court.'; }
+  else if (t === 'property') { court = 'Civil Court / Revenue Court, ' + dist; tip = 'Property suits in Civil Court where property is located.'; }
+  else if (t === 'medical') { court = 'District Consumer Disputes Redressal Commission, ' + dist; tip = 'Medical negligence is filed as consumer complaint.'; }
+  else if (t === 'maintenance') { court = 'Family Court / Judicial Magistrate First Class, ' + dist; tip = 'Sec 125 BNSS filed in Family Court or JMFC of applicant residence area.'; }
+  else if (t === 'noise') { court = 'Executive Magistrate / Municipal Authority, ' + dist; tip = 'BNSS Sec 163 or local Pollution Control Board / Municipal Corporation.'; }
+  else { court = dist + ' relevant court'; tip = 'Consult a local advocate to confirm jurisdiction.'; }
+  caseD.court = court;
+  note.classList.add('show');
+  note.innerHTML = '<strong>Recommended court:</strong> ' + court + '<br><span style="opacity:.75;font-size:.65rem;display:block;margin-top:.2rem">' + tip + '</span>';
+}
+
+function renderDocs() {
+  var docs = DOCS[caseD.type] || [];
+  var el = document.getElementById('doc-tags');
+  el.innerHTML = docs.map(function(d) { return '<label class="doc-tag" onclick="toggleDocTag(this)"><input type="checkbox" value="' + d + '"> ' + d + '</label>'; }).join('');
+}
+function toggleDocTag(el) { var cb = el.querySelector('input'); cb.checked = !cb.checked; el.classList.toggle('on', cb.checked); }
+function checkedDocs() { return Array.from(document.querySelectorAll('.doc-tag.on')).map(function(el) { return el.querySelector('input').value; }); }
+
+async function doGenerate() {
+  var facts = document.getElementById('facts').value.trim();
+  var relief = document.getElementById('relief').value.trim();
+  if (!facts || !relief) { showToast('Please fill in case facts and relief sought.', 'error'); return; }
+
+  caseD.facts = facts; caseD.relief = relief;
+  caseD.amount = document.getElementById('amount').value;
+  caseD.incDate = document.getElementById('incident-date').value;
+  caseD.court = caseD.court || (document.getElementById('j-dist').value + ' relevant court');
+  caseD.docs = checkedDocs();
+
+  var complainant = {
+    name: document.getElementById('c-name').value || '[NAME]',
+    father: document.getElementById('c-father').value,
+    address: document.getElementById('c-addr').value || '[ADDRESS]',
+    phone: document.getElementById('c-phone').value,
+    email: document.getElementById('c-email').value,
+    age: document.getElementById('c-age').value,
+    occupation: document.getElementById('c-occ').value
+  };
+  var opponent = {
+    name: document.getElementById('o-name').value || '[OPPOSITE PARTY]',
+    address: document.getElementById('o-addr').value,
+    role: document.getElementById('o-role').value
+  };
+
+  goStep(5);
+  var mi = 0;
+  genInterval = setInterval(function() { mi = (mi + 1) % GEN_MSGS.length; document.getElementById('gen-msg').textContent = GEN_MSGS[mi]; }, 2500);
+
+  try {
+    var data = await api('POST', '/petitions/generate', {
+      case_type: caseD.type, case_label: caseD.label,
+      complainant, opponent, court: caseD.court,
+      facts: caseD.facts, relief: caseD.relief,
+      amount: caseD.amount, incident_date: caseD.incDate || null,
+      docs_available: caseD.docs
+    });
+    clearInterval(genInterval);
+    caseD.petition_id = data.petition_id;
+    caseD.case_id = data.case_id;
+    renderResult(data);
+  } catch (err) {
+    clearInterval(genInterval);
+    goStep(4);
+    showToast(err.message || 'Failed to generate petition. Please try again.', 'error');
+  }
+}
+
+function renderResult(data) {
+  var score = data.strength || 5;
+  document.getElementById('score-num').textContent = score + '/10';
+  document.getElementById('score-num').style.color = score >= 7 ? 'var(--green)' : score >= 5 ? 'var(--amber)' : 'var(--red)';
+  var bar = document.getElementById('score-bar');
+  bar.style.width = (score * 10) + '%';
+  bar.style.background = score >= 7 ? 'var(--green)' : score >= 5 ? 'var(--amber)' : 'var(--red)';
+  document.getElementById('score-items').innerHTML = (data.strengthItems || []).map(function(i) { return '<div class="score-item"><div class="score-dot" style="background:' + (i.type === 'good' ? 'var(--green)' : i.type === 'warn' ? 'var(--amber)' : 'var(--red)') + '"></div><span style="font-size:.8rem;color:var(--muted2)">' + i.text + '</span></div>'; }).join('');
+  var icons = ['⚖', '📋', '📌', '🚫', '💡'];
+  var labels2 = ['Legal note', 'Missing doc', 'Filing tip', 'Rejection risk', 'Strategic tip'];
+  var tcs = ['tag-blue', 'tag-amber', 'tag-blue', 'tag-red', 'tag-green'];
+  document.getElementById('sugg-body').innerHTML = (data.suggestions || []).map(function(s, i) { return '<div class="sugg-item"><span class="sugg-tag ' + (tcs[i] || 'tag-blue') + '">' + icons[i] + ' ' + labels2[i] + '</span><span class="sugg-text">' + s + '</span></div>'; }).join('');
+  genDraft = data.draft || '';
+  var fills = (genDraft.match(/\[TO BE FILLED[^\]]*\]/g) || []).length;
+  document.getElementById('draft-pre').innerHTML = genDraft.replace(/\[TO BE FILLED[^\]]*\]/g, function(m) { return '<span class="fill-mark">' + m + '</span>'; });
+  var fb = document.getElementById('draft-fill-bar');
+  if (fills > 0) { fb.classList.add('show'); fb.textContent = '⚠ ' + fills + ' field' + (fills > 1 ? 's' : '') + ' marked [TO BE FILLED] must be completed before signing.'; } else { fb.classList.remove('show'); }
+  var secs = (data.sections || []).map(function(s) { return '<span class="conf-badge conf-' + s.confidence[0] + '">' + (s.confidence === 'high' ? '✓' : s.confidence === 'verify' ? '⚠' : '⚡') + ' ' + s.section + '</span>'; }).join('');
+  document.getElementById('draft-meta').innerHTML = 'BNS/BNSS 2023 · Legal DB v2.1 · ' + new Date().toLocaleDateString('en-IN') + ' ' + secs;
+  if (currentUser) {
+    document.getElementById('lr-name').value = currentUser.fname + ' ' + (currentUser.lname || '');
+    document.getElementById('lr-phone').value = currentUser.phone || '';
+    document.getElementById('lr-email').value = currentUser.email || '';
+  }
+  goStep(6);
+}
+
+function copyDraft() { navigator.clipboard.writeText(genDraft).then(function() { showToast('Copied to clipboard.', 'success'); }); }
+function dlDraft() { var b = new Blob([genDraft], { type: 'text/plain;charset=utf-8' }); var u = URL.createObjectURL(b); var a = document.createElement('a'); a.href = u; a.download = 'petition_' + (caseD.case_id || 'draft') + '.txt'; a.click(); URL.revokeObjectURL(u); }
+function pickPlan(el) { document.querySelectorAll('.plan-box').forEach(function(p) { p.classList.remove('sel'); }); el.classList.add('sel'); selectedPlan = el.dataset.plan; }
+
+async function requestLawyer() {
+  var phone = document.getElementById('lr-phone').value.trim();
+  var email = document.getElementById('lr-email').value.trim();
+  var consent = document.getElementById('privacy-tick').checked;
+  if (!phone || !email) { showToast('Please enter your phone and email for review.', 'error'); return; }
+  if (!consent) { showToast('Please consent to data sharing before submitting.', 'error'); return; }
+  if (!currentUser) { showToast('Please log in to submit a review request.', 'error'); openAuth('login'); return; }
+  if (!caseD.petition_id) { showToast('Please save your petition first.', 'error'); return; }
+  try {
+    var data = await api('POST', '/reviews', {
+      petition_id: caseD.petition_id,
+      plan: selectedPlan,
+      client_phone: phone,
+      client_email: email,
+      client_notes: document.getElementById('lr-notes').value
+    });
+    showToast('Review submitted! ID: ' + data.review_id + '. Advocate assigned within 24 hours.', 'success');
+  } catch (err) {
+    showToast(err.message, 'error');
+  }
+}
+
+async function savePetition() {
+  if (!currentUser) { showToast('Log in to save petitions.', 'error'); return; }
+  showToast('Petition saved to your dashboard.', 'success');
+}
+
+function resetBuilder() {
+  caseD = {}; genDraft = ''; currentStep = 0;
+  ['c-name','c-father','c-addr','c-phone','c-email','c-age','c-occ','o-name','o-addr','o-role','facts','amount','relief','incident-date','lim-date-input','j-dist','j-amount','lr-name','lr-phone','lr-email','lr-notes'].forEach(function(id) { var el = document.getElementById(id); if (el) el.value = ''; });
+  var js = document.getElementById('j-state'); if (js) js.value = '';
+  document.querySelectorAll('.case-card').forEach(function(c) { c.classList.remove('sel'); });
+  document.querySelectorAll('#gate-checks input').forEach(function(c) { c.checked = false; var lbl = c.closest('.gate-check'); if (lbl) lbl.classList.remove('ticked'); });
+  document.getElementById('gate-btn').disabled = true;
+  document.getElementById('case-next').disabled = true;
+  ['crim-warn','lim-banner','j-note','draft-fill-bar'].forEach(function(id) { var el = document.getElementById(id); if (el) el.classList.remove('show'); });
+  var pt = document.getElementById('privacy-tick'); if (pt) pt.checked = false;
+  document.querySelectorAll('.plan-box').forEach(function(p) { p.classList.remove('sel'); });
+  var sp = document.querySelector('.plan-box[data-plan="standard"]'); if (sp) sp.classList.add('sel');
+  document.querySelectorAll('.builder-step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('bstep-0').classList.add('active');
+  document.getElementById('prog-fill').style.width = '0%';
+  document.getElementById('prog-label').textContent = 'Step 0 of 6 — Safety gate';
+  document.getElementById('prog-count').textContent = '0/6';
+  window.scrollTo(0, 0);
+}
+
+// ── CITIZEN DASHBOARD ─────────────────────────────────────────
+async function loadDashboard() {
+  if (!currentUser) { showPage('landing'); openAuth('login'); return; }
+  if (currentUser.role === 'lawyer') { showPage('lawyer'); return; }
+  if (currentUser.role === 'admin') { showPage('admin'); return; }
+  document.getElementById('dash-name').textContent = currentUser.fname;
+  try {
+    var [petRes, revRes] = await Promise.all([api('GET', '/petitions'), api('GET', '/reviews/my')]);
+    var petitions = petRes.petitions || [];
+    var reviews = revRes.reviews || [];
+    document.getElementById('stat-total').textContent = petitions.length;
+    document.getElementById('stat-review').textContent = petitions.filter(function(p) { return p.status === 'under_review' || p.status === 'review_requested'; }).length;
+    document.getElementById('stat-complete').textContent = petitions.filter(function(p) { return p.status === 'complete'; }).length;
+    var list = document.getElementById('petition-list');
+    var empty = document.getElementById('empty-state');
+    if (!petitions.length) { empty.style.display = 'block'; list.innerHTML = ''; return; }
+    empty.style.display = 'none';
+    var statusMap = { draft: '<span class="petition-status status-draft">● Draft</span>', review_requested: '<span class="petition-status status-review">● Review requested</span>', under_review: '<span class="petition-status status-review">● Under review</span>', complete: '<span class="petition-status status-complete">✓ Complete</span>' };
+    list.innerHTML = petitions.map(function(p) {
+      var rev = reviews.find(function(r) { return r.petition && (r.petition.case_id === p.case_id); });
+      return '<div class="petition-item"><div class="petition-item-left"><div class="petition-case-type">' + p.case_label + '</div><div class="petition-title">vs ' + (p.opponent && p.opponent.name ? p.opponent.name : 'Opposite party') + '</div><div class="petition-meta">' + p.case_id + ' · ' + new Date(p.created_at).toLocaleDateString('en-IN') + ' · ' + (p.court || '') + '</div>' + (rev ? '<div class="petition-meta" style="color:var(--blue);margin-top:.2rem">Review: ' + (rev.lawyer ? rev.lawyer.name : 'Awaiting assignment') + '</div>' : '') + '<div class="petition-actions"><button class="petition-btn" onclick="loadPetitionDraft(\'' + p.id + '\')">View draft</button></div></div>' + (statusMap[p.status] || statusMap.draft) + '</div>';
+    }).join('');
+  } catch (err) {
+    showToast('Failed to load dashboard: ' + err.message, 'error');
+  }
+}
+
+async function loadPetitionDraft(petitionId) {
+  try {
+    var data = await api('GET', '/petitions/' + petitionId);
+    var w = window.open('', '_blank');
+    w.document.write('<pre style="font-family:monospace;white-space:pre-wrap;padding:2rem;line-height:1.8;font-size:13px">' + (data.petition.draft_text || 'No draft') + '</pre>');
+  } catch (err) {
+    showToast('Failed to load petition.', 'error');
+  }
+}
+
+// ── LAWYER DASHBOARD ─────────────────────────────────────────
+async function loadLawyerDash() {
+  if (!currentUser || currentUser.role !== 'lawyer') { showPage('landing'); return; }
+  try {
+    var [profRes, revRes, notifRes] = await Promise.all([
+      api('GET', '/lawyer/profile'),
+      api('GET', '/reviews/assigned'),
+      api('GET', '/lawyer/notifications')
+    ]);
+    var lawyer = profRes.lawyer;
+    var stats = profRes.stats;
+    var reviews = revRes.reviews || [];
+
+    document.getElementById('lawyer-bar-info').textContent = lawyer
+      ? (lawyer.specialisation + ' · ' + lawyer.state_bar + ' · Reg: ' + lawyer.bar_reg_no + (lawyer.status === 'verified' ? ' ✓' : ' ⏳ Pending'))
+      : 'Profile pending admin approval';
+
+    document.getElementById('lw-assigned').textContent = stats.pending || 0;
+    document.getElementById('lw-completed').textContent = stats.completed || 0;
+    document.getElementById('lw-earnings').textContent = '₹' + (stats.earnings || 0).toLocaleString('en-IN');
+
+    var container = document.getElementById('lawyer-reviews-list');
+
+    if (lawyer && lawyer.status !== 'verified') {
+      container.innerHTML = '<div class="empty-state"><div style="font-size:2rem;margin-bottom:.75rem">⏳</div><p style="color:var(--muted2)">Your advocate profile is <strong>pending admin approval</strong>. Admin will verify your documents within 24–48 hours. You will receive an email once approved.</p></div>';
+      return;
+    }
+    if (!reviews.length) {
+      container.innerHTML = '<div class="empty-state"><div style="font-size:2rem;margin-bottom:.75rem">📋</div><p style="color:var(--muted2)">No reviews assigned yet. The admin will assign petitions to you once review requests come in.</p></div>';
+      return;
+    }
+
+    container.innerHTML = reviews.map(function(r) {
+      var petition = r.petition || {};
+      return '<div class="petition-item" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem"><div><div class="petition-case-type">' + (petition.case_label || r.id) + '</div><div class="petition-title">Case: ' + (petition.case_id || '') + '</div><div class="petition-meta">Plan: ' + (PLANS[r.plan] || r.plan) + ' · Submitted: ' + new Date(r.created_at).toLocaleDateString('en-IN') + '</div><div class="petition-meta">Client: ' + r.client_email + ' · ' + r.client_phone + '</div>' + (r.client_notes ? '<div class="petition-meta" style="color:var(--muted2)">Notes: ' + r.client_notes + '</div>' : '') + '</div><span class="petition-status ' + (r.status === 'complete' ? 'status-complete' : 'status-review') + '">' + (r.status === 'complete' ? '✓ Completed' : '● In review') + '</span></div><div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)"><pre style="font-family:DM Mono,monospace;font-size:.72rem;line-height:1.7;color:var(--muted2);white-space:pre-wrap;max-height:160px;overflow-y:auto;background:var(--s2);padding:.875rem;border-radius:8px;border:1px solid var(--border)">' + ((petition.draft_text || '').substring(0, 500) + ((petition.draft_text || '').length > 500 ? '\n\n[... download for full draft]' : '')) + '</pre></div><div style="margin-top:1rem"><label style="font-size:.72rem;color:var(--muted2);display:block;margin-bottom:.35rem">Your review notes / corrections</label><textarea id="rev-notes-' + r.id + '" rows="3" placeholder="Enter corrections, section changes, strategy notes..." style="width:100%;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:.65rem .875rem;font-size:.82rem;color:var(--text);font-family:Manrope,sans-serif;resize:vertical">' + (r.lawyer_notes || '') + '</textarea></div><div class="btn-row" style="margin-top:.875rem"><button class="btn btn-amber" onclick="saveLawyerNotes(\'' + r.id + '\')">Save notes</button>' + (r.status !== 'complete' ? '<button class="btn btn-gold" onclick="markReviewComplete(\'' + r.id + '\')">Mark completed →</button>' : '<span style="font-size:.8rem;color:var(--green);padding:.65rem 0">✓ Review delivered</span>') + '</div></div>';
+    }).join('');
+  } catch (err) {
+    showToast('Failed to load lawyer dashboard: ' + err.message, 'error');
+  }
+}
+
+async function saveLawyerNotes(reviewId) {
+  var el = document.getElementById('rev-notes-' + reviewId);
+  if (!el) return;
+  try {
+    await api('PUT', '/reviews/' + reviewId + '/notes', { lawyer_notes: el.value });
+    showToast('Notes saved.', 'success');
+  } catch (err) { showToast(err.message, 'error'); }
+}
+
+async function markReviewComplete(reviewId) {
+  if (!confirm('Mark this review as completed?')) return;
+  var el = document.getElementById('rev-notes-' + reviewId);
+  try {
+    await api('PUT', '/reviews/' + reviewId + '/complete', { lawyer_notes: el ? el.value : '' });
+    showToast('Review marked complete. Client notified.', 'success');
+    loadLawyerDash();
+  } catch (err) { showToast(err.message, 'error'); }
+}
+
+// ── ADMIN DASHBOARD ───────────────────────────────────────────
+async function loadAdmin() {
+  if (!currentUser || currentUser.role !== 'admin') { showPage('landing'); return; }
+  try {
+    var [stats, lawyers, reviews, petitions] = await Promise.all([
+      api('GET', '/admin/stats'),
+      api('GET', '/admin/lawyers'),
+      api('GET', '/admin/reviews'),
+      api('GET', '/admin/petitions')
+    ]);
+    document.getElementById('a-total').textContent = stats.total_petitions;
+    document.getElementById('a-pending').textContent = stats.pending_reviews;
+    document.getElementById('a-lawyers').textContent = stats.verified_lawyers + ' verified / ' + stats.pending_lawyers + ' pending';
+    document.getElementById('a-revenue').textContent = '₹' + (stats.revenue || 0).toLocaleString('en-IN');
+    renderLawyersTable(lawyers.lawyers || []);
+    renderReviewsTable(reviews.reviews || [], lawyers.lawyers || []);
+    renderPetitionsTable(petitions.petitions || []);
+  } catch (err) {
+    showToast('Failed to load admin: ' + err.message, 'error');
+  }
+}
+
+function renderLawyersTable(lawyers) {
+  var tb = document.getElementById('lawyers-tbody');
+  if (!lawyers.length) { tb.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:2rem">No advocates registered yet.</td></tr>'; return; }
+  tb.innerHTML = lawyers.map(function(l) {
+    var statusClass = l.status === 'verified' ? 'status-complete' : l.status === 'rejected' ? 'status-draft' : 'status-review';
+    return '<tr><td><div class="lawyer-profile"><div class="lawyer-avatar">' + (l.name||'?')[0] + '</div><div><div class="lawyer-name">' + l.name + '</div><div class="lawyer-spec">' + l.email + '</div></div></div></td><td>' + l.bar_reg_no + '</td><td>' + l.specialisation + '</td><td>' + (l.state_bar || '—') + '</td><td><span class="petition-status ' + statusClass + '">' + l.status + '</span></td><td>' + (l.total_reviews_done || 0) + '</td><td style="display:flex;gap:.4rem;flex-wrap:wrap"><button class="petition-btn" onclick="viewLawyerDocs(\'' + l.id + '\')">View docs</button>' + (l.status !== 'verified' ? '<button class="petition-btn petition-btn-gold" onclick="approveLawyer(\'' + l.id + '\')">Approve</button>' : '') + (l.status !== 'rejected' ? '<button class="petition-btn" onclick="rejectLawyer(\'' + l.id + '\')">Reject</button>' : '') + '</td></tr>';
+  }).join('');
+}
+
+function renderReviewsTable(reviews, lawyers) {
+  var tb = document.getElementById('reviews-tbody');
+  if (!reviews.length) { tb.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:2rem">No review requests yet.</td></tr>'; return; }
+  tb.innerHTML = reviews.map(function(r) {
+    var lawyerOpts = lawyers.filter(function(l) { return l.status === 'verified'; }).map(function(l) { return '<option value="' + l.id + '" ' + (r.lawyer_id === l.id ? 'selected' : '') + '>' + l.name + '</option>'; }).join('');
+    var petition = r.petition || {};
+    return '<tr><td>' + r.review_id + '</td><td>' + (petition.case_label || '—') + '</td><td>' + r.client_email + '<br><span style="font-size:.72rem;color:var(--muted)">' + r.client_phone + '</span></td><td>' + (PLANS[r.plan] || r.plan) + '</td><td style="font-size:.78rem">' + new Date(r.created_at).toLocaleDateString('en-IN') + '</td><td><select style="background:var(--s2);border:1px solid var(--border);border-radius:6px;padding:.25rem .5rem;font-size:.75rem;color:var(--text)" onchange="assignReview(\'' + r.id + '\',this.value)"><option value="">Assign...</option>' + lawyerOpts + '</select></td><td><span class="petition-status ' + (r.status === 'pending' ? 'status-draft' : r.status === 'complete' ? 'status-complete' : 'status-review') + '">' + r.status + '</span></td></tr>';
+  }).join('');
+}
+
+function renderPetitionsTable(petitions) {
+  var tb = document.getElementById('petitions-tbody');
+  if (!petitions.length) { tb.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:2rem">No petitions filed yet.</td></tr>'; return; }
+  tb.innerHTML = petitions.map(function(p) {
+    var user = p.user || {};
+    return '<tr><td>' + p.case_id + '</td><td>' + p.case_label + '</td><td style="font-size:.78rem">' + (user.fname || '—') + ' ' + (user.lname || '') + '</td><td style="font-size:.78rem">' + new Date(p.created_at).toLocaleDateString('en-IN') + '</td><td><span class="petition-status ' + (p.status === 'draft' ? 'status-draft' : p.status === 'complete' ? 'status-complete' : 'status-review') + '">' + p.status + '</span></td></tr>';
+  }).join('');
+}
+
+async function viewLawyerDocs(lawyerId) {
+  try {
+    var data = await api('GET', '/admin/lawyers/' + lawyerId);
+    var l = data.lawyer;
+    var html = '<div style="font-family:sans-serif;padding:2rem;max-width:800px;margin:0 auto">' +
+      '<h2>Advocate Documents — ' + l.name + '</h2>' +
+      '<p><strong>Bar Council Reg:</strong> ' + l.bar_reg_no + '</p>' +
+      '<p><strong>State Bar:</strong> ' + l.state_bar + '</p>' +
+      '<p><strong>BCI Verify:</strong> <a href="https://www.barcouncilofindia.org" target="_blank" style="color:blue">Search on BCI portal →</a></p>' +
+      '<hr style="margin:1.5rem 0">' +
+      (l.id_card_signed_url ? '<div style="margin-bottom:1.5rem"><h3>Bar Council ID Card</h3><img src="' + l.id_card_signed_url + '" style="max-width:100%;border:1px solid #ddd;border-radius:8px"></div>' : '<p>ID card not uploaded</p>') +
+      (l.enrolment_cert_signed_url ? '<div style="margin-bottom:1.5rem"><h3>Enrolment Certificate</h3><img src="' + l.enrolment_cert_signed_url + '" style="max-width:100%;border:1px solid #ddd;border-radius:8px"></div>' : '<p>Enrolment certificate not uploaded</p>') +
+      (l.govt_id_signed_url ? '<div style="margin-bottom:1.5rem"><h3>Government ID</h3><img src="' + l.govt_id_signed_url + '" style="max-width:100%;border:1px solid #ddd;border-radius:8px"></div>' : '<p>Govt ID not uploaded</p>') +
+      '</div>';
+    var w = window.open('', '_blank');
+    w.document.write(html);
+  } catch (err) { showToast(err.message, 'error'); }
+}
+
+async function approveLawyer(id) {
+  if (!confirm('Approve this advocate? Make sure you have verified their Bar Council registration on the BCI portal.')) return;
+  try {
+    var data = await api('POST', '/admin/lawyers/' + id + '/approve');
+    showToast(data.message, 'success');
+    loadAdmin();
+  } catch (err) { showToast(err.message, 'error'); }
+}
+
+async function rejectLawyer(id) {
+  var reason = prompt('Enter rejection reason (will be emailed to the advocate):');
+  if (!reason) return;
+  try {
+    var data = await api('POST', '/admin/lawyers/' + id + '/reject', { reason });
+    showToast(data.message, 'success');
+    loadAdmin();
+  } catch (err) { showToast(err.message, 'error'); }
+}
+
+async function assignReview(reviewId, lawyerId) {
+  if (!lawyerId) return;
+  try {
+    var data = await api('POST', '/admin/reviews/' + reviewId + '/assign', { lawyer_id: lawyerId });
+    showToast(data.message, 'success');
+    loadAdmin();
+  } catch (err) { showToast(err.message, 'error'); }
+}
+
+function switchAdminTab(tab, btn) {
+  document.querySelectorAll('.admin-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.admin-panel').forEach(function(p) { p.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('ap-' + tab).classList.add('active');
+}
+
+// Admin: add lawyer manually (direct admin add, bypasses document upload)
+async function addLawyer() {
+  var name = document.getElementById('al-name').value.trim();
+  var reg = document.getElementById('al-reg').value.trim();
+  var spec = document.getElementById('al-spec').value;
+  var email = document.getElementById('al-email').value.trim();
+  if (!name || !reg || !spec || !email) { showToast('Please fill name, registration, specialisation, and email.', 'error'); return; }
+  showToast('To add lawyers directly, have them register via the signup form as advocates. Admin can then approve.', 'error');
+}
+
+function removeLawyer() { showToast('Use the Reject button to reject a lawyer registration.', 'error'); }
+
+// ── UTILS ─────────────────────────────────────────────────────
+function viewDraft(btn) { var d = decodeURIComponent(btn.dataset.draft); if (d) { var w = window.open('', '_blank'); w.document.write('<pre style="font-family:monospace;white-space:pre-wrap;padding:2rem;line-height:1.8;font-size:13px">' + d + '</pre>'); } }
+function dlSaved(id, draft) { var b = new Blob([decodeURIComponent(draft)], { type: 'text/plain' }); var u = URL.createObjectURL(b); var a = document.createElement('a'); a.href = u; a.download = 'petition_' + id + '.txt'; a.click(); URL.revokeObjectURL(u); }
+
+function showToast(msg, type) {
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'toast ' + (type || ''); t.classList.add('show');
+  clearTimeout(t._t); t._t = setTimeout(function() { t.classList.remove('show'); }, 4500);
+}
+
+function toggleMobileMenu() {
+  var nl = document.getElementById('nav-links'); var hb = document.getElementById('nav-hamburger');
+  nl.classList.toggle('open'); hb.classList.toggle('open');
+}
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────
+function initScrollReveal() {
+  var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.feature-card,.hiw-step,.sr').forEach(function(el) { obs.observe(el); });
+}
+
+function addSRClasses() {
+  document.querySelectorAll('.section-eyebrow,.section-title,.section-sub').forEach(function(el, i) { el.classList.add('sr'); if (i % 3 === 1) el.classList.add('sr-delay-1'); if (i % 3 === 2) el.classList.add('sr-delay-2'); });
+  document.querySelectorAll('.case-pill').forEach(function(el, i) { el.classList.add('sr'); el.style.transitionDelay = (i * 0.04) + 's'; });
+  document.querySelectorAll('.pricing-card').forEach(function(el, i) { el.classList.add('sr'); el.style.transitionDelay = (i * 0.1) + 's'; });
+}
+
+// ── PREMIUM ANIMATED EFFECTS ──────────────────────────────────
+function initHeroCanvas() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let animationFrameId;
+
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  const particles = [];
+  const particleCount = Math.min(60, Math.floor(window.innerWidth / 20));
+  const maxDistance = 120;
+  let mouse = { x: null, y: null, active: false };
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.radius = Math.random() * 2 + 1;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+      if (mouse.active && mouse.x !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < 150) {
+          const force = (150 - dist) / 150;
+          this.x -= dx / dist * force * 0.6;
+          this.y -= dy / dist * force * 0.6;
+        }
+      }
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212, 168, 67, 0.4)';
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    hero.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+      mouse.active = true;
+    });
+    hero.addEventListener('mouseleave', () => {
+      mouse.active = false;
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+        if (dist < maxDistance) {
+          const alpha = (1 - dist / maxDistance) * 0.15;
+          ctx.strokeStyle = `rgba(212, 168, 67, ${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    animationFrameId = requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+function initSpotlightHover() {
+  const cards = document.querySelectorAll('.feature-card, .case-card, .pricing-card, .gate-check, .plan-box');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+(function() {
+  var token = localStorage.getItem('nyaya_token');
+  var session = localStorage.getItem('nyaya_session');
+  if (token && session) {
+    try {
+      loginUser(JSON.parse(session));
+      // Re-validate token in background
+      api('GET', '/auth/me').then(function(data) {
+        loginUser(data.user);
+      }).catch(function() {
+        logout();
+      });
+    } catch (e) { localStorage.clear(); }
+  }
+  document.getElementById('auth-modal').addEventListener('click', function(e) { if (e.target === this) closeAuth(); });
+  setTimeout(function() { addSRClasses(); initScrollReveal(); }, 50);
+  initHeroCanvas();
+  initSpotlightHover();
+})();
+</script>
+</body>
+</html>
