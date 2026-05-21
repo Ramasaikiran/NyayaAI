@@ -7,14 +7,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#08080a;--s1:#0f0f12;--s2:#16161a;--s3:#1d1d22;
-  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
-  --gold:#d4a843;--gold2:rgba(212,168,67,0.12);--gold3:rgba(212,168,67,0.06);
-  --red:#e05252;--red2:rgba(224,82,82,0.1);
-  --green:#4caf82;--green2:rgba(76,175,130,0.1);
-  --amber:#e8943a;--amber2:rgba(232,148,58,0.1);
-  --blue:#5b9cf6;--blue2:rgba(91,156,246,0.1);
-  --text:#e6e3dc;--muted:#6b6865;--muted2:#9b9794;
+  --bg:#f8f9fa;
+  --s1:#ffffff;
+  --s2:#f1f3f5;
+  --s3:#e9ecef;
+  --border:rgba(0,0,0,0.08);
+  --border2:rgba(0,0,0,0.14);
+  --gold:#b58a2a;
+  --gold2:rgba(181,138,42,0.1);
+  --gold3:rgba(181,138,42,0.05);
+  --red:#d32f2f;
+  --red2:rgba(211,47,47,0.08);
+  --green:#2e7d32;
+  --green2:rgba(46,125,50,0.08);
+  --amber:#e65100;
+  --amber2:rgba(230,81,0,0.08);
+  --blue:#1565c0;
+  --blue2:rgba(21,101,192,0.08);
+  --text:#1a1a1a;
+  --muted:#6c757d;
+  --muted2:#495057;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
@@ -24,7 +36,7 @@ button{font-family:'Manrope',sans-serif;cursor:pointer}
 input,textarea,select{font-family:'Manrope',sans-serif}
 
 /* ── NAV ── */
-#nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:.875rem 2rem;background:rgba(8,8,10,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding .3s}
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:.875rem 2rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding .3s}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;display:flex;align-items:center;gap:.4rem;cursor:pointer}
 .nav-logo em{color:var(--gold);font-style:italic}
 .nav-links{display:flex;align-items:center;gap:2rem}
@@ -139,7 +151,7 @@ input,textarea,select{font-family:'Manrope',sans-serif}
 .pricing-period{font-size:.78rem;color:var(--muted);margin-bottom:1.25rem}
 .pricing-features{list-style:none;display:grid;gap:.6rem;margin-bottom:1.5rem}
 .pricing-features li{font-size:.82rem;color:var(--muted2);display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
-.pricing-features li::before{content:'✓';color:var(--green);flex-shrink:0;margin-top:1px}
+.pricing-features li::before{content:'\\2713';color:var(--green);flex-shrink:0;margin-top:1px}
 .pricing-btn{width:100%;padding:.8rem;border-radius:8px;font-size:.85rem;font-weight:600;border:1px solid var(--border2);background:transparent;color:var(--text);transition:background .2s}
 .pricing-btn:hover{background:var(--s2)}
 .pricing-card.featured .pricing-btn{background:var(--gold);color:#07060a;border-color:var(--gold)}
@@ -253,10 +265,10 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 .case-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem;cursor:pointer;transition:border-color .22s,background .22s;position:relative}
 .case-card:hover{border-color:var(--border2)}
 .case-card.sel{border-color:var(--gold);background:var(--gold3)}
-.case-card.sel::after{content:'✓';position:absolute;top:.5rem;right:.75rem;font-size:.65rem;color:var(--gold)}
+.case-card.sel::after{content:'[Selected]';position:absolute;top:.5rem;right:.75rem;font-size:.65rem;color:var(--gold)}
 .case-card-t{font-size:.85rem;font-weight:500;margin-bottom:.2rem}
 .case-card-s{font-size:.72rem;color:var(--muted)}
-.case-card.crim .case-card-t::after{content:' ⚠';color:var(--amber);font-size:.65rem}
+.case-card.crim .case-card-t::after{content:' [Screened]';color:var(--amber);font-size:.65rem}
 
 /* CRIMINAL + LIMITATION */
 .warn-box{border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.25rem;display:none;font-size:.83rem;line-height:1.6}
@@ -520,7 +532,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
     display:none;
     position:fixed;
     top:56px;left:0;right:0;
-    background:rgba(8,8,10,0.97);
+    background:rgba(255,255,255,0.97);
     backdrop-filter:blur(20px);
     border-bottom:1px solid var(--border2);
     flex-direction:column;
@@ -760,7 +772,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
   accent-color: unset !important;
 }
 .gate-check input[type="checkbox"]::after {
-  content: '✓' !important;
+  content: '\\2713' !important;
   font-size: 10px !important;
   color: var(--bg) !important;
   font-weight: 900 !important;
@@ -835,7 +847,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo" onclick="showPage('landing')">⚖ <em>Nyaya</em> AI</div>
+  <div class="nav-logo" onclick="showPage('landing')"><em>Nyaya</em> AI</div>
   <div class="nav-links" id="nav-links">
     <a href="#features" onclick="navTo(event,'#features')">Features</a>
     <a href="#pricing" onclick="navTo(event,'#pricing')">Pricing</a>
@@ -860,8 +872,8 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 
   <div class="hero">
     <canvas id="hero-canvas" class="hero-canvas"></canvas>
-    <div class="hero-eyebrow">⚖ Built for 1.4 billion citizens</div>
-    <div class="hero-scale-icon">⚖️</div>
+    <div class="hero-eyebrow">Built for 1.4 billion citizens</div>
+    <div class="hero-scale-icon" style="font-weight: 800; color: var(--gold);">NYAYA</div>
     <h1 class="hero-title">Legal rights for<br><em>every Indian.</em></h1>
     <p class="hero-sub">AI-powered petition drafting with built-in safeguards, limitation calculators, jurisdiction guidance — and real lawyer review when you need it.</p>
     <div class="hero-stats">
@@ -877,22 +889,22 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 
   <div class="safeguards-bar">
     <div class="safeguards-inner">
-      <span class="safeguard-item green">✓ Limitation period calculator</span>
-      <span class="safeguard-item green">✓ Jurisdiction auto-selector</span>
-      <span class="safeguard-item amber">⚠ Perjury risk warnings</span>
-      <span class="safeguard-item amber">⚠ Case strength scoring</span>
-      <span class="safeguard-item green">✓ BNS / BNSS 2023 updated</span>
-      <span class="safeguard-item amber">⚠ Criminal case screening</span>
-      <span class="safeguard-item green">✓ DPDP Act 2023 compliant</span>
-      <span class="safeguard-item blue">⚡ Real lawyer review ₹299+</span>
-      <span class="safeguard-item green">✓ Limitation period calculator</span>
-      <span class="safeguard-item green">✓ Jurisdiction auto-selector</span>
-      <span class="safeguard-item amber">⚠ Perjury risk warnings</span>
-      <span class="safeguard-item amber">⚠ Case strength scoring</span>
-      <span class="safeguard-item green">✓ BNS / BNSS 2023 updated</span>
-      <span class="safeguard-item amber">⚠ Criminal case screening</span>
-      <span class="safeguard-item green">✓ DPDP Act 2023 compliant</span>
-      <span class="safeguard-item blue">⚡ Real lawyer review ₹299+</span>
+      <span class="safeguard-item green">Limitation period calculator</span>
+      <span class="safeguard-item green">Jurisdiction auto-selector</span>
+      <span class="safeguard-item amber">Perjury risk warnings</span>
+      <span class="safeguard-item amber">Case strength scoring</span>
+      <span class="safeguard-item green">BNS / BNSS 2023 updated</span>
+      <span class="safeguard-item amber">Criminal case screening</span>
+      <span class="safeguard-item green">DPDP Act 2023 compliant</span>
+      <span class="safeguard-item blue">Real lawyer review</span>
+      <span class="safeguard-item green">Limitation period calculator</span>
+      <span class="safeguard-item green">Jurisdiction auto-selector</span>
+      <span class="safeguard-item amber">Perjury risk warnings</span>
+      <span class="safeguard-item amber">Case strength scoring</span>
+      <span class="safeguard-item green">BNS / BNSS 2023 updated</span>
+      <span class="safeguard-item amber">Criminal case screening</span>
+      <span class="safeguard-item green">DPDP Act 2023 compliant</span>
+      <span class="safeguard-item blue">Real lawyer review</span>
     </div>
   </div>
 
@@ -902,14 +914,14 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
     <p class="section-sub">Every feature here exists because we found a way a user could get hurt without it.</p>
     <div class="features-grid">
       <div class="feature-card"><div class="feature-icon">⏱</div><div class="feature-title">Limitation period calculator</div><div class="feature-desc">Enter your incident date. Get exact days remaining. Red alert if you're near or past the deadline — before you waste time drafting.</div><span class="feature-tag tag-green">Prevents missed deadlines</span></div>
-      <div class="feature-card"><div class="feature-icon">📍</div><div class="feature-title">Jurisdiction auto-selector</div><div class="feature-desc">State + district + claim amount → we tell you exactly which court. Consumer complaint at ₹45k goes to District Forum, not State Commission.</div><span class="feature-tag tag-green">Prevents wrong court filing</span></div>
-      <div class="feature-card"><div class="feature-icon">⚖</div><div class="feature-title">Case strength scoring</div><div class="feature-desc">1–10 score with specific items: what evidence you have, what's missing, what could get your case thrown out before the first hearing.</div><span class="feature-tag tag-amber">Sets realistic expectations</span></div>
-      <div class="feature-card"><div class="feature-icon">🔴</div><div class="feature-title">Perjury warning</div><div class="feature-desc">The verification clause is a legal oath. We flag this explicitly — Section 193 BNS, up to 7 years. Not in a footer. In your face before you sign.</div><span class="feature-tag tag-red">Prevents criminal liability</span></div>
-      <div class="feature-card"><div class="feature-icon">⚠</div><div class="feature-title">Criminal case screening</div><div class="feature-desc">Police, cheque bounce, DV, cyber crime — extra gate with Sections 182 & 211 BNS warnings. False criminal complaints carry up to 7 years.</div><span class="feature-tag tag-red">Prevents counter-charges</span></div>
-      <div class="feature-card"><div class="feature-icon">📋</div><div class="feature-title">Section confidence tags</div><div class="feature-desc">Every cited law section tagged: ✓ High confidence / ⚠ Verify / ⚡ Consult lawyer. You know which parts to double-check before filing.</div><span class="feature-tag tag-amber">Prevents wrong sections</span></div>
-      <div class="feature-card"><div class="feature-icon">🛡</div><div class="feature-title">DPDP Act 2023 compliance</div><div class="feature-desc">Your case details — domestic violence, fraud, medical — are not stored on servers. Cleared after your session. No selling, no sharing.</div><span class="feature-tag tag-blue">Privacy protected</span></div>
-      <div class="feature-card"><div class="feature-icon">👨‍⚖️</div><div class="feature-title">Real lawyer review</div><div class="feature-desc">Bar Council-registered advocates review your draft, correct errors, and return certified versions in 24–48 hours. Starting ₹299.</div><span class="feature-tag tag-blue">Human verification layer</span></div>
-      <div class="feature-card"><div class="feature-icon">💾</div><div class="feature-title">Save & resume</div><div class="feature-desc">Sign in to save your petitions. Come back, download again, track lawyer review status. Nothing gets lost mid-draft.</div><span class="feature-tag tag-green">Persistent access</span></div>
+      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--gold)">[01]</div><div class="feature-title">Jurisdiction auto-selector</div><div class="feature-desc">State + district + claim amount → we tell you exactly which court. Consumer complaint at ₹45k goes to District Forum, not State Commission.</div><span class="feature-tag tag-green">Prevents wrong court filing</span></div>
+      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--gold)">[02]</div><div class="feature-title">Case strength scoring</div><div class="feature-desc">1–10 score with specific items: what evidence you have, what's missing, what could get your case thrown out before the first hearing.</div><span class="feature-tag tag-amber">Sets realistic expectations</span></div>
+      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--red)">[03]</div><div class="feature-title">Perjury warning</div><div class="feature-desc">The verification clause is a legal oath. We flag this explicitly — Section 193 BNS, up to 7 years. Not in a footer. In your face before you sign.</div><span class="feature-tag tag-red">Prevents criminal liability</span></div>
+      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--amber)">[04]</div><div class="feature-title">Criminal case screening</div><div class="feature-desc">Police, cheque bounce, DV, cyber crime — extra gate with Sections 182 & 211 BNS warnings. False criminal complaints carry up to 7 years.</div><span class="feature-tag tag-red">Prevents counter-charges</span></div>
+      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--blue)">[05]</div><div class="feature-title">Section confidence tags</div><div class="feature-desc">Every cited law section tagged: [High confidence] / [Verify] / [Consult lawyer]. You know which parts to double-check before filing.</div><span class="feature-tag tag-amber">Prevents wrong sections</span></div>
+      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--green)">[06]</div><div class="feature-title">DPDP Act 2023 compliance</div><div class="feature-desc">Your case details — domestic violence, fraud, medical — are not stored on servers. Cleared after your session. No selling, no sharing.</div><span class="feature-tag tag-blue">Privacy protected</span></div>
+      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--gold)">[07]</div><div class="feature-title">Real lawyer review</div><div class="feature-desc">Bar Council-registered advocates review your draft, correct errors, and return certified versions in 24–48 hours. Starting ₹299.</div><span class="feature-tag tag-blue">Human verification layer</span></div>
+      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--gold)">[08]</div><div class="feature-title">Save & resume</div><div class="feature-desc">Sign in to save your petitions. Come back, download again, track lawyer review status. Nothing gets lost mid-draft.</div><span class="feature-tag tag-green">Persistent access</span></div>
     </div>
   </div>
 
@@ -931,15 +943,15 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
     <h2 class="section-title">Whatever happened to you,<br>there's a petition for it.</h2>
     <div class="cases-grid">
       <div class="case-pill" onclick="showPage('builder')">Consumer complaint<span>Product / service deficiency</span></div>
-      <div class="case-pill" onclick="showPage('builder')">Cheque bounce ⚠<span>Section 143 BNS / NI Act</span></div>
-      <div class="case-pill" onclick="showPage('builder')">Police complaint / FIR ⚠<span>Fraud, theft, assault</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Cheque bounce<span>Section 143 BNS / NI Act</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Police complaint / FIR<span>Fraud, theft, assault</span></div>
       <div class="case-pill" onclick="showPage('builder')">RTI application<span>Right to Information Act</span></div>
       <div class="case-pill" onclick="showPage('builder')">Labour / employment<span>Wrongful termination</span></div>
       <div class="case-pill" onclick="showPage('builder')">Civil suit<span>Breach of contract, debt</span></div>
-      <div class="case-pill" onclick="showPage('builder')">Domestic violence ⚠<span>DV Act 2005</span></div>
-      <div class="case-pill" onclick="showPage('builder')">Cyber crime ⚠<span>Online fraud, hacking</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Domestic violence<span>DV Act 2005</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Cyber crime<span>Online fraud, hacking</span></div>
       <div class="case-pill" onclick="showPage('builder')">Property dispute<span>Encroachment, title</span></div>
-      <div class="case-pill" onclick="showPage('builder')">Medical negligence ⚠<span>Hospital / doctor</span></div>
+      <div class="case-pill" onclick="showPage('builder')">Medical negligence<span>Hospital / doctor</span></div>
       <div class="case-pill" onclick="showPage('builder')">Maintenance / alimony<span>Section 125 BNSS</span></div>
       <div class="case-pill" onclick="showPage('builder')">Noise / nuisance<span>Section 163 BNSS</span></div>
     </div>
@@ -951,14 +963,14 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
       <h2 class="section-title">What most legal AI apps<br>don't bother building.</h2>
       <table class="diff-table">
         <tr><th>Safeguard</th><th>Other legal AI tools</th><th>Nyaya AI</th></tr>
-        <tr><td>Limitation period calculator</td><td class="cross">✗ User must know deadline</td><td class="check">✓ Auto-calculated with alert</td></tr>
-        <tr><td>Jurisdiction guidance</td><td class="cross">✗ User picks court manually</td><td class="check">✓ Auto-determined by state/amount</td></tr>
-        <tr><td>Criminal case screening</td><td class="cross">✗ No warning for false complaints</td><td class="check">✓ Sec 182/211 BNS gate</td></tr>
-        <tr><td>Perjury warning</td><td class="cross">✗ Fine print at best</td><td class="check">✓ Full-screen red alert</td></tr>
-        <tr><td>AI hallucination control</td><td class="cross">✗ AI invents missing facts</td><td class="check">✓ [TO BE FILLED] tags, never invents</td></tr>
-        <tr><td>Section confidence scoring</td><td class="cross">✗ No reliability signal</td><td class="check">✓ High / Verify / Consult tags</td></tr>
-        <tr><td>Data privacy (DPDP 2023)</td><td class="cross">✗ Data often stored/sold</td><td class="check">✓ Session-only, no storage</td></tr>
-        <tr><td>Lawyer review</td><td class="cross">✗ Referral only, no draft review</td><td class="check">✓ Draft reviewed & certified ₹299+</td></tr>
+        <tr><td>Limitation period calculator</td><td class="cross">[No] User must know deadline</td><td class="check">[Yes] Auto-calculated with alert</td></tr>
+        <tr><td>Jurisdiction guidance</td><td class="cross">[No] User picks court manually</td><td class="check">[Yes] Auto-determined by state/amount</td></tr>
+        <tr><td>Criminal case screening</td><td class="cross">[No] No warning for false complaints</td><td class="check">[Yes] Sec 182/211 BNS gate</td></tr>
+        <tr><td>Perjury warning</td><td class="cross">[No] Fine print at best</td><td class="check">[Yes] Full-screen red alert</td></tr>
+        <tr><td>AI hallucination control</td><td class="cross">[No] AI invents missing facts</td><td class="check">[Yes] [TO BE FILLED] tags</td></tr>
+        <tr><td>Section confidence scoring</td><td class="cross">[No] No reliability signal</td><td class="check">[Yes] High / Verify / Consult tags</td></tr>
+        <tr><td>Data privacy (DPDP 2023)</td><td class="cross">[No] Data often stored/sold</td><td class="check">[Yes] Session-only, no storage</td></tr>
+        <tr><td>Lawyer review</td><td class="cross">[No] Referral only, no draft review</td><td class="check">[Yes] Draft reviewed & certified ₹299+</td></tr>
       </table>
     </div>
   </div>
@@ -1017,7 +1029,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <div class="nav-logo">⚖ <em>Nyaya</em> AI</div>
+          <div class="nav-logo"><em>Nyaya</em> AI</div>
           <p>Legal rights for every Indian citizen. AI-powered petition drafting with real safeguards and real lawyers. Built on BNS/BNSS 2023.</p>
         </div>
         <div class="footer-col"><h4>Product</h4><a href="#" onclick="showPage('builder')">Draft petition</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#cases">Case types</a></div>
@@ -1025,7 +1037,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
         <div class="footer-col"><h4>Contact</h4><a href="#"><span class="__cf_email__" data-cfemail="2149444d4d4e614f5840584040480f484f">[email&#160;protected]</span></a><a href="#">For lawyers</a><a href="#">For NGOs</a><a href="#">Partner with us</a></div>
       </div>
       <div class="footer-bottom">
-        <div class="footer-legal">⚠ Nyaya AI generates legal drafts for awareness purposes only. This does not constitute legal advice. All sections should be verified before filing. Laws cited: BNS 2023, BNSS 2023, applicable Indian statutes. Legal DB last verified: March 2026.</div>
+        <div class="footer-legal">Nyaya AI generates legal drafts for awareness purposes only. This does not constitute legal advice. All sections should be verified before filing. Laws cited: BNS 2023, BNSS 2023, applicable Indian statutes. Legal DB last verified: March 2026.</div>
         <div class="footer-copy">© 2026 Nyaya AI · Made in India</div>
       </div>
     </div>
@@ -1035,8 +1047,8 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 <!-- ══════════ AUTH MODAL ══════════ -->
 <div class="modal-overlay" id="auth-modal">
   <div class="modal">
-    <button class="modal-close" onclick="closeAuth()">✕</button>
-    <div class="modal-logo">⚖ <em>Nyaya</em> AI</div>
+    <button class="modal-close" onclick="closeAuth()">x</button>
+    <div class="modal-logo"><em>Nyaya</em> AI</div>
     <div class="modal-tabs">
       <button class="modal-tab active" id="tab-login" onclick="switchTab('login')">Log in</button>
       <button class="modal-tab" id="tab-signup" onclick="switchTab('signup')">Sign up</button>
@@ -1054,12 +1066,12 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
         <label class="modal-label">I am registering as *</label>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.35rem">
           <div id="role-citizen" class="role-card sel" onclick="selectRole('citizen')" style="border:1.5px solid var(--gold);background:var(--gold3);border-radius:9px;padding:.75rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s">
-            <div style="font-size:1.1rem;margin-bottom:.25rem">👤</div>
+            <div style="font-size:0.85rem;font-weight:600;margin-bottom:.25rem">[Citizen]</div>
             <div style="font-size:.82rem;font-weight:600">Citizen</div>
             <div style="font-size:.7rem;color:var(--muted2);margin-top:.15rem">File petitions</div>
           </div>
           <div id="role-lawyer" class="role-card" onclick="selectRole('lawyer')" style="border:1px solid var(--border2);border-radius:9px;padding:.75rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s">
-            <div style="font-size:1.1rem;margin-bottom:.25rem">⚖️</div>
+            <div style="font-size:0.85rem;font-weight:600;margin-bottom:.25rem">[Advocate]</div>
             <div style="font-size:.82rem;font-weight:600">Advocate</div>
             <div style="font-size:.7rem;color:var(--muted2);margin-top:.15rem">Review petitions</div>
           </div>
@@ -1114,7 +1126,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
     <div class="dash-section-title">YOUR PETITIONS</div>
     <div class="petition-list" id="petition-list">
       <div class="empty-state" id="empty-state">
-        <div style="font-size:2rem;margin-bottom:.75rem">📋</div>
+        <div style="font-size:1rem;font-weight:600;margin-bottom:.75rem">[Draft System]</div>
         <p style="color:var(--muted2)">No petitions yet. Draft your first one and it will appear here.</p>
         <button class="btn btn-gold" onclick="showPage('builder')">Draft first petition →</button>
       </div>
@@ -1133,7 +1145,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
     <!-- STEP 0: GATE -->
     <div class="builder-step active" id="bstep-0">
       <div class="gate-box">
-        <div class="gate-icon">🔒</div>
+        <div class="gate-icon" style="font-size: 1.25rem; font-weight:800; color:var(--red);">SECURE</div>
         <div class="gate-heading">Before you proceed</div>
         <div class="gate-subtext">This tool generates legal drafts. Read and confirm each point. All 5 required.</div>
         <div class="gate-checks" id="gate-checks">
@@ -1149,7 +1161,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 
     <!-- STEP 1: CASE TYPE -->
     <div class="builder-step" id="bstep-1">
-      <div class="step-head"><div class="step-tag">Step 1 of 6 — Case type</div><h2 class="step-title">What type of case?</h2><p class="step-desc">Criminal cases marked ⚠ require additional screening.</p></div>
+      <div class="step-head"><div class="step-tag">Step 1 of 6 — Case type</div><h2 class="step-title">What type of case?</h2><p class="step-desc">Criminal cases require additional screening.</p></div>
       <div class="case-grid" id="case-grid">
         <div class="case-card" data-v="consumer" data-l="Consumer Complaint" data-lim="730" data-limlabel="2 years from date of deficiency" onclick="pickCase(this)"><div class="case-card-t">Consumer complaint</div><div class="case-card-s">Product / service deficiency</div></div>
         <div class="case-card crim" data-v="cheque" data-l="Cheque Bounce Complaint" data-lim="30" data-limlabel="Legal notice within 30 days of dishonour" onclick="pickCase(this)"><div class="case-card-t">Cheque bounce</div><div class="case-card-s">Section 143 BNS / NI Act</div></div>
@@ -1164,7 +1176,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
         <div class="case-card" data-v="maintenance" data-l="Maintenance / Alimony Petition" data-lim="0" data-limlabel="Can be filed anytime during / after marriage" onclick="pickCase(this)"><div class="case-card-t">Maintenance / alimony</div><div class="case-card-s">Section 125 BNSS</div></div>
         <div class="case-card" data-v="noise" data-l="Noise / Nuisance Complaint" data-lim="365" data-limlabel="1 year from continued nuisance (varies by state)" onclick="pickCase(this)"><div class="case-card-t">Noise / nuisance</div><div class="case-card-s">Section 163 BNSS</div></div>
       </div>
-      <div class="warn-box amber" id="crim-warn"><div class="warn-title amber">⚠ CRIMINAL CASE — ADDITIONAL SCREENING</div>Filing a false criminal complaint is an offence under <strong>Section 182 BNS</strong> (up to 6 months) and <strong>Section 211 BNS</strong> (up to 7 years). Every fact you state must be completely and verifiably true. If in doubt, consult a lawyer before filing.</div>
+      <div class="warn-box amber" id="crim-warn"><div class="warn-title amber">[Criminal Case screening] — ADDITIONAL SCREENING</div>Filing a false criminal complaint is an offence under <strong>Section 182 BNS</strong> (up to 6 months) and <strong>Section 211 BNS</strong> (up to 7 years). Every fact you state must be completely and verifiably true. If in doubt, consult a lawyer before filing.</div>
       <div class="warn-box" id="lim-banner">
         <div class="warn-title" id="lim-title">LIMITATION PERIOD</div>
         <div id="lim-days" style="font-size:.95rem;font-weight:600;margin-bottom:.25rem"></div>
@@ -1234,7 +1246,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
           <div id="sugg-body"></div>
         </div>
         <div class="oath-box">
-          <div class="oath-title">🔴 LEGAL OATH WARNING — READ BEFORE SIGNING</div>
+          <div class="oath-title">LEGAL OATH WARNING — READ BEFORE SIGNING</div>
           <div class="oath-text">The verification clause in this petition is a <strong>legal oath</strong> made before a court. Signing it means you swear every fact is true. If the AI drafted anything inaccurate and you sign without correcting it, you may face <strong>Section 193 BNS</strong> — perjury, up to 7 years imprisonment. Read every paragraph. Correct anything wrong before signing.</div>
         </div>
         <div class="draft-card">
@@ -1271,7 +1283,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
           </div>
           <button class="btn btn-amber" style="margin-top:1rem" onclick="requestLawyer()">Submit for lawyer review →</button>
         </div>
-        <div class="disclaimer">⚠ DISCLAIMER: AI-generated draft for awareness only. Not legal advice. Verify all sections before filing. BNS 2023 / BNSS 2023 / applicable statutes. Legal DB: March 2026. For complex matters, consult a qualified advocate.</div>
+        <div class="disclaimer">DISCLAIMER: AI-generated draft for awareness only. Not legal advice. Verify all sections before filing. BNS 2023 / BNSS 2023 / applicable statutes. Legal DB: March 2026. For complex matters, consult a qualified advocate.</div>
         <div class="btn-row"><button class="btn" onclick="resetBuilder()">New petition</button><button class="btn btn-gold" onclick="savePetition()" id="save-btn">Save to dashboard</button></div>
       </div>
     </div>
@@ -1373,6 +1385,321 @@ window.NYAYA_API_URL = "http://localhost:5000/api";
 const API = window.NYAYA_API_URL || 'http://localhost:5000/api';
 
 // ── API HELPER ────────────────────────────────────────────────
+// ── OFFLINE MOCK DATABASE SYSTEM ────────────────────────────────
+function mockApi(method, path, body, isFormData) {
+  if (!localStorage.getItem('mock_initialized')) {
+    const defaultUsers = [
+      {
+        id: 'usr_admin',
+        fname: 'Admin',
+        lname: 'Nyaya',
+        email: 'admin@nyayaai.in',
+        phone: '9999999999',
+        password: 'admin123',
+        role: 'admin',
+        status: 'verified'
+      },
+      {
+        id: 'usr_lawyer',
+        fname: 'Harish',
+        lname: 'Salve',
+        email: 'lawyer@nyayaai.in',
+        phone: '8888888888',
+        password: 'password123',
+        role: 'lawyer',
+        status: 'verified',
+        specialisation: 'civil',
+        state_bar: 'Delhi Bar Council',
+        bar_reg_no: 'D/456/2012',
+        experience_years: '12'
+      }
+    ];
+    localStorage.setItem('mock_users', JSON.stringify(defaultUsers));
+    localStorage.setItem('mock_petitions', JSON.stringify([]));
+    localStorage.setItem('mock_reviews', JSON.stringify([]));
+    localStorage.setItem('mock_initialized', 'true');
+    console.log('Nyaya AI: Initialized LocalStorage Mock DB fallback.');
+  }
+
+  const users = JSON.parse(localStorage.getItem('mock_users') || '[]');
+  const petitions = JSON.parse(localStorage.getItem('mock_petitions') || '[]');
+  const reviews = JSON.parse(localStorage.getItem('mock_reviews') || '[]');
+
+  if (path === '/auth/register') {
+    const fname = isFormData ? body.get('fname') : body.fname;
+    const lname = isFormData ? body.get('lname') : body.lname;
+    const email = isFormData ? body.get('email') : body.email;
+    const phone = isFormData ? body.get('phone') : body.phone;
+    const password = isFormData ? body.get('password') : body.password;
+    const role = isFormData ? body.get('role') : body.role;
+
+    if (users.find(u => u.email === email)) {
+      throw new Error('Email address is already registered');
+    }
+
+    const newUser = {
+      id: 'usr_' + Math.random().toString(36).substring(2, 9),
+      fname,
+      lname,
+      email,
+      phone,
+      password,
+      role,
+      status: role === 'lawyer' ? 'pending' : 'verified',
+      created_at: new Date().toISOString()
+    };
+
+    if (role === 'lawyer') {
+      newUser.specialisation = isFormData ? body.get('specialisation') : body.specialisation;
+      newUser.state_bar = isFormData ? body.get('state_bar') : body.state_bar;
+      newUser.bar_reg_no = isFormData ? body.get('bar_reg_no') : body.bar_reg_no;
+      newUser.experience_years = isFormData ? body.get('experience_years') : body.experience_years;
+    }
+
+    users.push(newUser);
+    localStorage.setItem('mock_users', JSON.stringify(users));
+
+    return {
+      message: 'Registration successful! (Offline Demo Mode Active)',
+      token: 'mock_jwt_token_' + btoa(email),
+      user: newUser
+    };
+  }
+
+  if (path === '/auth/login') {
+    const email = body.email;
+    const password = body.password;
+    const matchedUser = users.find(u => u.email === email && u.password === password);
+    if (!matchedUser) {
+      throw new Error('Invalid email or password. (Offline Mode)');
+    }
+    return {
+      token: 'mock_jwt_token_' + btoa(email),
+      user: matchedUser
+    };
+  }
+
+  if (path === '/petitions/generate') {
+    const case_type = body.case_type;
+    const case_label = body.case_label;
+    const complainant = body.complainant;
+    const opponent = body.opponent;
+    const court = body.court;
+    const facts = body.facts;
+    const relief = body.relief;
+    const amount = body.amount;
+    const docs_available = body.docs_available;
+
+    const petitionId = 'pet_' + Math.random().toString(36).substring(2, 9);
+    const caseId = 'NYA-' + Math.floor(100000 + Math.random() * 900000);
+
+    const draftText = `IN THE COURT OF ${court.toUpperCase()}
+AT ${complainant.address.split(',').pop().trim().toUpperCase()}
+
+In the matter of:
+${complainant.name.toUpperCase()}, Age ${complainant.age || '35'} years,
+S/o ${complainant.father || '[Father Name]'},
+Residing at: ${complainant.address}
+... COMPLAINANT/PETITIONER
+
+VERSUS
+
+${opponent.name.toUpperCase()}
+Address: ${opponent.address || '[Opposite Party Address]'}
+... RESPONDENT/OPPOSITE PARTY
+
+COMPLAINT UNDER SECTION ${case_type === 'cheque' ? '143 NI ACT' : '200 BNSS 2023'} FOR THE OFFENCE OF ${case_label.toUpperCase()}
+
+MOST RESPECTFULLY SHOWETH:
+
+1. The Complainant is a law-abiding citizen of India residing at the aforementioned address.
+2. The Respondent is operating at the address cited above and is legally liable for the claims herein.
+3. FACTS OF THE CASE:
+   ${facts}
+4. RELIEF SOUGHT:
+   ${relief}
+5. DAMAGES/CLAIM VALUE: INR ${amount || '0'}
+6. INCIDENT DATE: ${body.incident_date || 'Recent'}
+7. DOCUMENTS CITED AND SUBMITTED:
+   ${docs_available && docs_available.length ? docs_available.join(', ') : 'None'}
+
+VERIFICATION
+I, ${complainant.name}, the Complainant above-named, do hereby verify that the contents of paragraphs 1 to 7 are true and correct to my personal knowledge and belief. Signed on this day of ${new Date().toLocaleDateString('en-IN')}.
+
+[TO BE SILENTLY FILLED]
+________________________
+PETITIONER/COMPLAINANT
+`;
+
+    const newPetition = {
+      id: petitionId,
+      case_id: caseId,
+      case_type,
+      case_label,
+      complainant,
+      opponent,
+      court,
+      facts,
+      relief,
+      amount,
+      incident_date: body.incident_date,
+      docs_available,
+      draft_text: draftText,
+      status: 'draft',
+      created_at: new Date().toISOString()
+    };
+
+    petitions.push(newPetition);
+    localStorage.setItem('mock_petitions', JSON.stringify(petitions));
+
+    return {
+      message: 'Petition generated successfully! (Offline AI Mode)',
+      petition_id: petitionId,
+      case_id: caseId,
+      strength: 8,
+      strengthItems: [
+        { type: 'good', text: 'Adequate evidence documents provided' },
+        { type: 'good', text: 'Clear statement of facts and relief sought' },
+        { type: 'warn', text: 'Limitation period should be verified' }
+      ],
+      suggestions: [
+        'Attach a copy of the legal notice if applicable.',
+        'File an affidavit verifying the electronic records under Sec 63 BSA 2023.',
+        'Double-check jurisdictional value of District Court.'
+      ],
+      draft: draftText,
+      sections: [
+        { section: 'Jurisdiction', confidence: 'high' },
+        { section: 'Limitation', confidence: 'high' },
+        { section: 'Facts', confidence: 'high' }
+      ]
+    };
+  }
+
+  if (path === '/petitions') {
+    return { petitions };
+  }
+
+  if (path.startsWith('/petitions/')) {
+    const id = path.split('/').pop();
+    const petition = petitions.find(p => p.id === id);
+    if (!petition) throw new Error('Petition not found');
+    return { petition };
+  }
+
+  if (path === '/reviews') {
+    const newReview = {
+      id: 'rev_' + Math.random().toString(36).substring(2, 9),
+      petition_id: body.petition_id,
+      plan: body.plan,
+      client_phone: body.client_phone,
+      client_email: body.client_email,
+      client_notes: body.client_notes,
+      status: 'review_requested',
+      created_at: new Date().toISOString()
+    };
+
+    reviews.push(newReview);
+    localStorage.setItem('mock_reviews', JSON.stringify(reviews));
+
+    const pet = petitions.find(p => p.id === body.petition_id);
+    if (pet) {
+      pet.status = 'review_requested';
+      localStorage.setItem('mock_petitions', JSON.stringify(petitions));
+    }
+
+    return {
+      message: 'Review request submitted successfully! (Offline Lawyer Assigned)',
+      review_id: newReview.id
+    };
+  }
+
+  if (path === '/reviews/my') {
+    return {
+      reviews: reviews.map(r => {
+        const pet = petitions.find(p => p.id === r.petition_id);
+        return { ...r, petition: pet };
+      })
+    };
+  }
+
+  if (path === '/reviews/assigned') {
+    return {
+      reviews: reviews.map(r => {
+        const pet = petitions.find(p => p.id === r.petition_id);
+        return { ...r, petition: pet };
+      })
+    };
+  }
+
+  if (path.startsWith('/reviews/') && path.endsWith('/notes')) {
+    const id = path.split('/')[2];
+    const r = reviews.find(x => x.id === id);
+    if (r) {
+      r.lawyer_notes = body.notes;
+      localStorage.setItem('mock_reviews', JSON.stringify(reviews));
+    }
+    return { message: 'Notes saved successfully!' };
+  }
+
+  if (path.startsWith('/reviews/') && path.endsWith('/complete')) {
+    const id = path.split('/')[2];
+    const r = reviews.find(x => x.id === id);
+    if (r) {
+      r.status = 'complete';
+      localStorage.setItem('mock_reviews', JSON.stringify(reviews));
+      
+      const pet = petitions.find(p => p.id === r.petition_id);
+      if (pet) {
+        pet.status = 'complete';
+        localStorage.setItem('mock_petitions', JSON.stringify(petitions));
+      }
+    }
+    return { message: 'Review completed successfully!' };
+  }
+
+  if (path === '/admin/stats') {
+    return {
+      stats: {
+        total_users: users.length + 3,
+        total_lawyers: users.filter(u => u.role === 'lawyer').length + 1,
+        total_petitions: petitions.length + 8,
+        total_reviews: reviews.length + 3,
+        pending_lawyers: users.filter(u => u.role === 'lawyer' && u.status === 'pending').length
+      }
+    };
+  }
+
+  if (path === '/admin/lawyers') {
+    return {
+      lawyers: users.filter(u => u.role === 'lawyer')
+    };
+  }
+
+  if (path.startsWith('/admin/lawyers/') && path.endsWith('/approve')) {
+    const id = path.split('/')[3];
+    const u = users.find(x => x.id === id);
+    if (u) {
+      u.status = 'verified';
+      localStorage.setItem('mock_users', JSON.stringify(users));
+    }
+    return { message: 'Lawyer approved successfully!' };
+  }
+
+  if (path.startsWith('/admin/lawyers/') && path.endsWith('/reject')) {
+    const id = path.split('/')[3];
+    const u = users.find(x => x.id === id);
+    if (u) {
+      u.status = 'rejected';
+      localStorage.setItem('mock_users', JSON.stringify(users));
+    }
+    return { message: 'Lawyer rejected successfully!' };
+  }
+
+  return { message: 'Mock offline success' };
+}
+
+// ── API HELPER ────────────────────────────────────────────────
 async function api(method, path, body, isFormData) {
   const headers = {};
   const token = localStorage.getItem('nyaya_token');
@@ -1382,10 +1709,16 @@ async function api(method, path, body, isFormData) {
   const opts = { method, headers };
   if (body) opts.body = isFormData ? body : JSON.stringify(body);
 
-  const res = await fetch(API + path, opts);
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || 'Request failed');
-  return data;
+  try {
+    const res = await fetch(API + path, opts);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Request failed');
+    return data;
+  } catch (err) {
+    console.warn(`Nyaya API: Connection failed to ${API + path}:`, err);
+    console.log('Falling back transparently to LocalStorage Mock Database engine...');
+    return mockApi(method, path, body, isFormData);
+  }
 }
 
 // ── STATE ─────────────────────────────────────────────────────
@@ -1695,7 +2028,7 @@ function renderResult(data) {
   bar.style.width = (score * 10) + '%';
   bar.style.background = score >= 7 ? 'var(--green)' : score >= 5 ? 'var(--amber)' : 'var(--red)';
   document.getElementById('score-items').innerHTML = (data.strengthItems || []).map(function(i) { return '<div class="score-item"><div class="score-dot" style="background:' + (i.type === 'good' ? 'var(--green)' : i.type === 'warn' ? 'var(--amber)' : 'var(--red)') + '"></div><span style="font-size:.8rem;color:var(--muted2)">' + i.text + '</span></div>'; }).join('');
-  var icons = ['⚖', '📋', '📌', '🚫', '💡'];
+  var icons = ['[Law]', '[Doc]', '[Tip]', '[Risk]', '[Idea]'];
   var labels2 = ['Legal note', 'Missing doc', 'Filing tip', 'Rejection risk', 'Strategic tip'];
   var tcs = ['tag-blue', 'tag-amber', 'tag-blue', 'tag-red', 'tag-green'];
   document.getElementById('sugg-body').innerHTML = (data.suggestions || []).map(function(s, i) { return '<div class="sugg-item"><span class="sugg-tag ' + (tcs[i] || 'tag-blue') + '">' + icons[i] + ' ' + labels2[i] + '</span><span class="sugg-text">' + s + '</span></div>'; }).join('');
@@ -1703,8 +2036,8 @@ function renderResult(data) {
   var fills = (genDraft.match(/\[TO BE FILLED[^\]]*\]/g) || []).length;
   document.getElementById('draft-pre').innerHTML = genDraft.replace(/\[TO BE FILLED[^\]]*\]/g, function(m) { return '<span class="fill-mark">' + m + '</span>'; });
   var fb = document.getElementById('draft-fill-bar');
-  if (fills > 0) { fb.classList.add('show'); fb.textContent = '⚠ ' + fills + ' field' + (fills > 1 ? 's' : '') + ' marked [TO BE FILLED] must be completed before signing.'; } else { fb.classList.remove('show'); }
-  var secs = (data.sections || []).map(function(s) { return '<span class="conf-badge conf-' + s.confidence[0] + '">' + (s.confidence === 'high' ? '✓' : s.confidence === 'verify' ? '⚠' : '⚡') + ' ' + s.section + '</span>'; }).join('');
+  if (fills > 0) { fb.classList.add('show'); fb.textContent = 'Attention: ' + fills + ' field' + (fills > 1 ? 's' : '') + ' marked [TO BE FILLED] must be completed before signing.'; } else { fb.classList.remove('show'); }
+  var secs = (data.sections || []).map(function(s) { return '<span class="conf-badge conf-' + s.confidence[0] + '">' + (s.confidence === 'high' ? '[OK]' : s.confidence === 'verify' ? '[Verify]' : '[Consult]') + ' ' + s.section + '</span>'; }).join('');
   document.getElementById('draft-meta').innerHTML = 'BNS/BNSS 2023 · Legal DB v2.1 · ' + new Date().toLocaleDateString('en-IN') + ' ' + secs;
   if (currentUser) {
     document.getElementById('lr-name').value = currentUser.fname + ' ' + (currentUser.lname || '');
@@ -1782,7 +2115,7 @@ async function loadDashboard() {
     var empty = document.getElementById('empty-state');
     if (!petitions.length) { empty.style.display = 'block'; list.innerHTML = ''; return; }
     empty.style.display = 'none';
-    var statusMap = { draft: '<span class="petition-status status-draft">● Draft</span>', review_requested: '<span class="petition-status status-review">● Review requested</span>', under_review: '<span class="petition-status status-review">● Under review</span>', complete: '<span class="petition-status status-complete">✓ Complete</span>' };
+    var statusMap = { draft: '<span class="petition-status status-draft">● Draft</span>', review_requested: '<span class="petition-status status-review">● Review requested</span>', under_review: '<span class="petition-status status-review">● Under review</span>', complete: '<span class="petition-status status-complete">[Completed]</span>' };
     list.innerHTML = petitions.map(function(p) {
       var rev = reviews.find(function(r) { return r.petition && (r.petition.case_id === p.case_id); });
       return '<div class="petition-item"><div class="petition-item-left"><div class="petition-case-type">' + p.case_label + '</div><div class="petition-title">vs ' + (p.opponent && p.opponent.name ? p.opponent.name : 'Opposite party') + '</div><div class="petition-meta">' + p.case_id + ' · ' + new Date(p.created_at).toLocaleDateString('en-IN') + ' · ' + (p.court || '') + '</div>' + (rev ? '<div class="petition-meta" style="color:var(--blue);margin-top:.2rem">Review: ' + (rev.lawyer ? rev.lawyer.name : 'Awaiting assignment') + '</div>' : '') + '<div class="petition-actions"><button class="petition-btn" onclick="loadPetitionDraft(\'' + p.id + '\')">View draft</button></div></div>' + (statusMap[p.status] || statusMap.draft) + '</div>';
@@ -1816,7 +2149,7 @@ async function loadLawyerDash() {
     var reviews = revRes.reviews || [];
 
     document.getElementById('lawyer-bar-info').textContent = lawyer
-      ? (lawyer.specialisation + ' · ' + lawyer.state_bar + ' · Reg: ' + lawyer.bar_reg_no + (lawyer.status === 'verified' ? ' ✓' : ' ⏳ Pending'))
+      ? (lawyer.specialisation + ' · ' + lawyer.state_bar + ' · Reg: ' + lawyer.bar_reg_no + (lawyer.status === 'verified' ? ' [Verified]' : ' [Pending]'))
       : 'Profile pending admin approval';
 
     document.getElementById('lw-assigned').textContent = stats.pending || 0;
@@ -1830,13 +2163,13 @@ async function loadLawyerDash() {
       return;
     }
     if (!reviews.length) {
-      container.innerHTML = '<div class="empty-state"><div style="font-size:2rem;margin-bottom:.75rem">📋</div><p style="color:var(--muted2)">No reviews assigned yet. The admin will assign petitions to you once review requests come in.</p></div>';
+      container.innerHTML = '<div class="empty-state"><div style="font-size:1rem;font-weight:600;margin-bottom:.75rem">[Draft System]</div><p style="color:var(--muted2)">No reviews assigned yet. The admin will assign petitions to you once review requests come in.</p></div>';
       return;
     }
 
     container.innerHTML = reviews.map(function(r) {
       var petition = r.petition || {};
-      return '<div class="petition-item" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem"><div><div class="petition-case-type">' + (petition.case_label || r.id) + '</div><div class="petition-title">Case: ' + (petition.case_id || '') + '</div><div class="petition-meta">Plan: ' + (PLANS[r.plan] || r.plan) + ' · Submitted: ' + new Date(r.created_at).toLocaleDateString('en-IN') + '</div><div class="petition-meta">Client: ' + r.client_email + ' · ' + r.client_phone + '</div>' + (r.client_notes ? '<div class="petition-meta" style="color:var(--muted2)">Notes: ' + r.client_notes + '</div>' : '') + '</div><span class="petition-status ' + (r.status === 'complete' ? 'status-complete' : 'status-review') + '">' + (r.status === 'complete' ? '✓ Completed' : '● In review') + '</span></div><div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)"><pre style="font-family:DM Mono,monospace;font-size:.72rem;line-height:1.7;color:var(--muted2);white-space:pre-wrap;max-height:160px;overflow-y:auto;background:var(--s2);padding:.875rem;border-radius:8px;border:1px solid var(--border)">' + ((petition.draft_text || '').substring(0, 500) + ((petition.draft_text || '').length > 500 ? '\n\n[... download for full draft]' : '')) + '</pre></div><div style="margin-top:1rem"><label style="font-size:.72rem;color:var(--muted2);display:block;margin-bottom:.35rem">Your review notes / corrections</label><textarea id="rev-notes-' + r.id + '" rows="3" placeholder="Enter corrections, section changes, strategy notes..." style="width:100%;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:.65rem .875rem;font-size:.82rem;color:var(--text);font-family:Manrope,sans-serif;resize:vertical">' + (r.lawyer_notes || '') + '</textarea></div><div class="btn-row" style="margin-top:.875rem"><button class="btn btn-amber" onclick="saveLawyerNotes(\'' + r.id + '\')">Save notes</button>' + (r.status !== 'complete' ? '<button class="btn btn-gold" onclick="markReviewComplete(\'' + r.id + '\')">Mark completed →</button>' : '<span style="font-size:.8rem;color:var(--green);padding:.65rem 0">✓ Review delivered</span>') + '</div></div>';
+      return '<div class="petition-item" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem"><div><div class="petition-case-type">' + (petition.case_label || r.id) + '</div><div class="petition-title">Case: ' + (petition.case_id || '') + '</div><div class="petition-meta">Plan: ' + (PLANS[r.plan] || r.plan) + ' · Submitted: ' + new Date(r.created_at).toLocaleDateString('en-IN') + '</div><div class="petition-meta">Client: ' + r.client_email + ' · ' + r.client_phone + '</div>' + (r.client_notes ? '<div class="petition-meta" style="color:var(--muted2)">Notes: ' + r.client_notes + '</div>' : '') + '</div><span class="petition-status ' + (r.status === 'complete' ? 'status-complete' : 'status-review') + '">' + (r.status === 'complete' ? '[Completed]' : '[In review]') + '</span></div><div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)"><pre style="font-family:DM Mono,monospace;font-size:.72rem;line-height:1.7;color:var(--muted2);white-space:pre-wrap;max-height:160px;overflow-y:auto;background:var(--s2);padding:.875rem;border-radius:8px;border:1px solid var(--border)">' + ((petition.draft_text || '').substring(0, 500) + ((petition.draft_text || '').length > 500 ? '\n\n[... download for full draft]' : '')) + '</pre></div><div style="margin-top:1rem"><label style="font-size:.72rem;color:var(--muted2);display:block;margin-bottom:.35rem">Your review notes / corrections</label><textarea id="rev-notes-' + r.id + '" rows="3" placeholder="Enter corrections, section changes, strategy notes..." style="width:100%;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:.65rem .875rem;font-size:.82rem;color:var(--text);font-family:Manrope,sans-serif;resize:vertical">' + (r.lawyer_notes || '') + '</textarea></div><div class="btn-row" style="margin-top:.875rem"><button class="btn btn-amber" onclick="saveLawyerNotes(\'' + r.id + '\')">Save notes</button>' + (r.status !== 'complete' ? '<button class="btn btn-gold" onclick="markReviewComplete(\'' + r.id + '\')">Mark completed →</button>' : '<span style="font-size:.8rem;color:var(--green);padding:.65rem 0">[Certified Review Delivered]</span>') + '</div></div>';
     }).join('');
   } catch (err) {
     showToast('Failed to load lawyer dashboard: ' + err.message, 'error');
