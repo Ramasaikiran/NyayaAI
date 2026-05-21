@@ -44,15 +44,17 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`
-  ╔═══════════════════════════════════╗
-  ║   Nyaya AI Backend Running        ║
-  ║   Port: ${PORT}                      ║
-  ║   Env:  ${process.env.NODE_ENV || 'development'}               ║
-  ╚═══════════════════════════════════╝
-  `);
-});
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`
+    ╔═══════════════════════════════════╗
+    ║   Nyaya AI Backend Running        ║
+    ║   Port: ${PORT}                      ║
+    ║   Env:  ${process.env.NODE_ENV || 'development'}               ║
+    ╚═══════════════════════════════════╝
+    `);
+  });
+}
 
 module.exports = app;
