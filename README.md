@@ -48,7 +48,7 @@ For production, set the API URL:
 
 ### Step 5 — Admin access
 Default admin: `admin@nyayaai.in` / `admin123`
-⚠️ Change this password immediately after first login.
+[Caution] Change this password immediately after first login.
 
 ---
 

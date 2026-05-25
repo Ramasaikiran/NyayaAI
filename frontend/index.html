@@ -7,26 +7,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f8f9fa;
+  --bg:#ffffff;
   --s1:#ffffff;
-  --s2:#f1f3f5;
-  --s3:#e9ecef;
-  --border:rgba(0,0,0,0.08);
-  --border2:rgba(0,0,0,0.14);
+  --s2:#f8f9fa;
+  --s3:#f1f3f5;
+  --border:rgba(0,0,0,0.06);
+  --border2:rgba(0,0,0,0.12);
   --gold:#b58a2a;
-  --gold2:rgba(181,138,42,0.1);
-  --gold3:rgba(181,138,42,0.05);
+  --gold2:rgba(181,138,42,0.08);
+  --gold3:rgba(181,138,42,0.03);
   --red:#d32f2f;
-  --red2:rgba(211,47,47,0.08);
+  --red2:rgba(211,47,47,0.06);
   --green:#2e7d32;
-  --green2:rgba(46,125,50,0.08);
+  --green2:rgba(46,125,50,0.06);
   --amber:#e65100;
-  --amber2:rgba(230,81,0,0.08);
+  --amber2:rgba(230,81,0,0.06);
   --blue:#1565c0;
-  --blue2:rgba(21,101,192,0.08);
-  --text:#1a1a1a;
-  --muted:#6c757d;
-  --muted2:#495057;
+  --blue2:rgba(21,101,192,0.06);
+  --text:#111111;
+  --muted:#71717a;
+  --muted2:#3f3f46;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
@@ -97,8 +97,21 @@ input,textarea,select{font-family:'Manrope',sans-serif}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.1;margin-bottom:.75rem}
 .section-sub{color:var(--muted2);font-size:.95rem;max-width:560px}
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
-.feature-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
-.feature-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.feature-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.02), 0 2px 8px -1px rgba(15, 23, 42, 0.01);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.feature-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 38px -4px rgba(15, 23, 42, 0.05), 0 8px 16px -2px rgba(15, 23, 42, 0.03);
+}
 .feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);opacity:0;transition:opacity .25s}
 .feature-card:hover::before{opacity:1}
 .feature-icon{font-size:1.5rem;margin-bottom:.875rem}
@@ -115,7 +128,14 @@ input,textarea,select{font-family:'Manrope',sans-serif}
 .hiw-inner{max-width:1000px;margin:0 auto}
 .hiw-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;position:relative}
 .hiw-steps::before{content:'';position:absolute;top:28px;left:15%;right:15%;height:1px;background:linear-gradient(to right,transparent,var(--border),var(--border),transparent)}
-.hiw-step{text-align:center;padding:0 .5rem}
+.hiw-step {
+  text-align: center;
+  padding: 0 .5rem;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.hiw-step:hover {
+  transform: translateY(-5px);
+}
 .hiw-num{width:56px;height:56px;border-radius:50%;background:var(--s2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--gold)}
 .hiw-title{font-size:.875rem;font-weight:600;margin-bottom:.4rem}
 .hiw-desc{font-size:.78rem;color:var(--muted2);line-height:1.55}
@@ -123,8 +143,23 @@ input,textarea,select{font-family:'Manrope',sans-serif}
 /* CASE TYPES SHOWCASE */
 .cases-section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
 .cases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:2.5rem}
-.case-pill{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:.875rem 1rem;font-size:.82rem;font-weight:500;transition:border-color .2s,background .2s;cursor:pointer}
-.case-pill:hover{border-color:var(--border2);background:var(--s2)}
+.case-pill {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .875rem 1rem;
+  font-size: .82rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px -1px rgba(15, 23, 42, 0.02);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+  cursor: pointer;
+}
+.case-pill:hover {
+  border-color: var(--gold);
+  background: var(--gold3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -4px rgba(181, 138, 42, 0.08);
+}
 .case-pill span{display:block;font-size:.7rem;color:var(--muted);font-weight:400;margin-top:.2rem}
 
 /* DIFFERENTIATION */
@@ -143,8 +178,20 @@ input,textarea,select{font-family:'Manrope',sans-serif}
 /* PRICING */
 .pricing-section{padding:5rem 2rem;max-width:1000px;margin:0 auto}
 .pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:3rem}
-.pricing-card{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative}
-.pricing-card.featured{border-color:var(--gold);background:linear-gradient(135deg,rgba(212,168,67,0.06),var(--s1))}
+.pricing-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.02), 0 2px 8px -1px rgba(15, 23, 42, 0.01);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.pricing-card.featured {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(181, 138, 42, 0.02), var(--s1));
+  box-shadow: 0 8px 30px -4px rgba(181, 138, 42, 0.04), 0 4px 12px -2px rgba(181, 138, 42, 0.02);
+}
 .pricing-featured-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#07060a;font-size:.65rem;font-weight:700;padding:.3rem .875rem;border-radius:99px;font-family:'DM Mono',monospace;letter-spacing:.06em;white-space:nowrap}
 .pricing-label{font-size:.75rem;color:var(--muted2);font-family:'DM Mono',monospace;letter-spacing:.06em;margin-bottom:.5rem}
 .pricing-price{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--gold);margin-bottom:.25rem}
@@ -265,10 +312,10 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 .case-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem;cursor:pointer;transition:border-color .22s,background .22s;position:relative}
 .case-card:hover{border-color:var(--border2)}
 .case-card.sel{border-color:var(--gold);background:var(--gold3)}
-.case-card.sel::after{content:'[Selected]';position:absolute;top:.5rem;right:.75rem;font-size:.65rem;color:var(--gold)}
+.case-card.sel::after{content:'Selected';position:absolute;top:.5rem;right:.75rem;font-size:.65rem;color:var(--gold)}
 .case-card-t{font-size:.85rem;font-weight:500;margin-bottom:.2rem}
 .case-card-s{font-size:.72rem;color:var(--muted)}
-.case-card.crim .case-card-t::after{content:' [Screened]';color:var(--amber);font-size:.65rem}
+.case-card.crim .case-card-t::after{content:' Screened';color:var(--amber);font-size:.65rem}
 
 /* CRIMINAL + LIMITATION */
 .warn-box{border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.25rem;display:none;font-size:.83rem;line-height:1.6}
@@ -499,9 +546,15 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 
 /* Pricing card hover */
 .pricing-card{transition:transform .25s,border-color .25s}
-.pricing-card:hover{transform:translateY(-3px)}
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px -6px rgba(15, 23, 42, 0.06), 0 8px 24px -4px rgba(15, 23, 42, 0.03);
+}
 .pricing-card.featured{transform:scale(1.03)}
-.pricing-card.featured:hover{transform:scale(1.03) translateY(-3px)}
+.pricing-card.featured:hover {
+  transform: scale(1.03) translateY(-8px);
+  box-shadow: 0 28px 56px -6px rgba(181, 138, 42, 0.08), 0 10px 28px -4px rgba(181, 138, 42, 0.04);
+}
 
 /* Diff table row hover */
 .diff-table tr{transition:background .15s}
@@ -710,6 +763,31 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 }
 
 /* ── PREMIUM ANIMATIONS & EFFECTS OVERRIDES ── */
+/* Creative AI Wave Loader */
+.ai-wave-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  margin-bottom: 2rem;
+}
+.ai-wave-bar {
+  width: 4px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 4px;
+  animation: aiWave 1.2s ease-in-out infinite;
+}
+.ai-wave-bar:nth-child(2) { animation-delay: 0.15s; }
+.ai-wave-bar:nth-child(3) { animation-delay: 0.3s; }
+.ai-wave-bar:nth-child(4) { animation-delay: 0.45s; }
+.ai-wave-bar:nth-child(5) { animation-delay: 0.6s; }
+
+@keyframes aiWave {
+  0%, 100% { height: 8px; transform: scaleY(1); opacity: 0.4; }
+  50% { height: 32px; transform: scaleY(1.5); opacity: 1; background: var(--blue); }
+}
 .hero {
   position: relative;
   overflow: hidden;
@@ -847,7 +925,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo" onclick="showPage('landing')"><em>Nyaya</em> AI</div>
+  <div class="nav-logo" onclick="showPage('landing')"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:20px;height:20px;color:var(--gold);display:inline-block;vertical-align:middle;margin-right:6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0-17.25a3.75 3.75 0 1 1-7.5 0M12 3a3.75 3.75 0 1 0 7.5 0M4.5 19.5h15" /></svg><em>Nyaya</em> AI</div>
   <div class="nav-links" id="nav-links">
     <a href="#features" onclick="navTo(event,'#features')">Features</a>
     <a href="#pricing" onclick="navTo(event,'#pricing')">Pricing</a>
@@ -913,15 +991,98 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
     <h2 class="section-title">Built with safeguards<br>most apps skip.</h2>
     <p class="section-sub">Every feature here exists because we found a way a user could get hurt without it.</p>
     <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">⏱</div><div class="feature-title">Limitation period calculator</div><div class="feature-desc">Enter your incident date. Get exact days remaining. Red alert if you're near or past the deadline — before you waste time drafting.</div><span class="feature-tag tag-green">Prevents missed deadlines</span></div>
-      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--gold)">[01]</div><div class="feature-title">Jurisdiction auto-selector</div><div class="feature-desc">State + district + claim amount → we tell you exactly which court. Consumer complaint at ₹45k goes to District Forum, not State Commission.</div><span class="feature-tag tag-green">Prevents wrong court filing</span></div>
-      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--gold)">[02]</div><div class="feature-title">Case strength scoring</div><div class="feature-desc">1–10 score with specific items: what evidence you have, what's missing, what could get your case thrown out before the first hearing.</div><span class="feature-tag tag-amber">Sets realistic expectations</span></div>
-      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--red)">[03]</div><div class="feature-title">Perjury warning</div><div class="feature-desc">The verification clause is a legal oath. We flag this explicitly — Section 193 BNS, up to 7 years. Not in a footer. In your face before you sign.</div><span class="feature-tag tag-red">Prevents criminal liability</span></div>
-      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--amber)">[04]</div><div class="feature-title">Criminal case screening</div><div class="feature-desc">Police, cheque bounce, DV, cyber crime — extra gate with Sections 182 & 211 BNS warnings. False criminal complaints carry up to 7 years.</div><span class="feature-tag tag-red">Prevents counter-charges</span></div>
-      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--blue)">[05]</div><div class="feature-title">Section confidence tags</div><div class="feature-desc">Every cited law section tagged: [High confidence] / [Verify] / [Consult lawyer]. You know which parts to double-check before filing.</div><span class="feature-tag tag-amber">Prevents wrong sections</span></div>
-      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--green)">[06]</div><div class="feature-title">DPDP Act 2023 compliance</div><div class="feature-desc">Your case details — domestic violence, fraud, medical — are not stored on servers. Cleared after your session. No selling, no sharing.</div><span class="feature-tag tag-blue">Privacy protected</span></div>
-      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--gold)">[07]</div><div class="feature-title">Real lawyer review</div><div class="feature-desc">Bar Council-registered advocates review your draft, correct errors, and return certified versions in 24–48 hours. Starting ₹299.</div><span class="feature-tag tag-blue">Human verification layer</span></div>
-      <div class="feature-card"><div class="feature-icon" style="font-weight:bold;color:var(--gold)">[08]</div><div class="feature-title">Save & resume</div><div class="feature-desc">Sign in to save your petitions. Come back, download again, track lawyer review status. Nothing gets lost mid-draft.</div><span class="feature-tag tag-green">Persistent access</span></div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:28px;height:28px;color:var(--gold);">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </div>
+        <div class="feature-title">Limitation period calculator</div>
+        <div class="feature-desc">Enter your incident date. Get exact days remaining. Red alert if you're near or past the deadline — before you waste time drafting.</div>
+        <span class="feature-tag tag-green">Prevents missed deadlines</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:28px;height:28px;color:var(--gold);">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+          </svg>
+        </div>
+        <div class="feature-title">Jurisdiction auto-selector</div>
+        <div class="feature-desc">State + district + claim amount → we tell you exactly which court. Consumer complaint at ₹45k goes to District Forum, not State Commission.</div>
+        <span class="feature-tag tag-green">Prevents wrong court filing</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:28px;height:28px;color:var(--gold);">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+          </svg>
+        </div>
+        <div class="feature-title">Case strength scoring</div>
+        <div class="feature-desc">1–10 score with specific items: what evidence you have, what's missing, what could get your case thrown out before the first hearing.</div>
+        <span class="feature-tag tag-amber">Sets realistic expectations</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:28px;height:28px;color:var(--red);">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" />
+          </svg>
+        </div>
+        <div class="feature-title">Perjury warning</div>
+        <div class="feature-desc">The verification clause is a legal oath. We flag this explicitly — Section 193 BNS, up to 7 years. Not in a footer. In your face before you sign.</div>
+        <span class="feature-tag tag-red">Prevents criminal liability</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:28px;height:28px;color:var(--amber);">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.008v.008H12v-.008Z" />
+          </svg>
+        </div>
+        <div class="feature-title">Criminal case screening</div>
+        <div class="feature-desc">Police, cheque bounce, DV, cyber crime — extra gate with Sections 182 & 211 BNS warnings. False criminal complaints carry up to 7 years.</div>
+        <span class="feature-tag tag-red">Prevents counter-charges</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:28px;height:28px;color:var(--blue);">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581a1.5 1.5 0 0 0 2.122 0l4.318-4.318a1.5 1.5 0 0 0 0-2.122L10.12 3.659A1.5 1.5 0 0 0 9.568 3Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+          </svg>
+        </div>
+        <div class="feature-title">Section confidence tags</div>
+        <div class="feature-desc">Every cited law section tagged: High confidence / Verify / Consult lawyer. You know which parts to double-check before filing.</div>
+        <span class="feature-tag tag-amber">Prevents wrong sections</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:28px;height:28px;color:var(--green);">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286Z" />
+          </svg>
+        </div>
+        <div class="feature-title">DPDP Act 2023 compliance</div>
+        <div class="feature-desc">Your case details — domestic violence, fraud, medical — are not stored on servers. Cleared after your session. No selling, no sharing.</div>
+        <span class="feature-tag tag-blue">Privacy protected</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:28px;height:28px;color:var(--gold);">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253" />
+          </svg>
+        </div>
+        <div class="feature-title">Real lawyer review</div>
+        <div class="feature-desc">Bar Council-registered advocates review your draft, correct errors, and return certified versions in 24–48 hours. Starting ₹299.</div>
+        <span class="feature-tag tag-blue">Human verification layer</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:28px;height:28px;color:var(--gold);">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
+          </svg>
+        </div>
+        <div class="feature-title">Save & resume</div>
+        <div class="feature-desc">Sign in to save your petitions. Come back, download again, track lawyer review status. Nothing gets lost mid-draft.</div>
+        <span class="feature-tag tag-green">Persistent access</span>
+      </div>
     </div>
   </div>
 
@@ -1029,7 +1190,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <div class="nav-logo"><em>Nyaya</em> AI</div>
+          <div class="nav-logo" style="margin-bottom:.5rem;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:20px;height:20px;color:var(--gold);display:inline-block;vertical-align:middle;margin-right:6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0-17.25a3.75 3.75 0 1 1-7.5 0M12 3a3.75 3.75 0 1 0 7.5 0M4.5 19.5h15" /></svg><em>Nyaya</em> AI</div>
           <p>Legal rights for every Indian citizen. AI-powered petition drafting with real safeguards and real lawyers. Built on BNS/BNSS 2023.</p>
         </div>
         <div class="footer-col"><h4>Product</h4><a href="#" onclick="showPage('builder')">Draft petition</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#cases">Case types</a></div>
@@ -1048,7 +1209,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 <div class="modal-overlay" id="auth-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeAuth()">x</button>
-    <div class="modal-logo"><em>Nyaya</em> AI</div>
+    <div class="modal-logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:20px;height:20px;color:var(--gold);display:inline-block;vertical-align:middle;margin-right:6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0-17.25a3.75 3.75 0 1 1-7.5 0M12 3a3.75 3.75 0 1 0 7.5 0M4.5 19.5h15" /></svg><em>Nyaya</em> AI</div>
     <div class="modal-tabs">
       <button class="modal-tab active" id="tab-login" onclick="switchTab('login')">Log in</button>
       <button class="modal-tab" id="tab-signup" onclick="switchTab('signup')">Sign up</button>
@@ -1066,12 +1227,12 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
         <label class="modal-label">I am registering as *</label>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.35rem">
           <div id="role-citizen" class="role-card sel" onclick="selectRole('citizen')" style="border:1.5px solid var(--gold);background:var(--gold3);border-radius:9px;padding:.75rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s">
-            <div style="font-size:0.85rem;font-weight:600;margin-bottom:.25rem">[Citizen]</div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:20px;height:20px;color:var(--gold);margin:0 auto .25rem;display:block;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
             <div style="font-size:.82rem;font-weight:600">Citizen</div>
             <div style="font-size:.7rem;color:var(--muted2);margin-top:.15rem">File petitions</div>
           </div>
           <div id="role-lawyer" class="role-card" onclick="selectRole('lawyer')" style="border:1px solid var(--border2);border-radius:9px;padding:.75rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s">
-            <div style="font-size:0.85rem;font-weight:600;margin-bottom:.25rem">[Advocate]</div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:20px;height:20px;color:var(--gold);margin:0 auto .25rem;display:block;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0-17.25a3.75 3.75 0 1 1-7.5 0M12 3a3.75 3.75 0 1 0 7.5 0M4.5 19.5h15" /></svg>
             <div style="font-size:.82rem;font-weight:600">Advocate</div>
             <div style="font-size:.7rem;color:var(--muted2);margin-top:.15rem">Review petitions</div>
           </div>
@@ -1229,7 +1390,13 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 
     <!-- STEP 5: GENERATING -->
     <div class="builder-step" id="bstep-5">
-      <div class="generating"><div class="spinner"></div><div class="gen-msg" id="gen-msg">Analysing case type and applicable law...</div><div class="gen-sub">20–35 seconds</div></div>
+      <div class="generating"><div class="ai-wave-container">
+        <div class="ai-wave-bar"></div>
+        <div class="ai-wave-bar"></div>
+        <div class="ai-wave-bar"></div>
+        <div class="ai-wave-bar"></div>
+        <div class="ai-wave-bar"></div>
+      </div><div class="gen-msg" id="gen-msg">Analysing case type and applicable law...</div><div class="gen-sub">20–35 seconds</div></div>
     </div>
 
     <!-- STEP 6: RESULT -->
@@ -2037,7 +2204,7 @@ function renderResult(data) {
   document.getElementById('draft-pre').innerHTML = genDraft.replace(/\[TO BE FILLED[^\]]*\]/g, function(m) { return '<span class="fill-mark">' + m + '</span>'; });
   var fb = document.getElementById('draft-fill-bar');
   if (fills > 0) { fb.classList.add('show'); fb.textContent = 'Attention: ' + fills + ' field' + (fills > 1 ? 's' : '') + ' marked [TO BE FILLED] must be completed before signing.'; } else { fb.classList.remove('show'); }
-  var secs = (data.sections || []).map(function(s) { return '<span class="conf-badge conf-' + s.confidence[0] + '">' + (s.confidence === 'high' ? '[OK]' : s.confidence === 'verify' ? '[Verify]' : '[Consult]') + ' ' + s.section + '</span>'; }).join('');
+  var secs = (data.sections || []).map(function(s) { return '<span class="conf-badge conf-' + s.confidence[0] + '">' + (s.confidence === 'high' ? '[OK]' : s.confidence === 'verify' ? 'Verify' : '[Consult]') + ' ' + s.section + '</span>'; }).join('');
   document.getElementById('draft-meta').innerHTML = 'BNS/BNSS 2023 · Legal DB v2.1 · ' + new Date().toLocaleDateString('en-IN') + ' ' + secs;
   if (currentUser) {
     document.getElementById('lr-name').value = currentUser.fname + ' ' + (currentUser.lname || '');
@@ -2108,14 +2275,14 @@ async function loadDashboard() {
     var [petRes, revRes] = await Promise.all([api('GET', '/petitions'), api('GET', '/reviews/my')]);
     var petitions = petRes.petitions || [];
     var reviews = revRes.reviews || [];
-    document.getElementById('stat-total').textContent = petitions.length;
-    document.getElementById('stat-review').textContent = petitions.filter(function(p) { return p.status === 'under_review' || p.status === 'review_requested'; }).length;
-    document.getElementById('stat-complete').textContent = petitions.filter(function(p) { return p.status === 'complete'; }).length;
+    animateCounter('stat-total', petitions.length);
+    animateCounter('stat-review', petitions.filter(function(p) { return p.status === 'under_review' || p.status === 'review_requested'; }).length);
+    animateCounter('stat-complete', petitions.filter(function(p) { return p.status === 'complete'; }).length);
     var list = document.getElementById('petition-list');
     var empty = document.getElementById('empty-state');
     if (!petitions.length) { empty.style.display = 'block'; list.innerHTML = ''; return; }
     empty.style.display = 'none';
-    var statusMap = { draft: '<span class="petition-status status-draft">● Draft</span>', review_requested: '<span class="petition-status status-review">● Review requested</span>', under_review: '<span class="petition-status status-review">● Under review</span>', complete: '<span class="petition-status status-complete">[Completed]</span>' };
+    var statusMap = { draft: '<span class="petition-status status-draft">● Draft</span>', review_requested: '<span class="petition-status status-review">● Review requested</span>', under_review: '<span class="petition-status status-review">● Under review</span>', complete: '<span class="petition-status status-complete">Completed</span>' };
     list.innerHTML = petitions.map(function(p) {
       var rev = reviews.find(function(r) { return r.petition && (r.petition.case_id === p.case_id); });
       return '<div class="petition-item"><div class="petition-item-left"><div class="petition-case-type">' + p.case_label + '</div><div class="petition-title">vs ' + (p.opponent && p.opponent.name ? p.opponent.name : 'Opposite party') + '</div><div class="petition-meta">' + p.case_id + ' · ' + new Date(p.created_at).toLocaleDateString('en-IN') + ' · ' + (p.court || '') + '</div>' + (rev ? '<div class="petition-meta" style="color:var(--blue);margin-top:.2rem">Review: ' + (rev.lawyer ? rev.lawyer.name : 'Awaiting assignment') + '</div>' : '') + '<div class="petition-actions"><button class="petition-btn" onclick="loadPetitionDraft(\'' + p.id + '\')">View draft</button></div></div>' + (statusMap[p.status] || statusMap.draft) + '</div>';
@@ -2169,7 +2336,7 @@ async function loadLawyerDash() {
 
     container.innerHTML = reviews.map(function(r) {
       var petition = r.petition || {};
-      return '<div class="petition-item" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem"><div><div class="petition-case-type">' + (petition.case_label || r.id) + '</div><div class="petition-title">Case: ' + (petition.case_id || '') + '</div><div class="petition-meta">Plan: ' + (PLANS[r.plan] || r.plan) + ' · Submitted: ' + new Date(r.created_at).toLocaleDateString('en-IN') + '</div><div class="petition-meta">Client: ' + r.client_email + ' · ' + r.client_phone + '</div>' + (r.client_notes ? '<div class="petition-meta" style="color:var(--muted2)">Notes: ' + r.client_notes + '</div>' : '') + '</div><span class="petition-status ' + (r.status === 'complete' ? 'status-complete' : 'status-review') + '">' + (r.status === 'complete' ? '[Completed]' : '[In review]') + '</span></div><div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)"><pre style="font-family:DM Mono,monospace;font-size:.72rem;line-height:1.7;color:var(--muted2);white-space:pre-wrap;max-height:160px;overflow-y:auto;background:var(--s2);padding:.875rem;border-radius:8px;border:1px solid var(--border)">' + ((petition.draft_text || '').substring(0, 500) + ((petition.draft_text || '').length > 500 ? '\n\n[... download for full draft]' : '')) + '</pre></div><div style="margin-top:1rem"><label style="font-size:.72rem;color:var(--muted2);display:block;margin-bottom:.35rem">Your review notes / corrections</label><textarea id="rev-notes-' + r.id + '" rows="3" placeholder="Enter corrections, section changes, strategy notes..." style="width:100%;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:.65rem .875rem;font-size:.82rem;color:var(--text);font-family:Manrope,sans-serif;resize:vertical">' + (r.lawyer_notes || '') + '</textarea></div><div class="btn-row" style="margin-top:.875rem"><button class="btn btn-amber" onclick="saveLawyerNotes(\'' + r.id + '\')">Save notes</button>' + (r.status !== 'complete' ? '<button class="btn btn-gold" onclick="markReviewComplete(\'' + r.id + '\')">Mark completed →</button>' : '<span style="font-size:.8rem;color:var(--green);padding:.65rem 0">[Certified Review Delivered]</span>') + '</div></div>';
+      return '<div class="petition-item" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem"><div><div class="petition-case-type">' + (petition.case_label || r.id) + '</div><div class="petition-title">Case: ' + (petition.case_id || '') + '</div><div class="petition-meta">Plan: ' + (PLANS[r.plan] || r.plan) + ' · Submitted: ' + new Date(r.created_at).toLocaleDateString('en-IN') + '</div><div class="petition-meta">Client: ' + r.client_email + ' · ' + r.client_phone + '</div>' + (r.client_notes ? '<div class="petition-meta" style="color:var(--muted2)">Notes: ' + r.client_notes + '</div>' : '') + '</div><span class="petition-status ' + (r.status === 'complete' ? 'status-complete' : 'status-review') + '">' + (r.status === 'complete' ? 'Completed' : 'In review') + '</span></div><div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)"><pre style="font-family:DM Mono,monospace;font-size:.72rem;line-height:1.7;color:var(--muted2);white-space:pre-wrap;max-height:160px;overflow-y:auto;background:var(--s2);padding:.875rem;border-radius:8px;border:1px solid var(--border)">' + ((petition.draft_text || '').substring(0, 500) + ((petition.draft_text || '').length > 500 ? '\n\n[... download for full draft]' : '')) + '</pre></div><div style="margin-top:1rem"><label style="font-size:.72rem;color:var(--muted2);display:block;margin-bottom:.35rem">Your review notes / corrections</label><textarea id="rev-notes-' + r.id + '" rows="3" placeholder="Enter corrections, section changes, strategy notes..." style="width:100%;background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:.65rem .875rem;font-size:.82rem;color:var(--text);font-family:Manrope,sans-serif;resize:vertical">' + (r.lawyer_notes || '') + '</textarea></div><div class="btn-row" style="margin-top:.875rem"><button class="btn btn-amber" onclick="saveLawyerNotes(\'' + r.id + '\')">Save notes</button>' + (r.status !== 'complete' ? '<button class="btn btn-gold" onclick="markReviewComplete(\'' + r.id + '\')">Mark completed →</button>' : '<span style="font-size:.8rem;color:var(--green);padding:.65rem 0">Certified Review Delivered</span>') + '</div></div>';
     }).join('');
   } catch (err) {
     showToast('Failed to load lawyer dashboard: ' + err.message, 'error');
@@ -2314,6 +2481,37 @@ function removeLawyer() { showToast('Use the Reject button to reject a lawyer re
 // ── UTILS ─────────────────────────────────────────────────────
 function viewDraft(btn) { var d = decodeURIComponent(btn.dataset.draft); if (d) { var w = window.open('', '_blank'); w.document.write('<pre style="font-family:monospace;white-space:pre-wrap;padding:2rem;line-height:1.8;font-size:13px">' + d + '</pre>'); } }
 function dlSaved(id, draft) { var b = new Blob([decodeURIComponent(draft)], { type: 'text/plain' }); var u = URL.createObjectURL(b); var a = document.createElement('a'); a.href = u; a.download = 'petition_' + id + '.txt'; a.click(); URL.revokeObjectURL(u); }
+
+// Animated statistics counter increment
+function animateCounter(id, targetVal, duration = 1200) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  
+  var isCurrency = false;
+  var valStr = targetVal + '';
+  if (valStr.indexOf('₹') >= 0) {
+    isCurrency = true;
+    targetVal = parseInt(valStr.replace('₹', '')) || 0;
+  } else {
+    targetVal = parseInt(valStr) || 0;
+  }
+  
+  var startTime = null;
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var progress = Math.min((timestamp - startTime) / duration, 1);
+    // Cubic ease out transition
+    var easeOut = 1 - Math.pow(1 - progress, 3);
+    var current = Math.floor(easeOut * targetVal);
+    el.textContent = isCurrency ? '₹' + current : current;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      el.textContent = valStr;
+    }
+  }
+  window.requestAnimationFrame(step);
+}
 
 function showToast(msg, type) {
   var t = document.getElementById('toast');
