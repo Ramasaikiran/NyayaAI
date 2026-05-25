@@ -1,4 +1,4 @@
-# Nyaya AI — Full Stack Legal Platform
+# Nyaya AI - Full Stack Legal Platform
 
 ## Architecture
 
@@ -17,13 +17,13 @@ nyaya-fullstack/
 
 ## Setup (20 minutes)
 
-### Step 1 — Supabase
+### Step 1 - Supabase
 1. Create project at https://supabase.com
 2. Go to SQL Editor → paste contents of `database/schema.sql` → Run
 3. Go to Storage → Create bucket named `lawyer-documents` → set to **Private**
 4. Go to Settings → API → copy `URL`, `anon key`, `service_role key`
 
-### Step 2 — Backend
+### Step 2 - Backend
 ```bash
 cd backend
 cp .env.example .env
@@ -32,7 +32,7 @@ npm install
 npm run dev
 ```
 
-### Step 3 — Frontend
+### Step 3 - Frontend
 Open `frontend/index.html` in browser OR deploy to any static host.
 
 For production, set the API URL:
@@ -41,12 +41,12 @@ For production, set the API URL:
 <script>window.NYAYA_API_URL = "https://your-backend.railway.app/api";</script>
 ```
 
-### Step 4 — Deploy backend (free options)
+### Step 4 - Deploy backend (free options)
 - **Railway**: Connect GitHub repo → auto-deploys → free tier available
 - **Render**: Similar to Railway
 - **Fly.io**: More control, generous free tier
 
-### Step 5 — Admin access
+### Step 5 - Admin access
 Default admin: `admin@nyayaai.in` / `admin123`
 [Caution] Change this password immediately after first login.
 
@@ -55,16 +55,16 @@ Default admin: `admin@nyayaai.in` / `admin123`
 ## API Endpoints
 
 ### Auth
-- `POST /api/auth/register` — Citizen or lawyer registration (multipart/form-data for lawyers)
-- `POST /api/auth/login` — Login, returns JWT
-- `GET /api/auth/me` — Get current user (requires auth)
-- `PUT /api/auth/change-password` — Change password
+- `POST /api/auth/register` - Citizen or lawyer registration (multipart/form-data for lawyers)
+- `POST /api/auth/login` - Login, returns JWT
+- `GET /api/auth/me` - Get current user (requires auth)
+- `PUT /api/auth/change-password` - Change password
 
 ### Petitions
-- `POST /api/petitions/generate` — Generate AI petition + save to DB
-- `GET /api/petitions` — Get user's petitions
-- `GET /api/petitions/:id` — Get single petition
-- `DELETE /api/petitions/:id` — Delete petition
+- `POST /api/petitions/generate` - Generate AI petition + save to DB
+- `GET /api/petitions` - Get user's petitions
+- `GET /api/petitions/:id` - Get single petition
+- `DELETE /api/petitions/:id` - Delete petition
 
 ### Reviews
 - `POST /api/reviews` — Submit lawyer review request
