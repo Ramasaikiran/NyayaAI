@@ -920,6 +920,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3rem 2rem
 }
 
 </style>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 
@@ -2222,19 +2223,56 @@ async function requestLawyer() {
   var phone = document.getElementById('lr-phone').value.trim();
   var email = document.getElementById('lr-email').value.trim();
   var consent = document.getElementById('privacy-tick').checked;
+  var notes = document.getElementById('lr-notes').value;
   if (!phone || !email) { showToast('Please enter your phone and email for review.', 'error'); return; }
   if (!consent) { showToast('Please consent to data sharing before submitting.', 'error'); return; }
   if (!currentUser) { showToast('Please log in to submit a review request.', 'error'); openAuth('login'); return; }
   if (!caseD.petition_id) { showToast('Please save your petition first.', 'error'); return; }
+
   try {
-    var data = await api('POST', '/reviews', {
+    var order = await api('POST', '/payments/create-order', {
       petition_id: caseD.petition_id,
-      plan: selectedPlan,
-      client_phone: phone,
-      client_email: email,
-      client_notes: document.getElementById('lr-notes').value
+      plan: selectedPlan
     });
-    showToast('Review submitted! ID: ' + data.review_id + '. Advocate assigned within 24 hours.', 'success');
+
+    if (typeof Razorpay === 'undefined') { showToast('Payment gateway failed to load. Check your connection.', 'error'); return; }
+
+    var rzp = new Razorpay({
+      key: order.key_id,
+      amount: order.amount,
+      currency: order.currency,
+      order_id: order.order_id,
+      name: 'Nyaya AI',
+      description: (PLANS[selectedPlan] || selectedPlan) + ' — Lawyer Review',
+      prefill: { email: email, contact: phone, name: currentUser ? (currentUser.fname || '') : '' },
+      theme: { color: '#b8965a' },
+      handler: async function (response) {
+        try {
+          var data = await api('POST', '/payments/verify', {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+            petition_id: caseD.petition_id,
+            plan: selectedPlan,
+            client_phone: phone,
+            client_email: email,
+            client_notes: notes
+          });
+          showToast('Payment confirmed! Review ID: ' + data.review_id + '. Advocate assigned within 24 hours.', 'success');
+        } catch (verifyErr) {
+          showToast('Payment succeeded but confirmation failed: ' + verifyErr.message + '. Contact support with payment ID ' + response.razorpay_payment_id + '.', 'error');
+        }
+      },
+      modal: {
+        ondismiss: function () { showToast('Payment cancelled.', 'error'); }
+      }
+    });
+
+    rzp.on('payment.failed', function (resp) {
+      showToast('Payment failed: ' + (resp.error && resp.error.description ? resp.error.description : 'Please try again.'), 'error');
+    });
+
+    rzp.open();
   } catch (err) {
     showToast(err.message, 'error');
   }

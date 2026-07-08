@@ -26,6 +26,7 @@ app.use('/api/auth', authLimiter);
 app.use('/api/auth',      require('./routes/auth'));
 app.use('/api/petitions', require('./routes/petitions'));
 app.use('/api/reviews',   require('./routes/reviews'));
+app.use('/api/payments',  require('./routes/payments'));
 app.use('/api/admin',     require('./routes/admin'));
 app.use('/api/lawyer',    require('./routes/lawyers'));
 

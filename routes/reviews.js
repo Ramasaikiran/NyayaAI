@@ -11,9 +11,15 @@ function genReviewId() {
   return 'REV-' + Date.now().toString(36).toUpperCase();
 }
 
-// ── SUBMIT REVIEW REQUEST ─────────────────────────────────────
+// ── SUBMIT REVIEW REQUEST (LEGACY — UNPAID) ────────────────────
+// Superseded by POST /api/payments/verify, which creates the review
+// request only after Razorpay payment is confirmed. Kept only for
+// admin-assigned free reviews.
 router.post('/', auth, async (req, res) => {
   try {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ error: 'Direct review creation requires payment. Use /api/payments/create-order.' });
+    }
     const { petition_id, plan, client_phone, client_email, client_notes } = req.body;
 
     if (!petition_id || !plan || !client_phone || !client_email) {
